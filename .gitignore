@@ -1,0 +1,16 @@
+.venv/
+.env
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+.DS_Store
+# Immutable raw laboratory data and restricted material
+data/raw/
+data/private/
+# Local tracking state and trained weights (add data management before release)
+mlruns/
+mlruns.db
+*.safetensors
+*.pth
+*.pt
