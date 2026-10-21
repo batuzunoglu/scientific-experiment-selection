@@ -53,3 +53,20 @@ Known issues:
 
 Next milestone:
 - PFAS Dataset Inventory and Data Validation.
+
+## Checkpoint 001 — Local workflow verification (review approved)
+
+Date: 2026-10-21
+Branch: `test/workflow-issue-1`
+Base commit: `843946995a497adbd7710cb8eaf5f62aae77e4ae`
+Starting working tree: clean.
+
+- Issue #1 was read using `gh issue view 1 --repo batuzunoglu/scientific-experiment-selection --json number,title,body,url,state`.
+- `uv run python --version`: Python 3.12.14, exit 0.
+- `uv run python -m scientific_experiment_selection doctor`: exit 0.
+- `uv run python -m unittest discover -s tests -v`: 2 tests passed, exit 0.
+- Initial sandboxed uv attempts exited 2 because the existing cache was read-only; approved retries succeeded.
+- Researcher reviewed the local diff and replied `approve`; [local workflow test record](WORKFLOW_TEST.md) linked after review per Issue #1.
+- Observed infrastructure results only; no scientific results or simulated measurements.
+- No scientific data, analysis code, evaluation rules, or dependencies changed.
+- Approved next actions: commit the documentation, push this branch, and open a PR for review. Publication results will be reported in the session; connected-repository review remains to be verified. Merge requires separate approval.
