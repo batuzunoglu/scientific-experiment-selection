@@ -111,3 +111,10 @@ gh issue view 1 --repo batuzunoglu/scientific-experiment-selection --json number
 - At initial verification, no commit, push, pull request, or merge had been performed. The researcher subsequently replied `approve` to the local diff; commit, push, and PR creation are the next actions. Merge requires separate approval.
 - GitHub visibility of this report and ChatGPT reading it through a connected repository remain unverified; the full workflow acceptance criteria are not yet complete.
 - The handoff now links this report after researcher review, as requested in Issue #1.
+
+## 2026-10-21 — Post-publication verification update
+
+- Research report and full PR patch were successfully retrieved through the connected GitHub integration from feature branch `test/workflow-issue-1` (PR #2).
+- A review comment was posted in PR #2. This confirms remote visibility and makes the previous “pending” statement a historical note only.
+- The connected reviewer did **not** execute local Ubuntu commands independently; test success is based on the Codex-recorded outputs. No PR-triggered GitHub Actions runs were observed for the initial commit.
+- Scientific model training and data evaluation remain unstarted.
