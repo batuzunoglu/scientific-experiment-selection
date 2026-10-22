@@ -1,8 +1,11 @@
 # Cross-LLM Research Handoff
 
-**Checkpoint date:** 2026-10-21
-**Phase:** Issue #3 Phase 1 inventory tooling implemented locally; actual dataset inventory pending source directories and backup confirmation.
-**Status:** Eight software tests and doctor passed locally. No real dataset manifest, scientific model training or laboratory analysis. No commit/push/upload authorized or performed for this task.
+**Checkpoint date:** 2026-10-22
+**Phase:** Actual Exp1–Exp8 inventory and evidence reconciliation completed; scientific conflicts remain open.
+**Status:** Sources found at `/home/batuhan/research/raw-experiment-results/`; inventory code, tests and provisional reports committed as `4a83e74` and pushed on `data/dataset-inventory`. [PR #4](https://github.com/batuzunoglu/scientific-experiment-selection/pull/4) is open and unmerged. Eight software tests and doctor passed; no model training or raw-workbook import performed. Backup confirmation remains pending. Housekeeping follow-up awaits approval before further push or merge.
+
+The dated checkpoints below are historical records; their earlier pending-source
+and publication-hold statements describe the state at those checkpoints.
 
 ## Stable goals
 Reproducible ECE PhD research, paper/proposal, and a publicly presentable portfolio for 2027 internship applications. Core task: sequential physical experiment selection to adapt/verify predictive scientific models under shift, using PFAS spectroscopy first.
@@ -198,3 +201,13 @@ authorization. Fresh eight-test suite and doctor passed before publication.
 Next action after opening the PR: review the code and discrepancy evidence on
 GitHub; no automatic merge or chemical-conflict resolution. Publication outcome
 and PR URL will be reported in the session and recorded in GitHub's PR history.
+
+## Checkpoint 008 — PR #4 housekeeping follow-up; approval pending
+
+Addressed review 5618857967 with current status text and explicit documentation
+of the CLI's retained Exp3–Exp8 recognition limit and Exp1/Exp2 follow-up.
+Historical checkpoints and all scientific records remain unchanged. No code edits.
+Observed: `PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m unittest discover -s tests -v`
+passed all eight tests; `PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m scientific_experiment_selection doctor`
+passed with scientific_runs none. Next: researcher approval of the local diff.
+No staging, commit, push or merge performed for this follow-up.

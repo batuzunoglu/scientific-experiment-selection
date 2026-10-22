@@ -1,6 +1,13 @@
 # Dataset provenance
 
-No experimental data are included in the scaffold. Store raw exports unchanged in `data/raw/` (ignored by Git). Create a manifest listing SHA-256 hashes, date, instrument, plate/batch, preparation, sample, replicates, blank/QC classification, concentration, units, and permission to share. Scripts producing processed data must name their original sources. Git alone is not a second backup.
+Actual Exp1–Exp8 inventory and evidence reconciliation completed on 2026-10-22.
+Raw exports remain unchanged outside the repository at
+`/home/batuhan/research/raw-experiment-results/`; no raw workbooks were imported.
+Inventory code, tests and provisional reports were committed as `4a83e74` and
+pushed on `data/dataset-inventory`; [PR #4](https://github.com/batuzunoglu/scientific-experiment-selection/pull/4)
+is open and unmerged. See [the review report](../docs/DATASET_RECONCILIATION_REVIEW.md).
+Scientific labels remain provisional/conflicted; backup confirmation and controlled
+raw import remain pending. Git alone is not a second backup.
 
 ## Phase 1 inventory (Issue #3)
 
@@ -42,6 +49,16 @@ treated as experimental metadata. Batch and plate remain `UNKNOWN`: Exp numbers
 and technical replicates do not establish independently prepared batches. A later
 reviewed metadata mapping is needed for stronger assignments.
 
+This CLI deliberately retains its original Exp3–Exp8 filename-recognition scope
+for this PR. It inventories and hashes Exp1/Exp2 files, but reports their
+`experiment` as `UNKNOWN` and does not include them in its expected-experiment list.
+The exact names `Exp1 Plt1.xlsx` and `Exp2 Plt2.xlsx` provide provisional file-level
+identity, with historical hash matches documented in the reconciliation report.
+That evidence does not supply missing well-level chemistry: 104 populated
+Exp1/Exp2 pilot/diagnostic wells remain chemically unassigned. Follow-up: extend
+conservative filename recognition and expected-experiment reporting to Exp1–Exp8
+with synthetic tests, without assigning chemical labels or independent batch IDs.
+
 The summary reports counts, bytes, duplicate checksum groups, unknown mappings and
 expected experiments with no unambiguous filename evidence. Actual missing batches
 cannot be identified until a researcher supplies an authoritative batch roster.
@@ -80,9 +97,10 @@ unknown/not-recorded status rather than filling gaps by assumption.
 | Sharing status | Permission scope, approver/date, restrictions and separate backup confirmation |
 
 Issue #3 reports researcher permission for Exp3–Exp8 storage in the private repository;
-the current instruction still prohibits raw upload, commit and push pending inventory
-review. No `.gitignore` change is made. Exp7 G1:G6/F8, Exp8 F1:F3 and Exp5 B7 QC notes
-from the issue are **unverified leads**, not assigned QC labels.
+the approved code/report publication is now in PR #4. Raw upload remains deferred
+pending separate review and backup confirmation. `.gitignore` is unchanged.
+Historical QC decisions and contradictory evidence are preserved in the
+reconciliation reports; the inventory CLI assigns no scientific QC labels.
 
 ## Validation and current limitations
 
@@ -93,6 +111,8 @@ from the issue are **unverified leads**, not assigned QC labels.
 
 Tests generate small synthetic byte fixtures in temporary directories, exercise the
 real CLI, and remove their temporary files afterward. These are software checks,
-not simulated spectra or scientific results. See `docs/DATASET_INVENTORY.md` for the
-current review checkpoint. Source paths and backup confirmation are still pending;
-no real dataset manifest has yet been generated.
+not simulated spectra or scientific results. The actual inventory manifest was
+generated; see [inventory evidence](../docs/DATASET_INVENTORY.md) and
+[reconciliation review](../docs/DATASET_RECONCILIATION_REVIEW.md) for source paths,
+hashes and unresolved metadata. Backup confirmation and physical label validation
+remain pending. Further push or merge awaits researcher approval.

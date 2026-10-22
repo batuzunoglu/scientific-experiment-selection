@@ -88,3 +88,11 @@ Researcher explicitly replied `approve` to staging/committing/pushing the propos
 28 files and creating the reviewable feature-branch PR. This authorizes publication
 of inventory tooling and provisional audit evidence only; it does not validate
 chemical labels, resolve conflicts, approve ML, change splits or authorize merge.
+
+### PR #4 housekeeping response — 2026-10-22
+
+Used the documentation-only option in review 5618857967: retain the CLI's original
+Exp3–Exp8 interface, explicitly separate Exp1/Exp2 file identity from unknown well
+chemistry, and document a recognition-scope follow-up requiring synthetic tests. Refreshed current
+status without rewriting historical checkpoints. No scientific decisions changed;
+the review's suggested future baseline is not implemented or approved here.
