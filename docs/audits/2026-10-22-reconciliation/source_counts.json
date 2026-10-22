@@ -1,0 +1,71 @@
+{
+  "CeARS_Analysis_Step2_Preprocessing_Comparison.xlsx#Well_Metadata": {
+    "Exp3": 96,
+    "Exp4": 96,
+    "Exp5": 96,
+    "Exp6": 96
+  },
+  "CeARS_Analysis_Step3_Features_Exploratory.xlsx#Well_Metadata": {
+    "Exp3": 96,
+    "Exp4": 96,
+    "Exp5": 96,
+    "Exp6": 96
+  },
+  "CeARS_Analysis_Step3_Features_Exploratory.xlsx#Step3_Well_Features": {
+    "Exp3": 96,
+    "Exp4": 84,
+    "Exp5": 72,
+    "Exp6": 66
+  },
+  "CeARS_Analysis_Step4_Individual_Classification.xlsx#Well_Metadata": {
+    "Exp3": 96,
+    "Exp4": 96,
+    "Exp5": 96,
+    "Exp6": 96
+  },
+  "CeARS_Analysis_Step4_Individual_Classification.xlsx#Step3_Well_Features": {
+    "Exp3": 96,
+    "Exp4": 84,
+    "Exp5": 72,
+    "Exp6": 66
+  },
+  "CeARS_Analysis_Step5_Mixture_Classification_Regression.xlsx#Well_Metadata": {
+    "Exp3": 96,
+    "Exp4": 96,
+    "Exp5": 96,
+    "Exp6": 96
+  },
+  "CeARS_Analysis_Step5_Mixture_Classification_Regression.xlsx#Step3_Well_Features": {
+    "Exp3": 96,
+    "Exp4": 84,
+    "Exp5": 72,
+    "Exp6": 66
+  },
+  "Step0_Data_Ingestion_and_Provenance.xlsx#Well_Metadata": {
+    "Exp1": 96,
+    "Exp2": 96,
+    "Exp3": 96,
+    "Exp4": 96,
+    "Exp5": 96,
+    "Exp6": 96
+  },
+  "Step2_Feature_Extraction_and_PCA.xlsx#Development_Features": {
+    "Exp3": 72,
+    "Exp4": 69,
+    "Exp5": 56
+  },
+  "Step2_Feature_Extraction_and_PCA.xlsx#External_Exp6_LOCKED": {
+    "Exp6": 46
+  },
+  "Step1_Dataset_Audit_Exp3_Exp8.xlsx#Well_Metadata": {
+    "Exp3": 96,
+    "Exp4": 96,
+    "Exp5": 96,
+    "Exp6": 96,
+    "Exp7": 96,
+    "Exp8": 96
+  },
+  "exp5_well_metadata.csv": {
+    "Exp5": 96
+  }
+}

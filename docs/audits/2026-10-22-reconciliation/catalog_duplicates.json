@@ -1,0 +1,198 @@
+{
+  "CeARS_blank": [
+    {
+      "condition_code": "CeARS_blank",
+      "sample_type": "blank",
+      "condition_description": "Ce–ARS blank",
+      "TFA_ppm": "0",
+      "PFPA_ppm": "0",
+      "PFBA_ppm": "0",
+      "PFHxA_ppm": "0",
+      "PFOA_ppm": "0",
+      "PFNA_ppm": "0",
+      "total_pfas_ppm": "0",
+      "_ref": "03_original_received/CeARS_Master_Well_Map_Verified(2).xlsx#CONDITION_CATALOG!row=2"
+    },
+    {
+      "condition_code": "CeARS_blank",
+      "sample_type": "blank",
+      "condition_description": "Ce–ARS reagent blank",
+      "TFA_ppm": "",
+      "PFPA_ppm": "",
+      "PFBA_ppm": "",
+      "PFHxA_ppm": "",
+      "PFOA_ppm": "",
+      "PFNA_ppm": "",
+      "total_pfas_ppm": "0",
+      "_ref": "03_original_received/CeARS_Master_Well_Map_Verified(2).xlsx#CONDITION_CATALOG!row=3"
+    }
+  ],
+  "PFBA_10": [
+    {
+      "condition_code": "PFBA_10",
+      "sample_type": "individual",
+      "condition_description": "PFBA individual, 10 ppm",
+      "TFA_ppm": "0",
+      "PFPA_ppm": "0",
+      "PFBA_ppm": "10",
+      "PFHxA_ppm": "0",
+      "PFOA_ppm": "0",
+      "PFNA_ppm": "0",
+      "total_pfas_ppm": "10",
+      "_ref": "03_original_received/CeARS_Master_Well_Map_Verified(2).xlsx#CONDITION_CATALOG!row=5"
+    },
+    {
+      "condition_code": "PFBA_10",
+      "sample_type": "individual",
+      "condition_description": "PFBA individual at 10 ppm",
+      "TFA_ppm": "",
+      "PFPA_ppm": "",
+      "PFBA_ppm": "10",
+      "PFHxA_ppm": "",
+      "PFOA_ppm": "",
+      "PFNA_ppm": "",
+      "total_pfas_ppm": "10",
+      "_ref": "03_original_received/CeARS_Master_Well_Map_Verified(2).xlsx#CONDITION_CATALOG!row=6"
+    }
+  ],
+  "PFHxA_10": [
+    {
+      "condition_code": "PFHxA_10",
+      "sample_type": "individual",
+      "condition_description": "PFHxA individual, 10 ppm",
+      "TFA_ppm": "0",
+      "PFPA_ppm": "0",
+      "PFBA_ppm": "0",
+      "PFHxA_ppm": "10",
+      "PFOA_ppm": "0",
+      "PFNA_ppm": "0",
+      "total_pfas_ppm": "10",
+      "_ref": "03_original_received/CeARS_Master_Well_Map_Verified(2).xlsx#CONDITION_CATALOG!row=9"
+    },
+    {
+      "condition_code": "PFHxA_10",
+      "sample_type": "individual",
+      "condition_description": "PFHxA individual at 10 ppm",
+      "TFA_ppm": "",
+      "PFPA_ppm": "",
+      "PFBA_ppm": "",
+      "PFHxA_ppm": "10",
+      "PFOA_ppm": "",
+      "PFNA_ppm": "",
+      "total_pfas_ppm": "10",
+      "_ref": "03_original_received/CeARS_Master_Well_Map_Verified(2).xlsx#CONDITION_CATALOG!row=10"
+    }
+  ],
+  "PFNA_10": [
+    {
+      "condition_code": "PFNA_10",
+      "sample_type": "individual",
+      "condition_description": "PFNA individual, 10 ppm",
+      "TFA_ppm": "0",
+      "PFPA_ppm": "0",
+      "PFBA_ppm": "0",
+      "PFHxA_ppm": "0",
+      "PFOA_ppm": "0",
+      "PFNA_ppm": "10",
+      "total_pfas_ppm": "10",
+      "_ref": "03_original_received/CeARS_Master_Well_Map_Verified(2).xlsx#CONDITION_CATALOG!row=13"
+    },
+    {
+      "condition_code": "PFNA_10",
+      "sample_type": "individual",
+      "condition_description": "PFNA individual at 10 ppm",
+      "TFA_ppm": "",
+      "PFPA_ppm": "",
+      "PFBA_ppm": "",
+      "PFHxA_ppm": "",
+      "PFOA_ppm": "",
+      "PFNA_ppm": "10",
+      "total_pfas_ppm": "10",
+      "_ref": "03_original_received/CeARS_Master_Well_Map_Verified(2).xlsx#CONDITION_CATALOG!row=14"
+    }
+  ],
+  "PFOA_10": [
+    {
+      "condition_code": "PFOA_10",
+      "sample_type": "individual",
+      "condition_description": "PFOA individual, 10 ppm",
+      "TFA_ppm": "0",
+      "PFPA_ppm": "0",
+      "PFBA_ppm": "0",
+      "PFHxA_ppm": "0",
+      "PFOA_ppm": "10",
+      "PFNA_ppm": "0",
+      "total_pfas_ppm": "10",
+      "_ref": "03_original_received/CeARS_Master_Well_Map_Verified(2).xlsx#CONDITION_CATALOG!row=17"
+    },
+    {
+      "condition_code": "PFOA_10",
+      "sample_type": "individual",
+      "condition_description": "PFOA individual at 10 ppm",
+      "TFA_ppm": "",
+      "PFPA_ppm": "",
+      "PFBA_ppm": "",
+      "PFHxA_ppm": "",
+      "PFOA_ppm": "10",
+      "PFNA_ppm": "",
+      "total_pfas_ppm": "10",
+      "_ref": "03_original_received/CeARS_Master_Well_Map_Verified(2).xlsx#CONDITION_CATALOG!row=18"
+    }
+  ],
+  "PFPA_10": [
+    {
+      "condition_code": "PFPA_10",
+      "sample_type": "individual",
+      "condition_description": "PFPA individual, 10 ppm",
+      "TFA_ppm": "0",
+      "PFPA_ppm": "10",
+      "PFBA_ppm": "0",
+      "PFHxA_ppm": "0",
+      "PFOA_ppm": "0",
+      "PFNA_ppm": "0",
+      "total_pfas_ppm": "10",
+      "_ref": "03_original_received/CeARS_Master_Well_Map_Verified(2).xlsx#CONDITION_CATALOG!row=21"
+    },
+    {
+      "condition_code": "PFPA_10",
+      "sample_type": "individual",
+      "condition_description": "PFPA individual at 10 ppm",
+      "TFA_ppm": "",
+      "PFPA_ppm": "10",
+      "PFBA_ppm": "",
+      "PFHxA_ppm": "",
+      "PFOA_ppm": "",
+      "PFNA_ppm": "",
+      "total_pfas_ppm": "10",
+      "_ref": "03_original_received/CeARS_Master_Well_Map_Verified(2).xlsx#CONDITION_CATALOG!row=22"
+    }
+  ],
+  "TFA_10": [
+    {
+      "condition_code": "TFA_10",
+      "sample_type": "individual",
+      "condition_description": "TFA individual, 10 ppm",
+      "TFA_ppm": "10",
+      "PFPA_ppm": "0",
+      "PFBA_ppm": "0",
+      "PFHxA_ppm": "0",
+      "PFOA_ppm": "0",
+      "PFNA_ppm": "0",
+      "total_pfas_ppm": "10",
+      "_ref": "03_original_received/CeARS_Master_Well_Map_Verified(2).xlsx#CONDITION_CATALOG!row=25"
+    },
+    {
+      "condition_code": "TFA_10",
+      "sample_type": "individual",
+      "condition_description": "TFA individual at 10 ppm",
+      "TFA_ppm": "10",
+      "PFPA_ppm": "",
+      "PFBA_ppm": "",
+      "PFHxA_ppm": "",
+      "PFOA_ppm": "",
+      "PFNA_ppm": "",
+      "total_pfas_ppm": "10",
+      "_ref": "03_original_received/CeARS_Master_Well_Map_Verified(2).xlsx#CONDITION_CATALOG!row=26"
+    }
+  ]
+}

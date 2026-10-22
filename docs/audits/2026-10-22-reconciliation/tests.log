@@ -1,0 +1,13 @@
+test_diagnostics_have_required_keys (test_doctor.InfrastructureSmokeTests.test_diagnostics_have_required_keys) ... ok
+test_version (test_doctor.InfrastructureSmokeTests.test_version) ... ok
+test_deterministic_output_and_nested_unicode_paths (test_inventory.InventoryTests.test_deterministic_output_and_nested_unicode_paths) ... ok
+test_hash_sizes_duplicates_unknowns_and_no_source_changes (test_inventory.InventoryTests.test_hash_sizes_duplicates_unknowns_and_no_source_changes) ... ok
+test_missing_and_overlapping_sources_fail_without_report (test_inventory.InventoryTests.test_missing_and_overlapping_sources_fail_without_report) ... ok
+test_multiple_sources_preserve_identity_and_cross_source_duplicates (test_inventory.InventoryTests.test_multiple_sources_preserve_identity_and_cross_source_duplicates) ... ok
+test_refuses_output_in_source_and_existing_output (test_inventory.InventoryTests.test_refuses_output_in_source_and_existing_output) ... ok
+test_symlinks_are_listed_but_not_followed (test_inventory.InventoryTests.test_symlinks_are_listed_but_not_followed) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.187s
+
+OK

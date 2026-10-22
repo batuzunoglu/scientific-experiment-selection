@@ -1,0 +1,558 @@
+{
+  "historical_presence_disagreements": [],
+  "plan_composition_rows_compared": 321,
+  "plan_composition_disagreements": [
+    {
+      "experiment_id": "Exp7",
+      "well": "A1",
+      "condition_claim": "N01",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=18",
+      "definition_record": "{\"ID\": \"N01\", \"Group\": \"2-comp\", \"TFA\": \"0\", \"PFPA\": \"2.5\", \"PFBA\": \"7.5\", \"PFHxA\": \"0\", \"PFOA\": \"0\", \"PFNA\": \"0\", \"Total\": \"10\", \"Composition\": \"PFPA + PFBA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=18\"}",
+      "composition_disagreements": "TFA,PFHxA,PFOA,PFNA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "A2",
+      "condition_claim": "N01",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=18",
+      "definition_record": "{\"ID\": \"N01\", \"Group\": \"2-comp\", \"TFA\": \"0\", \"PFPA\": \"2.5\", \"PFBA\": \"7.5\", \"PFHxA\": \"0\", \"PFOA\": \"0\", \"PFNA\": \"0\", \"Total\": \"10\", \"Composition\": \"PFPA + PFBA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=18\"}",
+      "composition_disagreements": "TFA,PFHxA,PFOA,PFNA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "A3",
+      "condition_claim": "N01",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=18",
+      "definition_record": "{\"ID\": \"N01\", \"Group\": \"2-comp\", \"TFA\": \"0\", \"PFPA\": \"2.5\", \"PFBA\": \"7.5\", \"PFHxA\": \"0\", \"PFOA\": \"0\", \"PFNA\": \"0\", \"Total\": \"10\", \"Composition\": \"PFPA + PFBA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=18\"}",
+      "composition_disagreements": "TFA,PFHxA,PFOA,PFNA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "A4",
+      "condition_claim": "N02",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=19",
+      "definition_record": "{\"ID\": \"N02\", \"Group\": \"2-comp\", \"TFA\": \"0\", \"PFPA\": \"5\", \"PFBA\": \"0\", \"PFHxA\": \"5\", \"PFOA\": \"0\", \"PFNA\": \"0\", \"Total\": \"10\", \"Composition\": \"PFPA + PFHxA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=19\"}",
+      "composition_disagreements": "TFA,PFBA,PFOA,PFNA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "A5",
+      "condition_claim": "N02",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=19",
+      "definition_record": "{\"ID\": \"N02\", \"Group\": \"2-comp\", \"TFA\": \"0\", \"PFPA\": \"5\", \"PFBA\": \"0\", \"PFHxA\": \"5\", \"PFOA\": \"0\", \"PFNA\": \"0\", \"Total\": \"10\", \"Composition\": \"PFPA + PFHxA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=19\"}",
+      "composition_disagreements": "TFA,PFBA,PFOA,PFNA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "A6",
+      "condition_claim": "N02",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=19",
+      "definition_record": "{\"ID\": \"N02\", \"Group\": \"2-comp\", \"TFA\": \"0\", \"PFPA\": \"5\", \"PFBA\": \"0\", \"PFHxA\": \"5\", \"PFOA\": \"0\", \"PFNA\": \"0\", \"Total\": \"10\", \"Composition\": \"PFPA + PFHxA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=19\"}",
+      "composition_disagreements": "TFA,PFBA,PFOA,PFNA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "A7",
+      "condition_claim": "N03",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=20",
+      "definition_record": "{\"ID\": \"N03\", \"Group\": \"2-comp\", \"TFA\": \"0\", \"PFPA\": \"7.5\", \"PFBA\": \"0\", \"PFHxA\": \"0\", \"PFOA\": \"2.5\", \"PFNA\": \"0\", \"Total\": \"10\", \"Composition\": \"PFPA + PFOA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=20\"}",
+      "composition_disagreements": "TFA,PFBA,PFHxA,PFNA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "A8",
+      "condition_claim": "N03",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=20",
+      "definition_record": "{\"ID\": \"N03\", \"Group\": \"2-comp\", \"TFA\": \"0\", \"PFPA\": \"7.5\", \"PFBA\": \"0\", \"PFHxA\": \"0\", \"PFOA\": \"2.5\", \"PFNA\": \"0\", \"Total\": \"10\", \"Composition\": \"PFPA + PFOA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=20\"}",
+      "composition_disagreements": "TFA,PFBA,PFHxA,PFNA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "A9",
+      "condition_claim": "N03",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=20",
+      "definition_record": "{\"ID\": \"N03\", \"Group\": \"2-comp\", \"TFA\": \"0\", \"PFPA\": \"7.5\", \"PFBA\": \"0\", \"PFHxA\": \"0\", \"PFOA\": \"2.5\", \"PFNA\": \"0\", \"Total\": \"10\", \"Composition\": \"PFPA + PFOA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=20\"}",
+      "composition_disagreements": "TFA,PFBA,PFHxA,PFNA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "A10",
+      "condition_claim": "N04",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=21",
+      "definition_record": "{\"ID\": \"N04\", \"Group\": \"2-comp\", \"TFA\": \"0\", \"PFPA\": \"2.5\", \"PFBA\": \"0\", \"PFHxA\": \"0\", \"PFOA\": \"0\", \"PFNA\": \"7.5\", \"Total\": \"10\", \"Composition\": \"PFPA + PFNA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=21\"}",
+      "composition_disagreements": "TFA,PFBA,PFHxA,PFOA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "A11",
+      "condition_claim": "N04",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=21",
+      "definition_record": "{\"ID\": \"N04\", \"Group\": \"2-comp\", \"TFA\": \"0\", \"PFPA\": \"2.5\", \"PFBA\": \"0\", \"PFHxA\": \"0\", \"PFOA\": \"0\", \"PFNA\": \"7.5\", \"Total\": \"10\", \"Composition\": \"PFPA + PFNA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=21\"}",
+      "composition_disagreements": "TFA,PFBA,PFHxA,PFOA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "A12",
+      "condition_claim": "N04",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=21",
+      "definition_record": "{\"ID\": \"N04\", \"Group\": \"2-comp\", \"TFA\": \"0\", \"PFPA\": \"2.5\", \"PFBA\": \"0\", \"PFHxA\": \"0\", \"PFOA\": \"0\", \"PFNA\": \"7.5\", \"Total\": \"10\", \"Composition\": \"PFPA + PFNA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=21\"}",
+      "composition_disagreements": "TFA,PFBA,PFHxA,PFOA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "B1",
+      "condition_claim": "N05",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=22",
+      "definition_record": "{\"ID\": \"N05\", \"Group\": \"2-comp\", \"TFA\": \"0\", \"PFPA\": \"0\", \"PFBA\": \"2.5\", \"PFHxA\": \"7.5\", \"PFOA\": \"0\", \"PFNA\": \"0\", \"Total\": \"10\", \"Composition\": \"PFBA + PFHxA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=22\"}",
+      "composition_disagreements": "TFA,PFPA,PFOA,PFNA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "B2",
+      "condition_claim": "N05",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=22",
+      "definition_record": "{\"ID\": \"N05\", \"Group\": \"2-comp\", \"TFA\": \"0\", \"PFPA\": \"0\", \"PFBA\": \"2.5\", \"PFHxA\": \"7.5\", \"PFOA\": \"0\", \"PFNA\": \"0\", \"Total\": \"10\", \"Composition\": \"PFBA + PFHxA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=22\"}",
+      "composition_disagreements": "TFA,PFPA,PFOA,PFNA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "B3",
+      "condition_claim": "N05",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=22",
+      "definition_record": "{\"ID\": \"N05\", \"Group\": \"2-comp\", \"TFA\": \"0\", \"PFPA\": \"0\", \"PFBA\": \"2.5\", \"PFHxA\": \"7.5\", \"PFOA\": \"0\", \"PFNA\": \"0\", \"Total\": \"10\", \"Composition\": \"PFBA + PFHxA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=22\"}",
+      "composition_disagreements": "TFA,PFPA,PFOA,PFNA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "B4",
+      "condition_claim": "N06",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=23",
+      "definition_record": "{\"ID\": \"N06\", \"Group\": \"2-comp\", \"TFA\": \"0\", \"PFPA\": \"0\", \"PFBA\": \"5\", \"PFHxA\": \"0\", \"PFOA\": \"5\", \"PFNA\": \"0\", \"Total\": \"10\", \"Composition\": \"PFBA + PFOA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=23\"}",
+      "composition_disagreements": "TFA,PFPA,PFHxA,PFNA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "B5",
+      "condition_claim": "N06",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=23",
+      "definition_record": "{\"ID\": \"N06\", \"Group\": \"2-comp\", \"TFA\": \"0\", \"PFPA\": \"0\", \"PFBA\": \"5\", \"PFHxA\": \"0\", \"PFOA\": \"5\", \"PFNA\": \"0\", \"Total\": \"10\", \"Composition\": \"PFBA + PFOA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=23\"}",
+      "composition_disagreements": "TFA,PFPA,PFHxA,PFNA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "B6",
+      "condition_claim": "N06",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=23",
+      "definition_record": "{\"ID\": \"N06\", \"Group\": \"2-comp\", \"TFA\": \"0\", \"PFPA\": \"0\", \"PFBA\": \"5\", \"PFHxA\": \"0\", \"PFOA\": \"5\", \"PFNA\": \"0\", \"Total\": \"10\", \"Composition\": \"PFBA + PFOA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=23\"}",
+      "composition_disagreements": "TFA,PFPA,PFHxA,PFNA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "B7",
+      "condition_claim": "N07",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=24",
+      "definition_record": "{\"ID\": \"N07\", \"Group\": \"2-comp\", \"TFA\": \"0\", \"PFPA\": \"0\", \"PFBA\": \"7.5\", \"PFHxA\": \"0\", \"PFOA\": \"0\", \"PFNA\": \"2.5\", \"Total\": \"10\", \"Composition\": \"PFBA + PFNA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=24\"}",
+      "composition_disagreements": "TFA,PFPA,PFHxA,PFOA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "B8",
+      "condition_claim": "N07",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=24",
+      "definition_record": "{\"ID\": \"N07\", \"Group\": \"2-comp\", \"TFA\": \"0\", \"PFPA\": \"0\", \"PFBA\": \"7.5\", \"PFHxA\": \"0\", \"PFOA\": \"0\", \"PFNA\": \"2.5\", \"Total\": \"10\", \"Composition\": \"PFBA + PFNA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=24\"}",
+      "composition_disagreements": "TFA,PFPA,PFHxA,PFOA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "B9",
+      "condition_claim": "N07",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=24",
+      "definition_record": "{\"ID\": \"N07\", \"Group\": \"2-comp\", \"TFA\": \"0\", \"PFPA\": \"0\", \"PFBA\": \"7.5\", \"PFHxA\": \"0\", \"PFOA\": \"0\", \"PFNA\": \"2.5\", \"Total\": \"10\", \"Composition\": \"PFBA + PFNA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=24\"}",
+      "composition_disagreements": "TFA,PFPA,PFHxA,PFOA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "B10",
+      "condition_claim": "N08",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=25",
+      "definition_record": "{\"ID\": \"N08\", \"Group\": \"2-comp\", \"TFA\": \"0\", \"PFPA\": \"0\", \"PFBA\": \"0\", \"PFHxA\": \"2.5\", \"PFOA\": \"7.5\", \"PFNA\": \"0\", \"Total\": \"10\", \"Composition\": \"PFHxA + PFOA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=25\"}",
+      "composition_disagreements": "TFA,PFPA,PFBA,PFNA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "B11",
+      "condition_claim": "N08",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=25",
+      "definition_record": "{\"ID\": \"N08\", \"Group\": \"2-comp\", \"TFA\": \"0\", \"PFPA\": \"0\", \"PFBA\": \"0\", \"PFHxA\": \"2.5\", \"PFOA\": \"7.5\", \"PFNA\": \"0\", \"Total\": \"10\", \"Composition\": \"PFHxA + PFOA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=25\"}",
+      "composition_disagreements": "TFA,PFPA,PFBA,PFNA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "B12",
+      "condition_claim": "N08",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=25",
+      "definition_record": "{\"ID\": \"N08\", \"Group\": \"2-comp\", \"TFA\": \"0\", \"PFPA\": \"0\", \"PFBA\": \"0\", \"PFHxA\": \"2.5\", \"PFOA\": \"7.5\", \"PFNA\": \"0\", \"Total\": \"10\", \"Composition\": \"PFHxA + PFOA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=25\"}",
+      "composition_disagreements": "TFA,PFPA,PFBA,PFNA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "C1",
+      "condition_claim": "N09",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=26",
+      "definition_record": "{\"ID\": \"N09\", \"Group\": \"3-comp\", \"TFA\": \"2.5\", \"PFPA\": \"2.5\", \"PFBA\": \"5\", \"PFHxA\": \"0\", \"PFOA\": \"0\", \"PFNA\": \"0\", \"Total\": \"10\", \"Composition\": \"TFA + PFPA + PFBA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=26\"}",
+      "composition_disagreements": "PFHxA,PFOA,PFNA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "C2",
+      "condition_claim": "N09",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=26",
+      "definition_record": "{\"ID\": \"N09\", \"Group\": \"3-comp\", \"TFA\": \"2.5\", \"PFPA\": \"2.5\", \"PFBA\": \"5\", \"PFHxA\": \"0\", \"PFOA\": \"0\", \"PFNA\": \"0\", \"Total\": \"10\", \"Composition\": \"TFA + PFPA + PFBA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=26\"}",
+      "composition_disagreements": "PFHxA,PFOA,PFNA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "C3",
+      "condition_claim": "N09",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=26",
+      "definition_record": "{\"ID\": \"N09\", \"Group\": \"3-comp\", \"TFA\": \"2.5\", \"PFPA\": \"2.5\", \"PFBA\": \"5\", \"PFHxA\": \"0\", \"PFOA\": \"0\", \"PFNA\": \"0\", \"Total\": \"10\", \"Composition\": \"TFA + PFPA + PFBA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=26\"}",
+      "composition_disagreements": "PFHxA,PFOA,PFNA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "C4",
+      "condition_claim": "N10",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=27",
+      "definition_record": "{\"ID\": \"N10\", \"Group\": \"3-comp\", \"TFA\": \"2.5\", \"PFPA\": \"0\", \"PFBA\": \"0\", \"PFHxA\": \"2.5\", \"PFOA\": \"5\", \"PFNA\": \"0\", \"Total\": \"10\", \"Composition\": \"TFA + PFHxA + PFOA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=27\"}",
+      "composition_disagreements": "PFPA,PFBA,PFNA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "C5",
+      "condition_claim": "N10",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=27",
+      "definition_record": "{\"ID\": \"N10\", \"Group\": \"3-comp\", \"TFA\": \"2.5\", \"PFPA\": \"0\", \"PFBA\": \"0\", \"PFHxA\": \"2.5\", \"PFOA\": \"5\", \"PFNA\": \"0\", \"Total\": \"10\", \"Composition\": \"TFA + PFHxA + PFOA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=27\"}",
+      "composition_disagreements": "PFPA,PFBA,PFNA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "C6",
+      "condition_claim": "N10",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=27",
+      "definition_record": "{\"ID\": \"N10\", \"Group\": \"3-comp\", \"TFA\": \"2.5\", \"PFPA\": \"0\", \"PFBA\": \"0\", \"PFHxA\": \"2.5\", \"PFOA\": \"5\", \"PFNA\": \"0\", \"Total\": \"10\", \"Composition\": \"TFA + PFHxA + PFOA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=27\"}",
+      "composition_disagreements": "PFPA,PFBA,PFNA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "C7",
+      "condition_claim": "N11",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=28",
+      "definition_record": "{\"ID\": \"N11\", \"Group\": \"3-comp\", \"TFA\": \"0\", \"PFPA\": \"2.5\", \"PFBA\": \"0\", \"PFHxA\": \"2.5\", \"PFOA\": \"0\", \"PFNA\": \"5\", \"Total\": \"10\", \"Composition\": \"PFPA + PFHxA + PFNA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=28\"}",
+      "composition_disagreements": "TFA,PFBA,PFOA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "C8",
+      "condition_claim": "N11",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=28",
+      "definition_record": "{\"ID\": \"N11\", \"Group\": \"3-comp\", \"TFA\": \"0\", \"PFPA\": \"2.5\", \"PFBA\": \"0\", \"PFHxA\": \"2.5\", \"PFOA\": \"0\", \"PFNA\": \"5\", \"Total\": \"10\", \"Composition\": \"PFPA + PFHxA + PFNA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=28\"}",
+      "composition_disagreements": "TFA,PFBA,PFOA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "C9",
+      "condition_claim": "N11",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=28",
+      "definition_record": "{\"ID\": \"N11\", \"Group\": \"3-comp\", \"TFA\": \"0\", \"PFPA\": \"2.5\", \"PFBA\": \"0\", \"PFHxA\": \"2.5\", \"PFOA\": \"0\", \"PFNA\": \"5\", \"Total\": \"10\", \"Composition\": \"PFPA + PFHxA + PFNA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=28\"}",
+      "composition_disagreements": "TFA,PFBA,PFOA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "C10",
+      "condition_claim": "N12",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=29",
+      "definition_record": "{\"ID\": \"N12\", \"Group\": \"3-comp\", \"TFA\": \"0\", \"PFPA\": \"0\", \"PFBA\": \"2.5\", \"PFHxA\": \"0\", \"PFOA\": \"2.5\", \"PFNA\": \"5\", \"Total\": \"10\", \"Composition\": \"PFBA + PFOA + PFNA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=29\"}",
+      "composition_disagreements": "TFA,PFPA,PFHxA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "C11",
+      "condition_claim": "N12",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=29",
+      "definition_record": "{\"ID\": \"N12\", \"Group\": \"3-comp\", \"TFA\": \"0\", \"PFPA\": \"0\", \"PFBA\": \"2.5\", \"PFHxA\": \"0\", \"PFOA\": \"2.5\", \"PFNA\": \"5\", \"Total\": \"10\", \"Composition\": \"PFBA + PFOA + PFNA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=29\"}",
+      "composition_disagreements": "TFA,PFPA,PFHxA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "C12",
+      "condition_claim": "N12",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=29",
+      "definition_record": "{\"ID\": \"N12\", \"Group\": \"3-comp\", \"TFA\": \"0\", \"PFPA\": \"0\", \"PFBA\": \"2.5\", \"PFHxA\": \"0\", \"PFOA\": \"2.5\", \"PFNA\": \"5\", \"Total\": \"10\", \"Composition\": \"PFBA + PFOA + PFNA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=29\"}",
+      "composition_disagreements": "TFA,PFPA,PFHxA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "D1",
+      "condition_claim": "N13",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=30",
+      "definition_record": "{\"ID\": \"N13\", \"Group\": \"3-comp\", \"TFA\": \"2.5\", \"PFPA\": \"5\", \"PFBA\": \"0\", \"PFHxA\": \"7.5\", \"PFOA\": \"0\", \"PFNA\": \"0\", \"Total\": \"15\", \"Composition\": \"TFA + PFPA + PFHxA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=30\"}",
+      "composition_disagreements": "PFBA,PFOA,PFNA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "D2",
+      "condition_claim": "N13",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=30",
+      "definition_record": "{\"ID\": \"N13\", \"Group\": \"3-comp\", \"TFA\": \"2.5\", \"PFPA\": \"5\", \"PFBA\": \"0\", \"PFHxA\": \"7.5\", \"PFOA\": \"0\", \"PFNA\": \"0\", \"Total\": \"15\", \"Composition\": \"TFA + PFPA + PFHxA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=30\"}",
+      "composition_disagreements": "PFBA,PFOA,PFNA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "D3",
+      "condition_claim": "N13",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=30",
+      "definition_record": "{\"ID\": \"N13\", \"Group\": \"3-comp\", \"TFA\": \"2.5\", \"PFPA\": \"5\", \"PFBA\": \"0\", \"PFHxA\": \"7.5\", \"PFOA\": \"0\", \"PFNA\": \"0\", \"Total\": \"15\", \"Composition\": \"TFA + PFPA + PFHxA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=30\"}",
+      "composition_disagreements": "PFBA,PFOA,PFNA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "D4",
+      "condition_claim": "N14",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=31",
+      "definition_record": "{\"ID\": \"N14\", \"Group\": \"3-comp\", \"TFA\": \"5\", \"PFPA\": \"0\", \"PFBA\": \"2.5\", \"PFHxA\": \"0\", \"PFOA\": \"7.5\", \"PFNA\": \"0\", \"Total\": \"15\", \"Composition\": \"TFA + PFBA + PFOA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=31\"}",
+      "composition_disagreements": "PFPA,PFHxA,PFNA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "D5",
+      "condition_claim": "N14",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=31",
+      "definition_record": "{\"ID\": \"N14\", \"Group\": \"3-comp\", \"TFA\": \"5\", \"PFPA\": \"0\", \"PFBA\": \"2.5\", \"PFHxA\": \"0\", \"PFOA\": \"7.5\", \"PFNA\": \"0\", \"Total\": \"15\", \"Composition\": \"TFA + PFBA + PFOA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=31\"}",
+      "composition_disagreements": "PFPA,PFHxA,PFNA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "D6",
+      "condition_claim": "N14",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=31",
+      "definition_record": "{\"ID\": \"N14\", \"Group\": \"3-comp\", \"TFA\": \"5\", \"PFPA\": \"0\", \"PFBA\": \"2.5\", \"PFHxA\": \"0\", \"PFOA\": \"7.5\", \"PFNA\": \"0\", \"Total\": \"15\", \"Composition\": \"TFA + PFBA + PFOA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=31\"}",
+      "composition_disagreements": "PFPA,PFHxA,PFNA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "D7",
+      "condition_claim": "N15",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=32",
+      "definition_record": "{\"ID\": \"N15\", \"Group\": \"3-comp\", \"TFA\": \"7.5\", \"PFPA\": \"0\", \"PFBA\": \"0\", \"PFHxA\": \"5\", \"PFOA\": \"0\", \"PFNA\": \"2.5\", \"Total\": \"15\", \"Composition\": \"TFA + PFHxA + PFNA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=32\"}",
+      "composition_disagreements": "PFPA,PFBA,PFOA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "D8",
+      "condition_claim": "N15",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=32",
+      "definition_record": "{\"ID\": \"N15\", \"Group\": \"3-comp\", \"TFA\": \"7.5\", \"PFPA\": \"0\", \"PFBA\": \"0\", \"PFHxA\": \"5\", \"PFOA\": \"0\", \"PFNA\": \"2.5\", \"Total\": \"15\", \"Composition\": \"TFA + PFHxA + PFNA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=32\"}",
+      "composition_disagreements": "PFPA,PFBA,PFOA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "D9",
+      "condition_claim": "N15",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=32",
+      "definition_record": "{\"ID\": \"N15\", \"Group\": \"3-comp\", \"TFA\": \"7.5\", \"PFPA\": \"0\", \"PFBA\": \"0\", \"PFHxA\": \"5\", \"PFOA\": \"0\", \"PFNA\": \"2.5\", \"Total\": \"15\", \"Composition\": \"TFA + PFHxA + PFNA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=32\"}",
+      "composition_disagreements": "PFPA,PFBA,PFOA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "D10",
+      "condition_claim": "N16",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=33",
+      "definition_record": "{\"ID\": \"N16\", \"Group\": \"3-comp\", \"TFA\": \"0\", \"PFPA\": \"7.5\", \"PFBA\": \"5\", \"PFHxA\": \"0\", \"PFOA\": \"0\", \"PFNA\": \"2.5\", \"Total\": \"15\", \"Composition\": \"PFPA + PFBA + PFNA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=33\"}",
+      "composition_disagreements": "TFA,PFHxA,PFOA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "D11",
+      "condition_claim": "N16",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=33",
+      "definition_record": "{\"ID\": \"N16\", \"Group\": \"3-comp\", \"TFA\": \"0\", \"PFPA\": \"7.5\", \"PFBA\": \"5\", \"PFHxA\": \"0\", \"PFOA\": \"0\", \"PFNA\": \"2.5\", \"Total\": \"15\", \"Composition\": \"PFPA + PFBA + PFNA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=33\"}",
+      "composition_disagreements": "TFA,PFHxA,PFOA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "D12",
+      "condition_claim": "N16",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=33",
+      "definition_record": "{\"ID\": \"N16\", \"Group\": \"3-comp\", \"TFA\": \"0\", \"PFPA\": \"7.5\", \"PFBA\": \"5\", \"PFHxA\": \"0\", \"PFOA\": \"0\", \"PFNA\": \"2.5\", \"Total\": \"15\", \"Composition\": \"PFPA + PFBA + PFNA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=33\"}",
+      "composition_disagreements": "TFA,PFHxA,PFOA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "E1",
+      "condition_claim": "N17",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=34",
+      "definition_record": "{\"ID\": \"N17\", \"Group\": \"4-comp\", \"TFA\": \"2.5\", \"PFPA\": \"2.5\", \"PFBA\": \"2.5\", \"PFHxA\": \"7.5\", \"PFOA\": \"0\", \"PFNA\": \"0\", \"Total\": \"15\", \"Composition\": \"TFA + PFPA + PFBA + PFHxA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=34\"}",
+      "composition_disagreements": "PFOA,PFNA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "E2",
+      "condition_claim": "N17",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=34",
+      "definition_record": "{\"ID\": \"N17\", \"Group\": \"4-comp\", \"TFA\": \"2.5\", \"PFPA\": \"2.5\", \"PFBA\": \"2.5\", \"PFHxA\": \"7.5\", \"PFOA\": \"0\", \"PFNA\": \"0\", \"Total\": \"15\", \"Composition\": \"TFA + PFPA + PFBA + PFHxA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=34\"}",
+      "composition_disagreements": "PFOA,PFNA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "E3",
+      "condition_claim": "N17",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=34",
+      "definition_record": "{\"ID\": \"N17\", \"Group\": \"4-comp\", \"TFA\": \"2.5\", \"PFPA\": \"2.5\", \"PFBA\": \"2.5\", \"PFHxA\": \"7.5\", \"PFOA\": \"0\", \"PFNA\": \"0\", \"Total\": \"15\", \"Composition\": \"TFA + PFPA + PFBA + PFHxA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=34\"}",
+      "composition_disagreements": "PFOA,PFNA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "E4",
+      "condition_claim": "N18",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=35",
+      "definition_record": "{\"ID\": \"N18\", \"Group\": \"4-comp\", \"TFA\": \"2.5\", \"PFPA\": \"2.5\", \"PFBA\": \"0\", \"PFHxA\": \"0\", \"PFOA\": \"5\", \"PFNA\": \"5\", \"Total\": \"15\", \"Composition\": \"TFA + PFPA + PFOA + PFNA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=35\"}",
+      "composition_disagreements": "PFBA,PFHxA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "E5",
+      "condition_claim": "N18",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=35",
+      "definition_record": "{\"ID\": \"N18\", \"Group\": \"4-comp\", \"TFA\": \"2.5\", \"PFPA\": \"2.5\", \"PFBA\": \"0\", \"PFHxA\": \"0\", \"PFOA\": \"5\", \"PFNA\": \"5\", \"Total\": \"15\", \"Composition\": \"TFA + PFPA + PFOA + PFNA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=35\"}",
+      "composition_disagreements": "PFBA,PFHxA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "E6",
+      "condition_claim": "N18",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=35",
+      "definition_record": "{\"ID\": \"N18\", \"Group\": \"4-comp\", \"TFA\": \"2.5\", \"PFPA\": \"2.5\", \"PFBA\": \"0\", \"PFHxA\": \"0\", \"PFOA\": \"5\", \"PFNA\": \"5\", \"Total\": \"15\", \"Composition\": \"TFA + PFPA + PFOA + PFNA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=35\"}",
+      "composition_disagreements": "PFBA,PFHxA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "E7",
+      "condition_claim": "N19",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=36",
+      "definition_record": "{\"ID\": \"N19\", \"Group\": \"4-comp\", \"TFA\": \"5\", \"PFPA\": \"0\", \"PFBA\": \"2.5\", \"PFHxA\": \"2.5\", \"PFOA\": \"5\", \"PFNA\": \"0\", \"Total\": \"15\", \"Composition\": \"TFA + PFBA + PFHxA + PFOA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=36\"}",
+      "composition_disagreements": "PFPA,PFNA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "E8",
+      "condition_claim": "N19",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=36",
+      "definition_record": "{\"ID\": \"N19\", \"Group\": \"4-comp\", \"TFA\": \"5\", \"PFPA\": \"0\", \"PFBA\": \"2.5\", \"PFHxA\": \"2.5\", \"PFOA\": \"5\", \"PFNA\": \"0\", \"Total\": \"15\", \"Composition\": \"TFA + PFBA + PFHxA + PFOA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=36\"}",
+      "composition_disagreements": "PFPA,PFNA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "E9",
+      "condition_claim": "N19",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=36",
+      "definition_record": "{\"ID\": \"N19\", \"Group\": \"4-comp\", \"TFA\": \"5\", \"PFPA\": \"0\", \"PFBA\": \"2.5\", \"PFHxA\": \"2.5\", \"PFOA\": \"5\", \"PFNA\": \"0\", \"Total\": \"15\", \"Composition\": \"TFA + PFBA + PFHxA + PFOA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=36\"}",
+      "composition_disagreements": "PFPA,PFNA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "E10",
+      "condition_claim": "N20",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=37",
+      "definition_record": "{\"ID\": \"N20\", \"Group\": \"4-comp\", \"TFA\": \"0\", \"PFPA\": \"5\", \"PFBA\": \"2.5\", \"PFHxA\": \"0\", \"PFOA\": \"2.5\", \"PFNA\": \"5\", \"Total\": \"15\", \"Composition\": \"PFPA + PFBA + PFOA + PFNA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=37\"}",
+      "composition_disagreements": "TFA,PFHxA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "E11",
+      "condition_claim": "N20",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=37",
+      "definition_record": "{\"ID\": \"N20\", \"Group\": \"4-comp\", \"TFA\": \"0\", \"PFPA\": \"5\", \"PFBA\": \"2.5\", \"PFHxA\": \"0\", \"PFOA\": \"2.5\", \"PFNA\": \"5\", \"Total\": \"15\", \"Composition\": \"PFPA + PFBA + PFOA + PFNA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=37\"}",
+      "composition_disagreements": "TFA,PFHxA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "E12",
+      "condition_claim": "N20",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=37",
+      "definition_record": "{\"ID\": \"N20\", \"Group\": \"4-comp\", \"TFA\": \"0\", \"PFPA\": \"5\", \"PFBA\": \"2.5\", \"PFHxA\": \"0\", \"PFOA\": \"2.5\", \"PFNA\": \"5\", \"Total\": \"15\", \"Composition\": \"PFPA + PFBA + PFOA + PFNA\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=37\"}",
+      "composition_disagreements": "TFA,PFHxA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "F4",
+      "condition_claim": "N22",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=39",
+      "definition_record": "{\"ID\": \"N22\", \"Group\": \"5-comp\", \"TFA\": \"5\", \"PFPA\": \"2.5\", \"PFBA\": \"2.5\", \"PFHxA\": \"2.5\", \"PFOA\": \"2.5\", \"PFNA\": \"0\", \"Total\": \"15\", \"Composition\": \"PFNA absent\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=39\"}",
+      "composition_disagreements": "PFNA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "F5",
+      "condition_claim": "N22",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=39",
+      "definition_record": "{\"ID\": \"N22\", \"Group\": \"5-comp\", \"TFA\": \"5\", \"PFPA\": \"2.5\", \"PFBA\": \"2.5\", \"PFHxA\": \"2.5\", \"PFOA\": \"2.5\", \"PFNA\": \"0\", \"Total\": \"15\", \"Composition\": \"PFNA absent\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=39\"}",
+      "composition_disagreements": "PFNA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "F6",
+      "condition_claim": "N22",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=39",
+      "definition_record": "{\"ID\": \"N22\", \"Group\": \"5-comp\", \"TFA\": \"5\", \"PFPA\": \"2.5\", \"PFBA\": \"2.5\", \"PFHxA\": \"2.5\", \"PFOA\": \"2.5\", \"PFNA\": \"0\", \"Total\": \"15\", \"Composition\": \"PFNA absent\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=39\"}",
+      "composition_disagreements": "PFNA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "F7",
+      "condition_claim": "N23",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=40",
+      "definition_record": "{\"ID\": \"N23\", \"Group\": \"5-comp\", \"TFA\": \"5\", \"PFPA\": \"2.5\", \"PFBA\": \"2.5\", \"PFHxA\": \"2.5\", \"PFOA\": \"0\", \"PFNA\": \"2.5\", \"Total\": \"15\", \"Composition\": \"PFOA absent\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=40\"}",
+      "composition_disagreements": "PFOA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "F8",
+      "condition_claim": "N23",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=40",
+      "definition_record": "{\"ID\": \"N23\", \"Group\": \"5-comp\", \"TFA\": \"5\", \"PFPA\": \"2.5\", \"PFBA\": \"2.5\", \"PFHxA\": \"2.5\", \"PFOA\": \"0\", \"PFNA\": \"2.5\", \"Total\": \"15\", \"Composition\": \"PFOA absent\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=40\"}",
+      "composition_disagreements": "PFOA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "F9",
+      "condition_claim": "N23",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=40",
+      "definition_record": "{\"ID\": \"N23\", \"Group\": \"5-comp\", \"TFA\": \"5\", \"PFPA\": \"2.5\", \"PFBA\": \"2.5\", \"PFHxA\": \"2.5\", \"PFOA\": \"0\", \"PFNA\": \"2.5\", \"Total\": \"15\", \"Composition\": \"PFOA absent\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=40\"}",
+      "composition_disagreements": "PFOA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "F10",
+      "condition_claim": "N24",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=41",
+      "definition_record": "{\"ID\": \"N24\", \"Group\": \"5-comp\", \"TFA\": \"0\", \"PFPA\": \"2.5\", \"PFBA\": \"2.5\", \"PFHxA\": \"2.5\", \"PFOA\": \"2.5\", \"PFNA\": \"5\", \"Total\": \"15\", \"Composition\": \"TFA absent\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=41\"}",
+      "composition_disagreements": "TFA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "F11",
+      "condition_claim": "N24",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=41",
+      "definition_record": "{\"ID\": \"N24\", \"Group\": \"5-comp\", \"TFA\": \"0\", \"PFPA\": \"2.5\", \"PFBA\": \"2.5\", \"PFHxA\": \"2.5\", \"PFOA\": \"2.5\", \"PFNA\": \"5\", \"Total\": \"15\", \"Composition\": \"TFA absent\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=41\"}",
+      "composition_disagreements": "TFA"
+    },
+    {
+      "experiment_id": "Exp7",
+      "well": "F12",
+      "condition_claim": "N24",
+      "definition_reference": "04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=41",
+      "definition_record": "{\"ID\": \"N24\", \"Group\": \"5-comp\", \"TFA\": \"0\", \"PFPA\": \"2.5\", \"PFBA\": \"2.5\", \"PFHxA\": \"2.5\", \"PFOA\": \"2.5\", \"PFNA\": \"5\", \"Total\": \"15\", \"Composition\": \"TFA absent\", \"_ref\": \"04_historical_recovered_plate_records/PFCA_Mixture_Plate_Plan_RQ5_RQ8.xlsx#Plate Plan!row=41\"}",
+      "composition_disagreements": "TFA"
+    }
+  ]
+}

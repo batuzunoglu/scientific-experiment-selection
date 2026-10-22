@@ -1,0 +1,522 @@
+[
+  {
+    "experiment_id": "Exp3",
+    "well": "G7",
+    "condition_versions": [
+      "Water_blank"
+    ],
+    "composition_versions": {
+      "TFA": [
+        "0"
+      ],
+      "PFPA": [
+        "0"
+      ],
+      "PFBA": [
+        "0"
+      ],
+      "PFHxA": [
+        "0"
+      ],
+      "PFOA": [
+        "0"
+      ],
+      "PFNA": [
+        "0"
+      ]
+    },
+    "qc_versions": [
+      "exclude",
+      "include"
+    ]
+  },
+  {
+    "experiment_id": "Exp3",
+    "well": "G12",
+    "condition_versions": [
+      "TFA10_QC"
+    ],
+    "composition_versions": {
+      "TFA": [
+        "1E+1"
+      ],
+      "PFPA": [
+        "0"
+      ],
+      "PFBA": [
+        "0"
+      ],
+      "PFHxA": [
+        "0"
+      ],
+      "PFOA": [
+        "0"
+      ],
+      "PFNA": [
+        "0"
+      ]
+    },
+    "qc_versions": [
+      "exclude",
+      "include"
+    ]
+  },
+  {
+    "experiment_id": "Exp3",
+    "well": "H4",
+    "condition_versions": [
+      "TFA10_QC"
+    ],
+    "composition_versions": {
+      "TFA": [
+        "1E+1"
+      ],
+      "PFPA": [
+        "0"
+      ],
+      "PFBA": [
+        "0"
+      ],
+      "PFHxA": [
+        "0"
+      ],
+      "PFOA": [
+        "0"
+      ],
+      "PFNA": [
+        "0"
+      ]
+    },
+    "qc_versions": [
+      "exclude",
+      "include"
+    ]
+  },
+  {
+    "experiment_id": "Exp3",
+    "well": "H9",
+    "condition_versions": [
+      "All6_QC"
+    ],
+    "composition_versions": {
+      "TFA": [
+        "2.5",
+        "5"
+      ],
+      "PFPA": [
+        "1",
+        "1.5"
+      ],
+      "PFBA": [
+        "1",
+        "1.5"
+      ],
+      "PFHxA": [
+        "1",
+        "1.5"
+      ],
+      "PFOA": [
+        "1",
+        "1.5"
+      ],
+      "PFNA": [
+        "1",
+        "1.5"
+      ]
+    },
+    "qc_versions": [
+      "include"
+    ]
+  },
+  {
+    "experiment_id": "Exp3",
+    "well": "H10",
+    "condition_versions": [
+      "All6_QC"
+    ],
+    "composition_versions": {
+      "TFA": [
+        "2.5",
+        "5"
+      ],
+      "PFPA": [
+        "1",
+        "1.5"
+      ],
+      "PFBA": [
+        "1",
+        "1.5"
+      ],
+      "PFHxA": [
+        "1",
+        "1.5"
+      ],
+      "PFOA": [
+        "1",
+        "1.5"
+      ],
+      "PFNA": [
+        "1",
+        "1.5"
+      ]
+    },
+    "qc_versions": [
+      "include"
+    ]
+  },
+  {
+    "experiment_id": "Exp3",
+    "well": "H11",
+    "condition_versions": [
+      "All6_QC"
+    ],
+    "composition_versions": {
+      "TFA": [
+        "2.5",
+        "5"
+      ],
+      "PFPA": [
+        "1",
+        "1.5"
+      ],
+      "PFBA": [
+        "1",
+        "1.5"
+      ],
+      "PFHxA": [
+        "1",
+        "1.5"
+      ],
+      "PFOA": [
+        "1",
+        "1.5"
+      ],
+      "PFNA": [
+        "1",
+        "1.5"
+      ]
+    },
+    "qc_versions": [
+      "include"
+    ]
+  },
+  {
+    "experiment_id": "Exp3",
+    "well": "H12",
+    "condition_versions": [
+      "All6_QC"
+    ],
+    "composition_versions": {
+      "TFA": [
+        "2.5",
+        "5"
+      ],
+      "PFPA": [
+        "1",
+        "1.5"
+      ],
+      "PFBA": [
+        "1",
+        "1.5"
+      ],
+      "PFHxA": [
+        "1",
+        "1.5"
+      ],
+      "PFOA": [
+        "1",
+        "1.5"
+      ],
+      "PFNA": [
+        "1",
+        "1.5"
+      ]
+    },
+    "qc_versions": [
+      "include"
+    ]
+  },
+  {
+    "experiment_id": "Exp4",
+    "well": "G7",
+    "condition_versions": [
+      "TFA10_QC"
+    ],
+    "composition_versions": {
+      "TFA": [
+        "1E+1"
+      ],
+      "PFPA": [
+        "0"
+      ],
+      "PFBA": [
+        "0"
+      ],
+      "PFHxA": [
+        "0"
+      ],
+      "PFOA": [
+        "0"
+      ],
+      "PFNA": [
+        "0"
+      ]
+    },
+    "qc_versions": [
+      "include",
+      "review"
+    ]
+  },
+  {
+    "experiment_id": "Exp5",
+    "well": "D10",
+    "condition_versions": [
+      "All6_QC"
+    ],
+    "composition_versions": {
+      "TFA": [
+        "2.5",
+        "5"
+      ],
+      "PFPA": [
+        "1",
+        "1.5"
+      ],
+      "PFBA": [
+        "1",
+        "1.5"
+      ],
+      "PFHxA": [
+        "1",
+        "1.5"
+      ],
+      "PFOA": [
+        "1",
+        "1.5"
+      ],
+      "PFNA": [
+        "1",
+        "1.5"
+      ]
+    },
+    "qc_versions": [
+      "include"
+    ]
+  },
+  {
+    "experiment_id": "Exp5",
+    "well": "D11",
+    "condition_versions": [
+      "All6_QC"
+    ],
+    "composition_versions": {
+      "TFA": [
+        "2.5",
+        "5"
+      ],
+      "PFPA": [
+        "1",
+        "1.5"
+      ],
+      "PFBA": [
+        "1",
+        "1.5"
+      ],
+      "PFHxA": [
+        "1",
+        "1.5"
+      ],
+      "PFOA": [
+        "1",
+        "1.5"
+      ],
+      "PFNA": [
+        "1",
+        "1.5"
+      ]
+    },
+    "qc_versions": [
+      "include"
+    ]
+  },
+  {
+    "experiment_id": "Exp5",
+    "well": "D12",
+    "condition_versions": [
+      "All6_QC"
+    ],
+    "composition_versions": {
+      "TFA": [
+        "2.5",
+        "5"
+      ],
+      "PFPA": [
+        "1",
+        "1.5"
+      ],
+      "PFBA": [
+        "1",
+        "1.5"
+      ],
+      "PFHxA": [
+        "1",
+        "1.5"
+      ],
+      "PFOA": [
+        "1",
+        "1.5"
+      ],
+      "PFNA": [
+        "1",
+        "1.5"
+      ]
+    },
+    "qc_versions": [
+      "include"
+    ]
+  },
+  {
+    "experiment_id": "Exp6",
+    "well": "F5",
+    "condition_versions": [
+      "All6_QC"
+    ],
+    "composition_versions": {
+      "TFA": [
+        "2.5",
+        "5"
+      ],
+      "PFPA": [
+        "1",
+        "1.5"
+      ],
+      "PFBA": [
+        "1",
+        "1.5"
+      ],
+      "PFHxA": [
+        "1",
+        "1.5"
+      ],
+      "PFOA": [
+        "1",
+        "1.5"
+      ],
+      "PFNA": [
+        "1",
+        "1.5"
+      ]
+    },
+    "qc_versions": [
+      "include"
+    ]
+  },
+  {
+    "experiment_id": "Exp6",
+    "well": "F6",
+    "condition_versions": [
+      "All6_QC"
+    ],
+    "composition_versions": {
+      "TFA": [
+        "2.5",
+        "5"
+      ],
+      "PFPA": [
+        "1",
+        "1.5"
+      ],
+      "PFBA": [
+        "1",
+        "1.5"
+      ],
+      "PFHxA": [
+        "1",
+        "1.5"
+      ],
+      "PFOA": [
+        "1",
+        "1.5"
+      ],
+      "PFNA": [
+        "1",
+        "1.5"
+      ]
+    },
+    "qc_versions": [
+      "include"
+    ]
+  },
+  {
+    "experiment_id": "Exp6",
+    "well": "F7",
+    "condition_versions": [
+      "All6_QC"
+    ],
+    "composition_versions": {
+      "TFA": [
+        "2.5",
+        "5"
+      ],
+      "PFPA": [
+        "1",
+        "1.5"
+      ],
+      "PFBA": [
+        "1",
+        "1.5"
+      ],
+      "PFHxA": [
+        "1",
+        "1.5"
+      ],
+      "PFOA": [
+        "1",
+        "1.5"
+      ],
+      "PFNA": [
+        "1",
+        "1.5"
+      ]
+    },
+    "qc_versions": [
+      "include"
+    ]
+  },
+  {
+    "experiment_id": "Exp6",
+    "well": "F8",
+    "condition_versions": [
+      "All6_QC"
+    ],
+    "composition_versions": {
+      "TFA": [
+        "2.5",
+        "5"
+      ],
+      "PFPA": [
+        "1",
+        "1.5"
+      ],
+      "PFBA": [
+        "1",
+        "1.5"
+      ],
+      "PFHxA": [
+        "1",
+        "1.5"
+      ],
+      "PFOA": [
+        "1",
+        "1.5"
+      ],
+      "PFNA": [
+        "1",
+        "1.5"
+      ]
+    },
+    "qc_versions": [
+      "include"
+    ]
+  }
+]

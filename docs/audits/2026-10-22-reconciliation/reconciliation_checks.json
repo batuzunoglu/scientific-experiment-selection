@@ -1,0 +1,60 @@
+{
+  "csv_xlsx_differences": [],
+  "master_audit_shared_fields": [
+    "PFBA_ppm",
+    "PFHxA_ppm",
+    "PFNA_ppm",
+    "PFOA_ppm",
+    "PFPA_ppm",
+    "TFA_ppm",
+    "condition_code",
+    "condition_description",
+    "dataset_partition",
+    "experiment_id",
+    "plate_column",
+    "plate_label",
+    "plate_row",
+    "primary_dataset_role",
+    "qc_reason",
+    "qc_status",
+    "replacement",
+    "sample_type",
+    "source_file",
+    "spectrum_present",
+    "technical_replicate",
+    "temperature_C",
+    "total_pfas_ppm",
+    "use_as_blank_or_qc",
+    "use_in_model",
+    "well"
+  ],
+  "master_audit_differences": [],
+  "draft_status_counts": {
+    "PROVISIONAL": 381,
+    "QC_REVIEW": 12,
+    "QC_CONFLICT": 4,
+    "CONFLICT": 11,
+    "UNUSED_LOCATION_REPORTED": 18,
+    "UNUSED_UNCONFIRMED": 141,
+    "AS_EXECUTED_LOCATION_REPORTED": 9
+  },
+  "draft_evidence_class_counts": {
+    "historical_plan_and_derived_analysis": 381,
+    "operator_reported_deviation_or_qc_history": 12,
+    "historical_qc_decision_disagreement": 4,
+    "operator_reported_recipe_vs_AI_master_conflict": 11,
+    "operator_reported_unused_row": 12,
+    "historical_plan_unused": 141,
+    "operator_reported_blank_location": 6,
+    "operator_reported_location_and_invalid_spectrum": 3,
+    "operator_reported_blank_relocation": 6
+  },
+  "finding_counts": {
+    "OUTSIDE_DRAFT_SCOPE": 192,
+    "QC_CONFLICT": 4,
+    "HISTORY_QC_DIFFERENCE": 4,
+    "CHEMISTRY_CONFLICT": 11,
+    "HISTORY_COMPOSITION_DIFFERENCE": 11
+  },
+  "source_reference_note": "Workbook row numbers and CSV record numbers include header; source values retained, no label resolution."
+}
