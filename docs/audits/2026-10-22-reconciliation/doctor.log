@@ -1,0 +1,6 @@
+project_version: 0.1.0
+python_version: 3.12.14
+platform: Linux
+project_directory: /home/batuhan/research/scientific-experiment-selection
+scientific_runs: none
+OK: package imports and Python executes (not a scientific validation).

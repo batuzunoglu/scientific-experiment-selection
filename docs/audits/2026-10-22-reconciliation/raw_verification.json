@@ -1,0 +1,336 @@
+[
+  {
+    "experiment": "Exp1",
+    "filename": "Exp1 Plt1.xlsx",
+    "bytes": 108875,
+    "sha256": "f41b973b8b96dd6eaef19bf7adf4b17a4cc89914fd0d3c48480df00c5b581079",
+    "headings": 96,
+    "populated_wells": 84,
+    "empty_wells": 12,
+    "partial_wells": 0,
+    "historical_hash_references": [
+      {
+        "experiment": "Exp1",
+        "historical_filename": "Exp1 Plt1(1).xlsx",
+        "historical_sha256": "f41b973b8b96dd6eaef19bf7adf4b17a4cc89914fd0d3c48480df00c5b581079",
+        "source": "04_historical_analysis_recovered_ml/Step0_Data_Ingestion_and_Provenance.xlsx#File_Provenance!row=4",
+        "match": true
+      }
+    ]
+  },
+  {
+    "experiment": "Exp2",
+    "filename": "Exp2 Plt2.xlsx",
+    "bytes": 39645,
+    "sha256": "248c56908c6e8cba5a6d7bb2ddb4861137ea66787057f23bfc873736ecc07d0f",
+    "headings": 96,
+    "populated_wells": 20,
+    "empty_wells": 76,
+    "partial_wells": 0,
+    "historical_hash_references": [
+      {
+        "experiment": "Exp2",
+        "historical_filename": "Exp2 Plt2(1).xlsx",
+        "historical_sha256": "248c56908c6e8cba5a6d7bb2ddb4861137ea66787057f23bfc873736ecc07d0f",
+        "source": "04_historical_analysis_recovered_ml/Step0_Data_Ingestion_and_Provenance.xlsx#File_Provenance!row=5",
+        "match": true
+      }
+    ]
+  },
+  {
+    "experiment": "Exp3",
+    "filename": "Exp3 Plt3.xlsx",
+    "bytes": 119456,
+    "sha256": "4e40ee5e4a5056904f783bfc05bb55cea6888104c5fec0517335710143b6915f",
+    "headings": 96,
+    "populated_wells": 96,
+    "empty_wells": 0,
+    "partial_wells": 0,
+    "historical_hash_references": [
+      {
+        "experiment": "Exp3",
+        "historical_filename": "Exp3 Plt3(1).xlsx",
+        "historical_sha256": "4e40ee5e4a5056904f783bfc05bb55cea6888104c5fec0517335710143b6915f",
+        "source": "03_original_received/CeARS_Master_Well_Map_Verified(2).xlsx#RAW_FILE_PROVENANCE!row=2",
+        "match": true
+      },
+      {
+        "experiment": "Exp3",
+        "historical_filename": "Exp3 Plt3.xlsx",
+        "historical_sha256": "4e40ee5e4a5056904f783bfc05bb55cea6888104c5fec0517335710143b6915f",
+        "source": "04_historical_analysis_recovered_ml/CeARS_Analysis_Step2_Preprocessing_Comparison.xlsx#File_Manifest!row=4",
+        "match": true
+      },
+      {
+        "experiment": "Exp3",
+        "historical_filename": "Exp3 Plt3.xlsx",
+        "historical_sha256": "4e40ee5e4a5056904f783bfc05bb55cea6888104c5fec0517335710143b6915f",
+        "source": "04_historical_analysis_recovered_ml/CeARS_Analysis_Step3_Features_Exploratory.xlsx#File_Manifest!row=4",
+        "match": true
+      },
+      {
+        "experiment": "Exp3",
+        "historical_filename": "Exp3 Plt3.xlsx",
+        "historical_sha256": "4e40ee5e4a5056904f783bfc05bb55cea6888104c5fec0517335710143b6915f",
+        "source": "04_historical_analysis_recovered_ml/CeARS_Analysis_Step4_Individual_Classification.xlsx#File_Manifest!row=4",
+        "match": true
+      },
+      {
+        "experiment": "Exp3",
+        "historical_filename": "Exp3 Plt3.xlsx",
+        "historical_sha256": "4e40ee5e4a5056904f783bfc05bb55cea6888104c5fec0517335710143b6915f",
+        "source": "04_historical_analysis_recovered_ml/CeARS_Analysis_Step5_Mixture_Classification_Regression.xlsx#File_Manifest!row=4",
+        "match": true
+      },
+      {
+        "experiment": "Exp3",
+        "historical_filename": "Exp3 Plt3(1).xlsx",
+        "historical_sha256": "4e40ee5e4a5056904f783bfc05bb55cea6888104c5fec0517335710143b6915f",
+        "source": "04_historical_analysis_recovered_ml/Step0_Data_Ingestion_and_Provenance.xlsx#File_Provenance!row=6",
+        "match": true
+      },
+      {
+        "experiment": "Exp3",
+        "historical_filename": "Exp3 Plt3(1).xlsx",
+        "historical_sha256": "4e40ee5e4a5056904f783bfc05bb55cea6888104c5fec0517335710143b6915f",
+        "source": "04_historical_recovered_plate_records/Step1_Dataset_Audit_Exp3_Exp8.xlsx#File_Provenance!row=2",
+        "match": true
+      }
+    ]
+  },
+  {
+    "experiment": "Exp4",
+    "filename": "Exp4 Plt4.xlsx",
+    "bytes": 103576,
+    "sha256": "68f1a5672f63f02f97e84aaf20892bd312ed6fc83d974e96e3247ee2a7bedb34",
+    "headings": 96,
+    "populated_wells": 84,
+    "empty_wells": 12,
+    "partial_wells": 0,
+    "historical_hash_references": [
+      {
+        "experiment": "Exp4",
+        "historical_filename": "Exp4 Plt4(1).xlsx",
+        "historical_sha256": "68f1a5672f63f02f97e84aaf20892bd312ed6fc83d974e96e3247ee2a7bedb34",
+        "source": "03_original_received/CeARS_Master_Well_Map_Verified(2).xlsx#RAW_FILE_PROVENANCE!row=3",
+        "match": true
+      },
+      {
+        "experiment": "Exp4",
+        "historical_filename": "Exp4 Plt4.xlsx",
+        "historical_sha256": "68f1a5672f63f02f97e84aaf20892bd312ed6fc83d974e96e3247ee2a7bedb34",
+        "source": "04_historical_analysis_recovered_ml/CeARS_Analysis_Step2_Preprocessing_Comparison.xlsx#File_Manifest!row=5",
+        "match": true
+      },
+      {
+        "experiment": "Exp4",
+        "historical_filename": "Exp4 Plt4.xlsx",
+        "historical_sha256": "68f1a5672f63f02f97e84aaf20892bd312ed6fc83d974e96e3247ee2a7bedb34",
+        "source": "04_historical_analysis_recovered_ml/CeARS_Analysis_Step3_Features_Exploratory.xlsx#File_Manifest!row=5",
+        "match": true
+      },
+      {
+        "experiment": "Exp4",
+        "historical_filename": "Exp4 Plt4.xlsx",
+        "historical_sha256": "68f1a5672f63f02f97e84aaf20892bd312ed6fc83d974e96e3247ee2a7bedb34",
+        "source": "04_historical_analysis_recovered_ml/CeARS_Analysis_Step4_Individual_Classification.xlsx#File_Manifest!row=5",
+        "match": true
+      },
+      {
+        "experiment": "Exp4",
+        "historical_filename": "Exp4 Plt4.xlsx",
+        "historical_sha256": "68f1a5672f63f02f97e84aaf20892bd312ed6fc83d974e96e3247ee2a7bedb34",
+        "source": "04_historical_analysis_recovered_ml/CeARS_Analysis_Step5_Mixture_Classification_Regression.xlsx#File_Manifest!row=5",
+        "match": true
+      },
+      {
+        "experiment": "Exp4",
+        "historical_filename": "Exp4 Plt4(1).xlsx",
+        "historical_sha256": "68f1a5672f63f02f97e84aaf20892bd312ed6fc83d974e96e3247ee2a7bedb34",
+        "source": "04_historical_analysis_recovered_ml/Step0_Data_Ingestion_and_Provenance.xlsx#File_Provenance!row=7",
+        "match": true
+      },
+      {
+        "experiment": "Exp4",
+        "historical_filename": "Exp4 Plt4(1).xlsx",
+        "historical_sha256": "68f1a5672f63f02f97e84aaf20892bd312ed6fc83d974e96e3247ee2a7bedb34",
+        "source": "04_historical_recovered_plate_records/Step1_Dataset_Audit_Exp3_Exp8.xlsx#File_Provenance!row=3",
+        "match": true
+      }
+    ]
+  },
+  {
+    "experiment": "Exp5",
+    "filename": "Exp5 Plt5.xlsx",
+    "bytes": 92408,
+    "sha256": "0d085b016c2bf4a058d2d8280b68c312654885a035c87eeb9df3f3d7f7a44b84",
+    "headings": 96,
+    "populated_wells": 72,
+    "empty_wells": 24,
+    "partial_wells": 0,
+    "historical_hash_references": [
+      {
+        "experiment": "Exp5",
+        "historical_filename": "Exp5 Plt5(1).xlsx",
+        "historical_sha256": "0d085b016c2bf4a058d2d8280b68c312654885a035c87eeb9df3f3d7f7a44b84",
+        "source": "03_original_received/CeARS_Master_Well_Map_Verified(2).xlsx#RAW_FILE_PROVENANCE!row=4",
+        "match": true
+      },
+      {
+        "experiment": "Exp5",
+        "historical_filename": "Exp5 Plt5.xlsx",
+        "historical_sha256": "0d085b016c2bf4a058d2d8280b68c312654885a035c87eeb9df3f3d7f7a44b84",
+        "source": "04_historical_analysis_recovered_ml/CeARS_Analysis_Step2_Preprocessing_Comparison.xlsx#File_Manifest!row=6",
+        "match": true
+      },
+      {
+        "experiment": "Exp5",
+        "historical_filename": "Exp5 Plt5.xlsx",
+        "historical_sha256": "0d085b016c2bf4a058d2d8280b68c312654885a035c87eeb9df3f3d7f7a44b84",
+        "source": "04_historical_analysis_recovered_ml/CeARS_Analysis_Step3_Features_Exploratory.xlsx#File_Manifest!row=6",
+        "match": true
+      },
+      {
+        "experiment": "Exp5",
+        "historical_filename": "Exp5 Plt5.xlsx",
+        "historical_sha256": "0d085b016c2bf4a058d2d8280b68c312654885a035c87eeb9df3f3d7f7a44b84",
+        "source": "04_historical_analysis_recovered_ml/CeARS_Analysis_Step4_Individual_Classification.xlsx#File_Manifest!row=6",
+        "match": true
+      },
+      {
+        "experiment": "Exp5",
+        "historical_filename": "Exp5 Plt5.xlsx",
+        "historical_sha256": "0d085b016c2bf4a058d2d8280b68c312654885a035c87eeb9df3f3d7f7a44b84",
+        "source": "04_historical_analysis_recovered_ml/CeARS_Analysis_Step5_Mixture_Classification_Regression.xlsx#File_Manifest!row=6",
+        "match": true
+      },
+      {
+        "experiment": "Exp5",
+        "historical_filename": "Exp5 Plt5(1).xlsx",
+        "historical_sha256": "0d085b016c2bf4a058d2d8280b68c312654885a035c87eeb9df3f3d7f7a44b84",
+        "source": "04_historical_analysis_recovered_ml/Step0_Data_Ingestion_and_Provenance.xlsx#File_Provenance!row=8",
+        "match": true
+      },
+      {
+        "experiment": "Exp5",
+        "historical_filename": "Exp5 Plt5(1).xlsx",
+        "historical_sha256": "0d085b016c2bf4a058d2d8280b68c312654885a035c87eeb9df3f3d7f7a44b84",
+        "source": "04_historical_recovered_plate_records/Step1_Dataset_Audit_Exp3_Exp8.xlsx#File_Provenance!row=4",
+        "match": true
+      }
+    ]
+  },
+  {
+    "experiment": "Exp6",
+    "filename": "Exp6 Plt6.xlsx",
+    "bytes": 85381,
+    "sha256": "d956d53ab6830827f995cc0780bff7c6908ca281785d9ec073415911994affc6",
+    "headings": 96,
+    "populated_wells": 66,
+    "empty_wells": 30,
+    "partial_wells": 0,
+    "historical_hash_references": [
+      {
+        "experiment": "Exp6",
+        "historical_filename": "Exp6 Plt6(1).xlsx",
+        "historical_sha256": "d956d53ab6830827f995cc0780bff7c6908ca281785d9ec073415911994affc6",
+        "source": "03_original_received/CeARS_Master_Well_Map_Verified(2).xlsx#RAW_FILE_PROVENANCE!row=5",
+        "match": true
+      },
+      {
+        "experiment": "Exp6",
+        "historical_filename": "Exp6 Plt6.xlsx",
+        "historical_sha256": "d956d53ab6830827f995cc0780bff7c6908ca281785d9ec073415911994affc6",
+        "source": "04_historical_analysis_recovered_ml/CeARS_Analysis_Step2_Preprocessing_Comparison.xlsx#File_Manifest!row=7",
+        "match": true
+      },
+      {
+        "experiment": "Exp6",
+        "historical_filename": "Exp6 Plt6.xlsx",
+        "historical_sha256": "d956d53ab6830827f995cc0780bff7c6908ca281785d9ec073415911994affc6",
+        "source": "04_historical_analysis_recovered_ml/CeARS_Analysis_Step3_Features_Exploratory.xlsx#File_Manifest!row=7",
+        "match": true
+      },
+      {
+        "experiment": "Exp6",
+        "historical_filename": "Exp6 Plt6.xlsx",
+        "historical_sha256": "d956d53ab6830827f995cc0780bff7c6908ca281785d9ec073415911994affc6",
+        "source": "04_historical_analysis_recovered_ml/CeARS_Analysis_Step4_Individual_Classification.xlsx#File_Manifest!row=7",
+        "match": true
+      },
+      {
+        "experiment": "Exp6",
+        "historical_filename": "Exp6 Plt6.xlsx",
+        "historical_sha256": "d956d53ab6830827f995cc0780bff7c6908ca281785d9ec073415911994affc6",
+        "source": "04_historical_analysis_recovered_ml/CeARS_Analysis_Step5_Mixture_Classification_Regression.xlsx#File_Manifest!row=7",
+        "match": true
+      },
+      {
+        "experiment": "Exp6",
+        "historical_filename": "Exp6 Plt6(1).xlsx",
+        "historical_sha256": "d956d53ab6830827f995cc0780bff7c6908ca281785d9ec073415911994affc6",
+        "source": "04_historical_analysis_recovered_ml/Step0_Data_Ingestion_and_Provenance.xlsx#File_Provenance!row=9",
+        "match": true
+      },
+      {
+        "experiment": "Exp6",
+        "historical_filename": "Exp6 Plt6(1).xlsx",
+        "historical_sha256": "d956d53ab6830827f995cc0780bff7c6908ca281785d9ec073415911994affc6",
+        "source": "04_historical_recovered_plate_records/Step1_Dataset_Audit_Exp3_Exp8.xlsx#File_Provenance!row=5",
+        "match": true
+      }
+    ]
+  },
+  {
+    "experiment": "Exp7",
+    "filename": "Exp7 Plt7.xlsx",
+    "bytes": 96831,
+    "sha256": "9808580f38e0c35f97bff3c3f6d6d63831dec86bc47f2e2b0b17166649c2f32d",
+    "headings": 96,
+    "populated_wells": 78,
+    "empty_wells": 18,
+    "partial_wells": 0,
+    "historical_hash_references": [
+      {
+        "experiment": "Exp7",
+        "historical_filename": "Exp7 Plt7.xlsx",
+        "historical_sha256": "9808580f38e0c35f97bff3c3f6d6d63831dec86bc47f2e2b0b17166649c2f32d",
+        "source": "03_original_received/CeARS_Master_Well_Map_Verified(2).xlsx#RAW_FILE_PROVENANCE!row=6",
+        "match": true
+      },
+      {
+        "experiment": "Exp7",
+        "historical_filename": "Exp7 Plt7.xlsx",
+        "historical_sha256": "9808580f38e0c35f97bff3c3f6d6d63831dec86bc47f2e2b0b17166649c2f32d",
+        "source": "04_historical_recovered_plate_records/Step1_Dataset_Audit_Exp3_Exp8.xlsx#File_Provenance!row=6",
+        "match": true
+      }
+    ]
+  },
+  {
+    "experiment": "Exp8",
+    "filename": "Exp8 Plt8.xlsx",
+    "bytes": 38975,
+    "sha256": "2d41c98a230bd017a13d9bc3e22c2b2812ca1d3efc59772a47a1d4e4631a9f19",
+    "headings": 96,
+    "populated_wells": 21,
+    "empty_wells": 75,
+    "partial_wells": 0,
+    "historical_hash_references": [
+      {
+        "experiment": "Exp8",
+        "historical_filename": "Exp8 Plt8.xlsx",
+        "historical_sha256": "2d41c98a230bd017a13d9bc3e22c2b2812ca1d3efc59772a47a1d4e4631a9f19",
+        "source": "03_original_received/CeARS_Master_Well_Map_Verified(2).xlsx#RAW_FILE_PROVENANCE!row=7",
+        "match": true
+      },
+      {
+        "experiment": "Exp8",
+        "historical_filename": "Exp8 Plt8.xlsx",
+        "historical_sha256": "2d41c98a230bd017a13d9bc3e22c2b2812ca1d3efc59772a47a1d4e4631a9f19",
+        "source": "04_historical_recovered_plate_records/Step1_Dataset_Audit_Exp3_Exp8.xlsx#File_Provenance!row=7",
+        "match": true
+      }
+    ]
+  }
+]
