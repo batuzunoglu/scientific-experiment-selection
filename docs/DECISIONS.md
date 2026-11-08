@@ -133,3 +133,11 @@ the review's suggested future baseline is not implemented or approved here.
 - **Initial modeling families proposed and accepted for first benchmark:** regularized logistic regression for identity; Ridge for concentration conditional on known PFAS; parameters, preprocessing safety and grouped folds to be documented. No model training is yet authorized by this documentation-only decision, pending Phase A dataset evidence sign-off.
 - **Evaluation:** Exp3 development; Exp5 previously exposed batch-transfer assessment, not pristine final test; Exp8 locked final holdout, pending historical exposure verification. No test-derived choices, no random splitting of technical replicates across folds. Report task-specific metrics, not one universal preprocessing winner.
 - **Record of rationale:** [RESEARCH_LAB_NOTEBOOK.md Entry 005](RESEARCH_LAB_NOTEBOOK.md). Coding agents must append observed implementation choices and results rather than inventing reasons or backfilling approval.
+
+## D-013 — 2026-11-08 pull-request notebook gate
+
+- **Researcher request:** Ensure reasons, decisions, failed trials and actual execution results are recorded routinely without requiring repeated conversational reminders.
+- **Implementation:** A standard-library Python checker and GitHub Actions pull-request workflow require an append-only dated `docs/RESEARCH_LAB_NOTEBOOK.md` entry for research-code/model/tests/config or selected methods-document edits. Synthetic tests cover the gate. Agents must update this notebook within the **same authorized PR**, without rewriting history.
+- **Scope:** Documentation/infrastructure enforcement only. A notebook edit does **not** independently authorize new model fitting, raw data publication, QC relabeling or experiment execution; researcher sign-off gates remain.
+- **Limitations:** The check confirms the *presence* and append-only structure of an entry, not scientific adequacy. Actions must be enabled, and protecting `main` with a required status check is necessary to prevent bypassing PR checks via direct pushes. No automatic cross-conversation reminder or background monitor is implied.
+- **Notebook reference:** [Entry 006](RESEARCH_LAB_NOTEBOOK.md).
