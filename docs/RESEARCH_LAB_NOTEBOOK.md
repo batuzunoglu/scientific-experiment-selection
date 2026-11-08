@@ -96,3 +96,20 @@
 **Notebook responsibility:** ChatGPT records researcher-approved research questions, alternatives, reasons and scope promptly from the discussion; Codex reads the notebook and appends exact implementation, scripts, parameters, runs, checks, results/negative outcomes and limitations. Neither actor may claim researcher approval for unapproved changes. Every update is reviewed with the researcher via a GitHub diff/PR.
 
 **Next action:** Proceed with Issue #5 Phase A: build and verify a read-only spectral dataset contract and candidate well inclusion manifest, then implement the **four explicitly approved feature representations** with synthetic tests and scientific explanation, subject to source availability. Stop for review **before model training or a new data publication**.
+
+## Entry 006 — 2026-11-08 | Make notebook updates enforceable during coding
+
+**Researcher instruction and approval:** Consistent, structured research documentation is required throughout the project without repeated reminders. The researcher asks ChatGPT and Codex to take necessary action so later publication work can rely on the experiment narrative.
+
+**Problem:** Written agent instructions alone are easy to overlook; a new code commit might introduce methodology or results without recording the rationale, executed commands, parameter values, provenance and failures. An assistant cannot guarantee automatic updates when nobody is running it.
+
+**Decision / implementation:** Add a small Python `scripts/check_research_notebook.py` quality gate and a GitHub Actions `research-notebook` pull-request check. For research-code, analysis, experiment, modeling, tests, config and selected methodological-document changes, the same PR must append a new dated entry to this file. Historical notebook content must remain byte-for-byte intact. New lightweight synthetic unit tests exercise the checking logic. Update `AGENTS.md` so assistants log discussions and implementation at their respective steps; no direct research pushes to `main`.
+
+**Why:** The code and the contemporaneous explanation of its purpose and limits should be reviewed as one versioned change. This creates a repeatable reminder whenever someone opens or updates a PR, while preserving earlier research decisions and failures.
+
+**Limitations:** This is a workflow/process check, **not** an audit of whether a scientific entry is correct or sufficiently complete. It runs on PRs only while GitHub Actions is enabled; without a required branch-protection status check, a direct push could bypass it. It cannot recover unrecorded conversations or run on the user's Ubuntu machine without a local action. Notebook ownership: ChatGPT records the researcher's stated decisions and reasoning; Codex records exact observed implementation/tests/results, and both need researcher review.
+
+**Current observations:** Workflow/checker/tests and this entry were authored in a new GitHub branch. No raw experiment files were loaded, no ML dataset was constructed, no models fitted, and no chemistry outputs produced. Test/workflow execution remains to be verified, and should not be marked passed unless observed.
+
+**Next action:** Review/merge the process PR, then start Issue #5 Phase A with the approved Raw vs Area and Full vs Compact8 2×2 design, local evidence-aware well manifest, deterministic feature extraction, and synthetic unit tests. Stop before model fitting and before publishing raw spectra.
+
