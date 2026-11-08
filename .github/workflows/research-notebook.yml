@@ -17,3 +17,5 @@ jobs:
           fetch-depth: 0
       - name: Require dated research notebook entry
         run: python3 scripts/check_research_notebook.py
+      - name: Run synthetic and existing unit tests
+        run: python3 -m unittest discover -s tests -v
