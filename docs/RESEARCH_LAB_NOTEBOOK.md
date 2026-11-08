@@ -113,3 +113,245 @@
 
 **Next action:** Review/merge the process PR, then start Issue #5 Phase A with the approved Raw vs Area and Full vs Compact8 2×2 design, local evidence-aware well manifest, deterministic feature extraction, and synthetic unit tests. Stop before model fitting and before publishing raw spectra.
 
+## Entry 007 — 2026-11-08 | Phase A preflight: raw hashes match; evidence stop
+
+**Question.** Are the prerequisites in Issue #5's latest implementation comment
+satisfied on this Ubuntu checkout?
+
+**Authority/status.** Researcher requested Phase A only, no training, uploads,
+commits or pushes. Read AGENTS.md, README, charter, decisions, handoff, Entries
+001–006, full Issue #5 and all four comments, plus both reconciliation reports.
+Comment 6726670028 explicitly requires stopping if independent chemistry evidence
+is missing. The four-arm design stays approved; this is an observed preflight
+discrepancy, not a new scientific decision or completed implementation.
+
+**Evidence and actual runs.** Initial tree clean on main at
+`9f9089f7832aedaadc877a2bfb8e86af90a4ead9`. Fresh SHA-256 calculations for Exp3,
+Exp5 and Exp8 matched the tracked raw manifest; independent `sha256sum` agreed.
+Fresh CSV inspection counted 96 Exp5 rows, all `reconstructed`. Recursive search
+of the recovered-records root found neither `02_Exp5_Plate_Preparation.xlsx` nor
+`05_Exp5_Final_Sample_Labels.xlsx`, both referenced in its DATA_SCHEMA.md.
+Exact runnable checks, full hashes, paths and limitations are recorded in
+[PHASE_A_PREFLIGHT_REVIEW.md](PHASE_A_PREFLIGHT_REVIEW.md).
+
+**Alternatives and why.** Proceeding with provisional claims could support
+software preparation, but would disregard the latest issue's explicit stop
+condition. Stopped and documented the gap instead of treating inherited labels
+as independent chemistry evidence. No labels, zeros, QC actions, splits or
+representation definitions were changed. No additional methodological approval
+is inferred.
+
+**Implementation/testing status.** Documentation only: new preflight report and
+append-only notebook/handoff/learning notes. No candidate manifest or A–D code
+implemented, no synthetic tests added or run, no models fitted, no raw spectra
+parsed/transformed/uploaded. Candidate counts 72/53/18 were not freshly verified.
+No new observed or simulated laboratory result. No fetch/sync, new branch,
+staging, commit or push performed. Local notes await review.
+
+**Limitations / next decision.** Missing within the inspected directory does not
+prove the source files do not exist elsewhere. Hash agreement establishes bytes,
+not physical labels. Supply independent preparation evidence or clarify whether
+provisional Phase A implementation may proceed despite that stop condition.
+Exp5 exposure and Exp8 lock remain unchanged. Phase A remains incomplete.
+
+
+## Entry 008 — 2026-11-08 | Provisional Phase A implementation after scientific review
+
+**Question and review.** Can we prepare auditable software while independent Exp5
+preparation evidence remains missing? Read the latest Issue #5 scientific review,
+[comment 6726841885](https://github.com/batuzunoglu/scientific-experiment-selection/issues/5#issuecomment-6726841885).
+It distinguishes physical-label verification from label-independent preparation.
+The researcher explicitly accepted limited provisional continuation in this session.
+Entry 007 and its local preflight report are preserved, not rewritten or renumbered.
+
+**Approval status.** Provisional manifest and the previously approved four
+representations plus synthetic tests are authorized. Physical labels, sample
+eligibility, evaluation folds and numerical implementation sign-off remain pending.
+No authorization for ML fitting, chemistry adjudication, publication, commit or push.
+
+**Alternatives and rationale.** Continuing the blanket stop would conflate missing
+chemical validation with ability to test deterministic software. Promoting inherited
+labels to truth would be unsupported. Implemented provisional claims with explicit
+`physical_label_verified=false`, complete source evidence and unresolved warnings,
+while making transformations independent of labels. Raw/full remains the required
+control; neither normalization nor compression is designated a winner.
+
+**Implementation.** Added `spectral.py`, `raw_spectra.py`, `dataset_contract.py` and
+two test modules. Manifest covers all 288 coordinates, including excluded/empty
+locations, source hash/cells, QC, original references, preparation/replicate claims,
+proposed batch role, both future target tasks and lock status. No missing component
+is imputed. Preparation status derives from source variants, not batch identity.
+Actual preparation groups remain unknown; batch:condition is only a conservative
+technical-group proxy, with no independence claim and no folds constructed.
+
+A/C produce 176 values; B/D eight. Area uses the inclusive 380–580 trapezoid and
+scales all original channels. Compact8 uses the approved points, ratio, moments,
+derivative area/450 derivative and 440–480 slope. Implementation conventions:
+discrete intensity-weighted centroid/spread; trapezoidal areas; fixed SG 15/poly2/
+delta2/deriv1 with polynomial-interpolated boundaries; unsmoothed slope inputs;
+configurable numerical epsilon 1e-12. Negative moment weights are flagged invalid,
+not clipped. Branch errors preserve valid Raw/full. These conventions/limits are
+reviewable implementation choices, not validated instrument QC or proof of exact
+archived feature-matrix reproduction. No experimental feature statistics informed them.
+
+**Observed runs/results.** Exact runnable commands, full source/output hashes,
+counts, artifact paths, files and numerical details are in
+[PHASE_A_REVIEW.md](PHASE_A_REVIEW.md). Fresh raw SHA-256 matches for Exp3/5/8;
+22 evidence-package size/hash matches; all 28 input hashes retained. Raw populated
+well counts 96/72/21; candidate counts **72/53/18** match historical expectations.
+All candidates remain chemically unverified. Exp3 D6/D7 review flags retained;
+Exp5 B7 excluded; E10:E12 mixtures outside this task; Exp8 F1:F3 invalid reagent
+blanks and absent G1:G6 preserved. All Exp8 rows locked. All 96 Exp5 rows retain
+reconstructed status. Missing Exp8 components remain missing.
+
+Final local outputs: `data/private/phase-a-2026-11-08-final/{candidate_wells.json,
+candidate_wells.csv,summary.json}` (Git-ignored, no spectra). Independent rerun at
+`/tmp/phase-a-2026-11-08-final-rerun` produced three byte-identical files. Manifest
+JSON SHA-256 `619f1e73df3e6bb4930ed77906c0dc17156787ea60f7d3e085ab03ebb13990f3`.
+An earlier intermediate output directory was retained and superseded by `-final`.
+
+**Tests and negative outcomes.** Baseline 13 tests passed. Initial new-test imports
+failed for missing modules before implementation. Later regression tests exposed
+missing explicit-claim disagreement detection and hardcoded preparation status;
+both fixed from the source of the defect. Fresh code review prompted evidence-based
+status and exact 15-sample impulse coverage; end-to-end synthetic export/count-stop
+coverage added. Final `PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m unittest discover
+-s tests -v`: **32 tests passed** (19 new). Python 3.12.14; standard library only;
+no random seed needed. Tests are artificial fixtures, not observed chemical behavior.
+
+**Not run / limitations.** No experimental feature extraction/export, training,
+predictions, performance evaluation or model-selection statistics. Raw workbooks
+were read only for structure/presence checks, not chemical inference. No uncertainty
+resolved; prior All6/QC alternatives preserved. Package hashes and inherited audit
+agreement are not independent chemistry evidence. Exp5 remains historically exposed;
+Exp8 lock remains conditional on historical-use audit. Source reader is schema-specific.
+Current checkout/local notes preserved without sync, stash, staging, commits or push.
+
+**Next decision.** Researcher review of the local manifest, numerical conventions,
+source limitations, candidate eligibility and eventual grouped split protocol.
+Implementation is locally complete; scientific/data sign-off remains pending.
+
+**Final local verification.** `git diff --check` passed; direct `valid_append` check
+against the saved notebook through Entry 007 passed, preserving all prior bytes.
+Synthetic API example produced shapes 176/8/176/8 and area 400.0. All 28 input
+hashes rechecked after documentation unchanged. Index empty; final local artifacts
+ignored. The PR checker CLI only compares committed refs and therefore did not
+exercise this uncommitted diff; no CI execution or publication is claimed.
+
+## Entry 009 — 2026-11-08 | Local review package prepared; no implementation change
+
+Read Issue #5 scientific review comment 6726971791. It acknowledges engineering
+progress provisionally and requests exact local reports/diffs before final sign-off.
+Researcher requested a local ChatGPT review package, explicitly withholding code
+changes, training, commits and pushes. Packaged complete preflight/Phase A reports,
+source/test snapshots, tracked and untracked diffs, manifest metadata and fresh test
+logs at `/tmp/phase-a-chatgpt-review-2026-11-08`; ZIP and combined Markdown accompany it.
+
+Fresh exact test command: `PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m unittest
+discover -s tests -v`: 32 tests passed, exit 0. Full stdout/stderr and command in
+package `tests.txt`. Read-only checks confirmed candidate counts 72/53/18; Exp3
+D6/D7 review inclusion, Exp5 B7 exclusion/E10:E12 mixture exclusion; all 96 Exp5
+statuses reconstructed; all physical-label flags false; Exp8 lock/missing values
+preserved; all 28 recorded input hashes match; prior notebook through Entry 007
+preserved. Code/test SHA-256 snapshots before/after match; index empty.
+
+No source/tests changed and no real-spectrum transformation, model, prediction,
+chemistry adjudication or publication performed. Synthetic tests and documentary
+checks remain software evidence only. Scientific risks and numerical implementation
+choices remain pending independent review. Suggested real-spectrum smoke test from
+the review was not run: the comment places it after code review. Next action is
+ChatGPT review of the local package, then researcher decision; no final sign-off.
+
+## Entry 010 — 2026-11-08 | Label-independent measured Exp3/Exp5 transformation smoke test
+
+**Question/authority.** Read ChatGPT scientific code review Issue #5 comment
+6727098915. It independently reviewed the uploaded package, reported 19 new tests
+passing and SG agreement with SciPy on synthetic data, and requested real-data
+numerical validation before sign-off. Those independent results are attributed to
+that review, not rerun here. Researcher authorized only the read-only Exp3/Exp5
+smoke test and stability diagnostics. Prior Entries 007–009 remain intact.
+
+**Alternatives/why.** Retaining synthetic-only evidence leaves actual signal-domain
+compatibility unknown. Silently changing signed-area or negative-intensity policy
+would alter the approved methods. Ran the unchanged branches on every populated
+Exp3/5 column and reported stability metrics instead. No labels/QC metadata used
+for transformations or well filtering; no method preference or model selection.
+Relative-area threshold 1e-6 is descriptive only, not an added rejection rule.
+
+**Exact runs/artifacts.** New standard-library orchestration script
+`scripts/smoke_phase_a_exp3_exp5.py`; exact two commands, definitions, full diagnostic
+ranges and limitations appended to `docs/PHASE_A_REVIEW.md`. First output:
+`data/private/phase-a-smoke-exp3-exp5-2026-11-08/{summary.json,per_well_diagnostics.csv}`;
+repeat output `/tmp/phase-a-smoke-exp3-exp5-rerun-2026-11-08`. Both commands exit 0;
+two artifacts byte-identical. Repeat stdout/stderr/command/exit captured in first
+folder's `execution.log`. Python 3.12.14; no randomness, ML or new dependencies.
+
+**Observed results.** Exp3: all A/B/C/D succeed for 96/96 measured wells. Exp5:
+all A/B/C/D succeed for 72/72. No failing well IDs/reasons. Exp5 G1:H12 are 24
+absent spectra, not transform failures. All populated review/excluded/QC/mixture
+wells included; numerical success does not change eligibility. Dimensions and
+finiteness checked; exact Raw/full passthrough and provenance equality asserted.
+
+Area ranges: Exp3 5.9882–46.9998; Exp5 25.6058–36.297 absorbance·nm.
+Relative signed/absolute area=1 in every well; zero negative band values and zero
+relative-cancellation flags. Minimum raw A518: 0.0289/0.0874; minimum normalized
+A518: 0.00339648305/0.00341328918 (Exp3/5). Minimum raw moment sums 3.0257/12.9118,
+normalized 0.504097089/0.504098436. All well above unchanged epsilon 1e-12.
+Maximum normalized-area error 2.22044605e-16 both batches; maximum relative raw
+reconstruction error 1.45469474e-16/1.44485037e-16. ×2 arithmetic rescaling leaves
+C/D unchanged to recorded precision (max absolute differences 0). This is a
+consistency probe, not a new physical concentration observation.
+
+**Preservation/limitations.** Exp3/5 hashes match prior records before and after;
+existing transform/reader/inventory module hashes unchanged. Only the two selected
+raw workbooks were opened; Exp8 not used, rehashed or transformed. No spectra/full
+feature vectors exported. No new measurements or chemistry simulations; results
+are observed computations on historical measured spectra. No threshold, formula,
+QC/label, missing value, split or preprocessing change. Exp5 remains reconstructed
+and historically exposed. All physical-label/eligibility decisions remain provisional.
+No independent real-data feature truth, tolerance sensitivity under future noise,
+near-cancellation policy or method superiority established. New script validated
+by run assertions/repeatability; no new unit-test pass count claimed. Original
+source methods preserved, no models, staging, commits, push or upload.
+
+**Next decision.** Scientific review of real-spectrum diagnostics and remaining
+numerical/domain risks before final Phase A sign-off or any future scoped PR.
+
+## Entry 011 — 2026-11-08 | Final publication scope prepared; approval pending
+
+Read scientific review Issue #5 comment 6727151818, which provisionally accepts
+Phase A engineering conditional on matching final evidence and requests exact
+publication scope. Researcher requested preparation only, no models/commit/push.
+Reviewed final source/test/docs diff and proposed a 15-file explicit allowlist in
+`docs/PHASE_A_PUBLICATION_REVIEW.md`, excluding all raw files, private candidate
+manifests and `data/private/**`. Entries 007–010 and committed history preserved.
+
+Fresh exact command `PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m unittest discover
+-s tests -v` passed 32 tests, exit 0. Prior saved Exp3/5 smoke results/log and method
+hashes checked; no raw spectra or Exp8 opened in this preparation. No implementation
+changes or new methodological choices. Known numerical-domain/non-atomic-output
+limitations remain documented; physical labels, eligibility, grouping and training
+protocol approval remain separate. Local full patch/file hashes/test log accompany
+the scope review under `/tmp/phase-a-publication-review-2026-11-08`.
+
+Next: researcher review and explicit approval of precise public code/docs scope.
+No staging, commit, push, PR creation, model fitting or publication performed.
+
+## Entry 012 — 2026-11-08 | Researcher authorized the exact Phase A publication scope
+
+Researcher explicitly approved publishing exactly the 15 files in
+PHASE_A_PUBLICATION_REVIEW.md, committing/pushing only the Phase A feature branch
+and opening a PR against main. No merge, training or scientific-label changes
+are authorized. All 15 contents matched the reviewed snapshot before appending
+this authorization and handoff note within the same approved file scope.
+Entries 007–011 and all preceding notebook bytes are preserved.
+
+Fresh `PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m unittest discover -s tests -v`
+passed all 32 tests, exit 0. No raw workbooks were opened for this publication
+step. Branch `feature/ml-dataset-contract` created from main at
+`9f9089f7832aedaadc877a2bfb8e86af90a4ead9`; sandbox initially blocked ref creation,
+then the approved elevated retry succeeded. Next: verify the exact staged allowlist,
+append-only notebook, secret/private-content exclusions and whitespace; commit,
+push feature branch and create reviewable PR. Final PR URL/CI outcomes will be
+reported after observation in the session/PR, not predicted here. Scientific
+uncertainty, prior negative results, label/QC claims and method limits unchanged.

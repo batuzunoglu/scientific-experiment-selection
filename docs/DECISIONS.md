@@ -141,3 +141,24 @@ the review's suggested future baseline is not implemented or approved here.
 - **Scope:** Documentation/infrastructure enforcement only. A notebook edit does **not** independently authorize new model fitting, raw data publication, QC relabeling or experiment execution; researcher sign-off gates remain.
 - **Limitations:** The check confirms the *presence* and append-only structure of an entry, not scientific adequacy. Actions must be enabled, and protecting `main` with a required status check is necessary to prevent bypassing PR checks via direct pushes. No automatic cross-conversation reminder or background monitor is implied.
 - **Notebook reference:** [Entry 006](RESEARCH_LAB_NOTEBOOK.md).
+
+## D-014 — 2026-11-08 limited provisional Phase A continuation
+
+- Scientific review: Issue #5 comment 6726841885; researcher explicitly requested
+  continuation in the local session. Missing independent preparation evidence blocks
+  physical verification, not label-independent manifest/software preparation.
+- Authorized: candidate manifest with explicit provisional/reconstructed provenance,
+  QC and missing values; four previously approved representations and synthetic tests.
+- Not approved: physical labels, final eligibility/folds, ML fitting or evaluation,
+  chemistry resolution, public artifacts, commit/push. Numerical implementation details
+  and source/grouping limits remain subject to scientific review.
+- Observed implementation and tests: Notebook Entry 008 and `PHASE_A_REVIEW.md`.
+  Entry 007 and prior conclusions are preserved as historical records.
+
+### D-014 update — 2026-11-08 provisional engineering acceptance
+
+Issue #5 scientific review 6727151818 provisionally accepts the initial spectral
+implementation based on source/test review and reported Exp3/5 measured-spectrum
+validation. Exact proposed publication scope is in `PHASE_A_PUBLICATION_REVIEW.md`.
+No public commit/push is authorized by that comment or this local scope proposal.
+Physical labels, eligibility/grouping, CV and training approval remain unresolved.
