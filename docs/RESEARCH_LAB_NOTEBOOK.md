@@ -64,3 +64,35 @@
 **This entry:** Documentation only. No new spectra, QC adjudication, model training or experimental measurement. No claims of new empirical results.
 
 **Next single decision gate:** Agree on the first fair preprocessing × representation comparison and on how calibration/identity folds will be grouped. Then implement a read-only, evidence-aware dataset builder under [Issue #5](https://github.com/batuzunoglu/scientific-experiment-selection/issues/5).
+
+## Entry 005 — 2026-11-08 | Approved initial preprocessing × feature-extraction comparison
+
+**Researcher approval:** The researcher explicitly approved the four-branch comparison after reviewing Area Normalization's mathematical meaning and the mixed historical results. This supersedes the *unapproved method matrix* status in Entry 003, **not** its warnings or the distinction between identity and concentration.
+
+**Scientific question:** Does removing overall absorbance magnitude or compressing a 176-point spectrum into eight interpretable features help PFAS identity classification, and does either operation destroy information needed to predict PFAS concentration?
+
+**Initial controlled 2 × 2 design:**
+
+| Branch | Spectral preprocessing | Model input representation |
+| --- | --- | --- |
+| A — Raw / Full | No spectral preprocessing | 176 raw absorbances (350–700 nm) |
+| B — Raw / Compact8 | No spectral preprocessing | Eight prespecified Compact8 features |
+| C — Area / Full | Area normalization | 176 normalized absorbances (350–700 nm) |
+| D — Area / Compact8 | Area normalization | Eight Compact8 features from normalized spectra |
+
+**Area Normalization definition:** Compute the trapezoidal integral of the original spectrum over 380–580 nm and divide *every* original wavelength intensity (350–700 nm) by that same positive, nonzero factor. Validate finite signals and nonzero/nonpathological area; record failures rather than silently changing spectra. No blank subtraction or baseline correction is part of these four branches. This is per-well processing; no test-derived reference is fitted.
+
+**Compact8 definitions, from the historical method:** point intensity at 420 and 518 nm, A420/A518 (guard denominator), spectral centroid and spread over 380–580 nm, integrated absolute first derivative over 380–580 nm, first derivative at 450 nm, and fitted slope over 440–480 nm. Use the historical Savitzky–Golay derivative convention: window 15 points, polynomial order 2, 2 nm grid, first derivative; specify boundary behavior and numerical integration conventions in implementation. Do not add or select extra features using Exp5/Exp8 results. Interpret normalized signals as normalized coordinates, not original absorbances.
+
+**Two separate tasks for every branch:**
+- Identity: six-class single-PFAS classification; initial reference model family **regularized logistic regression**; macro-F1 and balanced accuracy, confusion and per-class recall.
+- Concentration: single-PFAS concentration regression in ppm; initial reference family **Ridge regression** conditional on *known analyte identity*. Report MAE/RMSE and by-PFAS/concentration errors. This conditional setting is an oracle identity benchmark; later evaluate cascading predicted identity into concentration.
+- Exact hyperparameters, normalization of ML features, grouping/folds, model fit and evaluation must be reproducible; **fit any learned scaling/selection on training folds only**. Technical replicates do not constitute independent preparation batches. Historical Exp3/Exp5 exposure must be disclosed; Exp8 remains locked pending audit of past exposure.
+
+**Why approved:** Holding the model family and sample assignments fixed within each task lets us compare (A vs B) extraction, (A vs C) normalization, and (B vs D) the effect of normalization on engineered features. The raw/full control is essential because intensity differences may encode both chemical identity and concentration. Earlier cross-batch spectral matching sometimes favored Area, while some Compact8/model-level analyses favored Raw; neither method has earned universal preference. See historical `Preprocessing_Worklog.md` and `CeARS_Feature_Strategy_Model_Development_Guide.md` for prior exploratory observations.
+
+**Limitations and status:** This is an **approved experiment design, not an observed result**. No model was trained, no preprocessing run, no raw Excel written, no QC label or split altered by this documentation update. PQN/SNV/L2/blank correction are **outside this initial four-branch comparison**, though they may be considered later through a new logged decision. Only the *choice of comparison* is approved; exact well eligibility and grouping require audit and explicit review before model fitting.
+
+**Notebook responsibility:** ChatGPT records researcher-approved research questions, alternatives, reasons and scope promptly from the discussion; Codex reads the notebook and appends exact implementation, scripts, parameters, runs, checks, results/negative outcomes and limitations. Neither actor may claim researcher approval for unapproved changes. Every update is reviewed with the researcher via a GitHub diff/PR.
+
+**Next action:** Proceed with Issue #5 Phase A: build and verify a read-only spectral dataset contract and candidate well inclusion manifest, then implement the **four explicitly approved feature representations** with synthetic tests and scientific explanation, subject to source availability. Stop for review **before model training or a new data publication**.
