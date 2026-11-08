@@ -111,3 +111,16 @@ the review's suggested future baseline is not implemented or approved here.
 - **Researcher instruction:** make `batuzunoglu/scientific-experiment-selection` public for internship and job applications; researcher confirmed they are comfortable with the current research records being public.
 - **Observed GitHub state:** `visibility=public` when checked on 2026-11-08. This is a status observation, not a claim that the assistant changed repository settings.
 - Current tracked code includes audit evidence with well compositions and QC information, **but no original Exp1–Exp8 raw XLSX exports**. New raw imports, private lab details, or sensitive materials require a separate publication review; public Git commit history and issue discussions remain accessible.
+
+## D-010 — 2026-11-08 two analytical tasks and honest holdout status
+
+- **Researcher approval:** begin with **individual PFAS identity classification and concentration prediction as separate coequal ML tasks**; do not assume one preprocessing/feature pipeline preserves information for both.
+- **Scientific rationale:** transformations that suppress scale/offset may also remove absolute absorbance and concentration information. Keep analysis-specific methods and metrics separate.
+- **Historical exposure:** Exp3/Exp5 have already been used for preprocessing and model development in historical records. Training fresh model weights without Exp5 does not erase researcher-level selection based on prior Exp5 outcomes. Exp5 is useful as a **previously explored batch-transfer/development evaluation**, not a pristine unseen final test. Exp8 is the planned locked 10 ppm final test, **conditional on audit of historical exposure**; future prospective experiments are preferred for an additional unexposed test.
+- **Open methodological choices:** Raw/full spectrum should serve as a proposed control, but the exact preprocessing × feature-extraction comparison is **not yet approved**. No baseline correction, normalization, Compact8 set, wavelength selection or model family is mandated. Prior experimental outputs are exploratory evidence, not final immutable choices.
+- **No change made:** original data, QC labels, source hashes, computational model or proposed physical split were not changed by this note. Do not initiate training until well eligibility, split usage and a fair comparison protocol are reviewed.
+
+## D-011 — 2026-11-08 durable scientific lab notebook
+
+- **Researcher-approved process:** use [RESEARCH_LAB_NOTEBOOK.md](RESEARCH_LAB_NOTEBOOK.md) as the append-only dated reasoning/experiment journal in GitHub for all future research sessions. Capture question, hypotheses, alternatives, evidence, decision status and rationale, parameter/config provenance, actions actually executed, results or failures, limitations and next decision. Differentiate historical, observed and simulated findings.
+- **Assistant/Codex workflow:** AGENTS.md requires reading/updating the notebook, with concise settled choices mirrored here and operational checkpoints in HANDOFF.md. Do not retroactively edit old entries to conceal reversals or negative results.
