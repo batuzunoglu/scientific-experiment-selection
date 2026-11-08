@@ -34,7 +34,7 @@ RESEARCH_FILES = {
     "docs/EXPERIMENT_TEMPLATE.md",
     "docs/LEARNING_LOG.md",
 }
-ENTRY_HEADER = re.compile(r"(?m)^## Entry \\d{3} — \\d{4}-\\d{2}-\\d{2}\\b")
+ENTRY_HEADER = re.compile(r"(?m)^## Entry \d{3} — \d{4}-\d{2}-\d{2}\b")
 
 
 def needs_notebook(changed_paths: list[str]) -> bool:
