@@ -19,7 +19,7 @@
 
 ## First practical milestone
 
-Start with single-analyte six-class PFAS identity prediction. **Proposed** datasets: Exp3 for training/development (72 candidate wells), Exp5 for external-batch evaluation (53 candidates), and Exp8 as a locked final independent-batch holdout (18 candidates). These counts are *candidate* historical labels, not individually verified preparations. Preserve exclusions, review flags and all unresolved composition conflicts.
+Start with **two coequal single-analyte supervised tasks**: six-class PFAS identity classification and PFAS concentration regression, evaluated separately because preprocessing may affect chemical identity and absolute absorbance information differently. Preserve a Raw-spectrum comparator; exact transformations and feature sets require scientific review. **Proposed** datasets: Exp3 for training/development (72 candidate wells), Exp5 for external-batch evaluation (53 candidates), and Exp8 as a locked final independent-batch holdout (18 candidates). These counts are *candidate* historical labels, not individually verified preparations. Preserve exclusions, review flags and all unresolved composition conflicts.
 
 Work begins at [Issue #5](https://github.com/batuzunoglu/scientific-experiment-selection/issues/5): Phase A, dataset contract / reproducible non-fitting preprocessing, before any model fitting. The first ML experiments are a prerequisite to meaningful RL/agent comparison, **not** the final research objective.
 
@@ -32,5 +32,7 @@ Work begins at [Issue #5](https://github.com/batuzunoglu/scientific-experiment-s
 - Keep original raw exports unchanged, cite provenance, review public sharing scope, and use a human-in-the-loop gate for new laboratory actions.
 
 **Deliverables:** reproducible scientific software, comparison benchmark, trained/evaluated RL and SLM-agent prototypes, prospective laboratory validation, PhD proposal, manuscript, and a job/internship-ready portfolio.
+
+Document every new substantive methodological decision and observed outcome in the append-only [Research Lab Notebook](RESEARCH_LAB_NOTEBOOK.md), distinguishing approvals, proposals and past experimental evidence.
 
 **Open technical decisions:** exact supervised targets and split approvals; action/state space; reward weights; group/batch independence; simulator reliability; model adaptation procedure; experiment costs and protocols; SLM training feasibility. These are engineering/research choices to test and document, not reasons to drop the committed RL or agent comparison arms.
