@@ -96,3 +96,18 @@ Exp3–Exp8 interface, explicitly separate Exp1/Exp2 file identity from unknown 
 chemistry, and document a recognition-scope follow-up requiring synthetic tests. Refreshed current
 status without rewriting historical checkpoints. No scientific decisions changed;
 the review's suggested future baseline is not implemented or approved here.
+
+## D-008 — 2026-11-08 approved research roadmap
+
+- **Researcher approval:** the researcher explicitly accepted the six-phase English roadmap in conversation and requested its recording in the project charter and decision register.
+- **Scope:** (1) evidence-aware baseline supervised ML; (2) random/DoE/active-learning/Bayesian baselines; (3) numerical RL environment and reward engineering; (4) prompt-only, tool-using, RL-trained SLM and hybrid agent comparisons; (5) prospective wet-lab validation; (6) research publication and portfolio.
+- **Required research arms:** numerical RL, reward evaluation, tool-using agents and RL-trained SLM agents are **core experiments to attempt and evaluate**, not conditional extensions. Their relative success is an open empirical question; report non-improvement and feasibility limitations.
+- **Initial scientific milestone:** Issue #5 Phase A remains the first technical task. Six-class individual-PFAS classification using Exp3 (development), Exp5 (external evaluation) and Exp8 (locked final batch holdout) is *proposed*. Counts 72/53/18 are candidate historical records, not approved physical preparation identities. No data split, QC resolution, source file, reward formula, or training result was modified by this roadmap decision.
+- **Next technical decision gates:** approve verified well inclusion/exclusion and evaluation split before fitting; freeze a leakage-safe evaluation protocol before RL reward design; implement controlled simulation/replay where necessary and prospective wet-lab testing later.
+- **Methodological guardrail:** compare RL and agent variants with random, DoE, active learning and Bayesian methods at comparable experiment budgets, with data provenance, reproducibility, error analysis and separate simulated versus observed lab results.
+
+## D-009 — 2026-11-08 repository visibility status
+
+- **Researcher instruction:** make `batuzunoglu/scientific-experiment-selection` public for internship and job applications; researcher confirmed they are comfortable with the current research records being public.
+- **Observed GitHub state:** `visibility=public` when checked on 2026-11-08. This is a status observation, not a claim that the assistant changed repository settings.
+- Current tracked code includes audit evidence with well compositions and QC information, **but no original Exp1–Exp8 raw XLSX exports**. New raw imports, private lab details, or sensitive materials require a separate publication review; public Git commit history and issue discussions remain accessible.
