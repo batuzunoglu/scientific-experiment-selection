@@ -1,0 +1,19 @@
+name: Research notebook gate
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: read
+
+jobs:
+  research-notebook:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out PR with history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Require dated research notebook entry
+        run: python3 scripts/check_research_notebook.py
