@@ -211,3 +211,12 @@ Observed: `PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m unittest discover -s te
 passed all eight tests; `PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m scientific_experiment_selection doctor`
 passed with scientific_runs none. Next: researcher approval of the local diff.
 No staging, commit, push or merge performed for this follow-up.
+
+## Checkpoint 009 — 2026-11-08 approved methodology and notebook enforcement
+
+- PR #6 approved and merged the English six-phase roadmap: baseline ML, traditional selection, RL/reward engineering, tool-using/RL-trained SLM agents, prospective lab validation, publication.
+- PR #7 created the append-only `docs/RESEARCH_LAB_NOTEBOOK.md`, clarified two separate individual-PFAS tasks (identity and concentration), and documented Exp5's historical development exposure. Exp8 remains intended locked 10 ppm holdout pending historical-use audit.
+- PR #8 approved the initial representation experiment: A Raw/full 176-point spectrum; B Raw/Compact8; C Area-normalized/full; D Area-normalized/Compact8, for both tasks. No preprocessing winner claimed. Exact transformation details are in Notebook Entry 005 and D-012.
+- Notebook PR gate being added in a separate PR: every research-affecting PR should append a dated entry. Scientific accuracy and actual runtime outcomes still need human review.
+- **Next single technical task:** Issue #5 Phase A on clean Ubuntu clone: verify raw checksums and per-well identity/QC provenance for Exp3/5/8; generate reviewable candidate manifest and deterministic non-fitting A–D feature representations with synthetic tests. **No ML training, Exp8 evaluation, arbitrary relabeling, raw Git upload or feature-branch commit/push before researcher reviews Phase A results.**
+- Current GitHub work here is limited to docs and notebook process tooling; the Ubuntu raw laboratory data are not accessible through this connector, and no new ML scientific run is claimed.
