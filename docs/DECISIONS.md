@@ -162,3 +162,11 @@ implementation based on source/test review and reported Exp3/5 measured-spectrum
 validation. Exact proposed publication scope is in `PHASE_A_PUBLICATION_REVIEW.md`.
 No public commit/push is authorized by that comment or this local scope proposal.
 Physical labels, eligibility/grouping, CV and training approval remain unresolved.
+
+## D-015 — 2026-11-08 minimal multi-agent collaboration
+
+- **Researcher request:** Prepare Google Antigravity on Ubuntu as an optional assistant to Codex and use accepted, low-complexity best practices so multiple coding agents understand task ownership, handoffs and existing scientific safeguards.
+- **Choice:** Reuse the root `AGENTS.md` (supported directly by Antigravity and Codex), the existing GitHub Issue/PR workflow, and the append-only research notebook. Add one short operational reference, `docs/AGENT_WORKFLOW.md`, rather than a custom orchestration service, duplicated `GEMINI.md`, shared mutable state file or new automation.
+- **Reason/tradeoff:** Git branches/worktrees isolate writes; single-owner Issue tasks and compact handoffs preserve traceability without model-specific integration. Human review remains required; there is no automatic cross-agent synchronization or authorization.
+- **Pilot:** Codex retains core implementation responsibility; Antigravity starts read-only on a bounded review/test task. No GPU or local LLM required for this change.
+- **Scope and authorization:** Documentation-only workflow proposal. No training, raw-file access, new chemical approval, experimental execution, and no branch merge without researcher review. Research notebook Entry 015 records the reasoning.
