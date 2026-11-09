@@ -760,3 +760,78 @@ publication scope and push correction to the existing Draft; stop for review.
 - `git diff --check`: exit 0.
 
 **Limitations and boundaries.** CI quality-gate engineering only within the same five-file scope. Entry 028 preserved unchanged; no scientific code, dataset contracts, eligibility rules, labels, or decisions modified; no raw XLSX, `data/private/**`, or Exp5/Exp8 files accessed; no ML models trained. Next: push to Draft PR #26 and stop for ChatGPT review (keep Draft and unmerged).
+
+## Entry 030 — 2026-11-09 | Synthetic-only next-experiment selection MVP
+
+**Owner, question and authority.** Codex implements Issue #27; scientific reviewers
+ChatGPT + researcher. Read project/agent workflow, binding D-012/D-016/D-017/D-019/
+D-020, notebook and Issue #21 discussion. Researcher approved direction (TFA versus
+non-TFA, selection of conditions under budget) and explicitly requested this
+synthetic-only scaffold, not real-data fitting. Dedicated branch
+`feature/synthetic-experiment-selection-mvp` starts at exact approved main base
+`aaf8ca8`. No concurrent writing agent or private-source access.
+
+**Scientific explanation / alternatives.** A next-measurement policy must act before
+knowing the measured spectrum. Random and nominal design coverage need prospective
+settings only; ordinary uncertainty on hidden candidate spectra would peek. Implemented
+Random and elementary factor-level coverage, with a refusing uncertainty stub until
+budgeted screening or validated surrogate information gets scientific approval.
+Selectors receive designs/acquisition metadata/budget only, never oracle outcomes
+or holdout scores. No decision-register, spectral formula or scientific label changes.
+
+**Implementation choices for review.** `selection.py` has frozen synthetic candidate,
+replicate/group/scenario/budget contracts, one-shot oracle, selector/model protocols,
+seeded Random, deterministic greedy nominal-level novelty (ID tie break), sequential
+whole-condition acquisitions and separate fixed evaluator. Integer positive costs
+are synthetic units; zero budget records baseline only. Conditions, not technical
+wells, are the acquisition unit. Initial/acquisition/holdout group IDs are disjoint.
+Training hooks receive grouped outcomes and per-well weights with equal group totals;
+that engineering normalization does not freeze a real estimator protocol. A fake
+spectrum-agnostic weighted-mean adapter exercises fit/predict only. Evaluator predicts
+on a deep copy so ordinary predict mutations do not feed evaluation data back to
+learner state; no evaluator result reaches selector inputs. Curves/logs record
+budget, seed, actions and condition-equal toy accuracy from zero acquisitions.
+
+`selection_demo.py` builds only fabricated synthetic constants; paired runs use
+identical initial/pool/holdout, cost schedule, budget and fresh policies/adapters.
+`docs/SELECTION_MVP.md` specifies architecture, access boundaries, DoE rule, weight
+convention and caveats; a short implementation plan accompanies it. No data readers,
+real models, runtime dependencies or feature framework added.
+
+**Observed executions / negative evidence.** New test module failed initially
+because selection.py did not exist. After implementation, 19 synthetic test methods
+cover immutability, unique/disjoint groups, no peeking, invalid/duplicate/holdout
+selection, one-shot whole-group reveal order, positive/zero/insufficient budgets,
+equal group totals, run/order determinism, seed and actual-cost logging, fixed
+holdout isolation, counterfactual outcome invariance and uncertainty refusal.
+`PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m unittest discover -s tests -p test_selection.py -v`
+passed 19 tests. Demo command
+`PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m scientific_experiment_selection.selection_demo --seed 7 --budget 3`
+ran successfully with three one-unit acquisitions and a zero-acquisition starting
+point per method. These are synthetic software demonstrations, not measured
+experimental performance or a calibrated chemical simulator. Full-suite/gate/privacy
+verification recorded below before publication. Python 3.12.14, standard library,
+explicit demo seed 7 (other synthetic seeds in tests), no stochastic real experiment.
+
+**Limits / next review.** Greedy coverage is not optimal experimental design;
+uncertainty remains nonexecuting. Canonical group IDs must truthfully represent
+shared preparations; alias detection/physical independence is not established.
+Pure Python boundaries are not a sandbox against malicious introspection/global
+state or externally captured oracle objects. Returned curves can only remain a
+valid evaluation if not reused for tuning. Adapters must support deepcopy; no
+laboratory transactions/recovery. Integer costs, fake model and toy diagnostic are
+engineering choices, not frozen real benchmark settings. No Exp3/5/8 files,
+private manifests, spectra or measured outcomes accessed, no real models fitted,
+no preprocessing change or real benchmark result claimed. Safe code/synthetic tests/
+docs Draft PR only; stop for ChatGPT/researcher review, no ready/merge/training.
+
+**Final local verification.** Full command
+`PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m unittest discover -s tests -v`
+passed **86/86 tests** (67 prior + 19 new), exit 0. Final demo was repeated twice
+with seed 7/budget 3; stdout byte-identical, both methods have cumulative cost points
+0/1/2/3 and three distinct condition acquisitions. No effectiveness comparison is
+inferred from the fake adapter's toy scores. `git diff --check` passed. Safe eight-file
+code/test/docs scope only, prior notebook/handoff/learning bytes preserved, decision
+register unchanged. Before Draft publication, exact staged allowlist/full diff and
+secret/path/data exclusion audit must pass; actual PR/CI outcome will be reported
+in the PR handoff after observation. No model or real-data access authorization.

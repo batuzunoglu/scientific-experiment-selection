@@ -543,3 +543,20 @@ Same five-file PR scope; final CI outcome to be reported in PR handoff.
   - Same five allowlisted files: `.github/workflows/research-notebook.yml`, `scripts/check_research_notebook.py`, `tests/test_research_notebook_gate.py`, `docs/RESEARCH_LAB_NOTEBOOK.md` (Entry 028 preserved, Entry 029 appended), and `docs/HANDOFF.md` (Checkpoint 029 preserved, Checkpoint 030 appended).
   - No scientific code, dataset contracts, eligibility rules, labels, or decisions modified; no raw XLSX, `data/private/**`, or Exp5/Exp8 accessed; no ML models trained.
 - Next: Push updated commit to Draft PR #26, verify CI checks, and stop for ChatGPT review (keep Draft and unmerged).
+
+## Checkpoint 031 — 2026-11-09 Issue #27 synthetic selection MVP
+
+Owner Codex; next reviewers ChatGPT + researcher. Exact main base `aaf8ca8`, branch
+`feature/synthetic-experiment-selection-mvp`. Scope: immutable synthetic designs,
+one-shot oracle, Random/nominal DoE coverage, exact integer group budgets, grouped
+fake-adapter updates, evaluator-only separate holdout and paired synthetic curves.
+Uncertainty rejects unapproved predictive-input regimes. New 19-test synthetic suite
+passes; demo seed 7/budget 3 records baseline and three acquisitions per method.
+Entry 030 records rationale/limits; architecture and commands in SELECTION_MVP.md.
+No data/private/raw/Exp3/5/8 access, real models or scientific decision changes.
+Next: complete full suite/notebook/security checks, open safe Draft PR under Issue
+#27 authority and stop for scientific review. Never mark ready or merge.
+Final local verification: full suite 86/86 passed (67 prior + 19 new); demo twice
+byte-identical at seed 7/budget 3. Whitespace passed. Public eight-file scope:
+selection.py, selection_demo.py, test_selection.py, SELECTION_MVP.md, short plan,
+append-only notebook/handoff/learning notes. No decisions/dependencies/data edits.
