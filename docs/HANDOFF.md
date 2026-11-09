@@ -1,8 +1,8 @@
 # Cross-LLM Research Handoff
 
-**Checkpoint date:** 2026-10-22
-**Phase:** Actual Exp1–Exp8 inventory and evidence reconciliation completed; scientific conflicts remain open.
-**Status:** Sources found at `/home/batuhan/research/raw-experiment-results/`; inventory code, tests and provisional reports committed as `4a83e74` and pushed on `data/dataset-inventory`. [PR #4](https://github.com/batuzunoglu/scientific-experiment-selection/pull/4) is open and unmerged. Eight software tests and doctor passed; no model training or raw-workbook import performed. Backup confirmation remains pending. Housekeeping follow-up awaits approval before further push or merge.
+**Checkpoint date:** 2026-11-08
+**Phase:** Phase B evaluation plan: Draft PR #20 review fixes for redundant sample metadata and evaluation-readiness integrity.
+**Status:** Dedicated feature branch `feature/phase-b-logo-plan` on Draft [PR #20](https://github.com/batuzunoglu/scientific-experiment-selection/pull/20). 46 software tests (32 baseline + 14 LOGO plan/leakage/hardening tests) and doctor passed. No raw experimental data accessed, no models trained, no merge performed. Stopped for final ChatGPT review.
 
 The dated checkpoints below are historical records; their earlier pending-source
 and publication-hold statements describe the state at those checkpoints.
@@ -374,3 +374,76 @@ each fit and is exploratory. See Notebook Entry 020, Decision D-019 and
 Issue #5 comment 6729822449.
 Next: metadata-only 18-fold LOGO manifest and leakage review before
 scientific eligibility/metric protocol sign-off and separate training approval.
+
+
+## Checkpoint 022 — 2026-11-08 Phase B LOGO plan and synthetic leakage tests implemented
+
+- Date: 2026-11-08; Ubuntu/Linux; Python 3.12.14.
+- Branch: `feature/phase-b-logo-plan` created from clean `main` at `f686e923a76c409ff06c26cc13f0d806cce278bc`.
+- Owner: Antigravity (implementation owner for Issue #19). Reviewer: ChatGPT + researcher. Codex not active in this worktree.
+- Deliverables implemented:
+  1. `scientific_experiment_selection/logo_plan.py`: Standard-library deterministic 18-fold Leave-One-Group-Out (LOGO) cross-validation plan for Exp3 condition groups under D-016, D-017, and D-019. Pure functions for canonical 18-group generation, format parsing, fail-closed group validation, 18-fold allocation with zero group leakage, and replicate-inseparable sample partitioning.
+  2. `tests/test_logo_plan.py`: Eight synthetic test methods covering canonical 18-group structure, 18-fold determinism, zero train/validation overlap, fail-closed rejection of duplicate/missing/unexpected/malformed groups, strict replicate inseparability in synthetic well partitions, preservation of the `Exp3:PFHxA_10` condition group (2 wells retained) under D-016 D6/D7 primary exclusion, and sample validation fail-closed behavior.
+  3. `docs/PHASE_B_LOGO_PLAN.md`: Full 18-row group-to-fold mapping table, nominal 72-well candidate versus provisional 70-well primary candidate counts, replicate inseparability constraints, and task-specific evaluation requirements (pooled out-of-fold prediction and equal condition weighting for identity classification; exploratory status and 2-point calibration limits for concentration regression; distinction between static metadata and physical spectra).
+  4. Appended Notebook Entry 021 in `docs/RESEARCH_LAB_NOTEBOOK.md`.
+- Exact commands and observed outputs:
+  - `uv run python -m unittest discover -s tests -v`: 40 tests passed in 0.444s (exit code 0).
+  - `uv run python -m scientific_experiment_selection doctor`: passed (`scientific_runs: none`, exit code 0).
+  - `python3 scripts/check_research_notebook.py`: append-only validation succeeded (`valid_append: True`).
+- Boundaries and restrictions:
+  - No access to raw XLSX files, private manifests (`data/private/**`), or physical spectra.
+  - No ML models trained, no predictions or metrics computed, no training authorization flags changed.
+  - `dataset_contract.py` unchanged. Exp5 remains historically exposed/reconstructed; Exp8 remains locked holdout.
+  - Work remains entirely local and unstaged on `feature/phase-b-logo-plan`. No commit, push, or PR performed.
+- Status: Stopped for ChatGPT scientific and code review.
+
+
+## Checkpoint 023 — 2026-11-08 Review hardening: fail-closed validation and documentation corrections
+
+- Date: 2026-11-08; Ubuntu/Linux; Python 3.12.14.
+- Branch: `feature/phase-b-logo-plan` at base `f686e923a76c409ff06c26cc13f0d806cce278bc` (origin/main).
+- Response to ChatGPT independent review comment 6730136669 on Issue #19:
+  1. Authoritative group validation: `validate_group_record()` checks caller-supplied dicts in `generate_logo_plan()` against parsed canonical fields; contradictory caller metadata fails closed.
+  2. Canonical complement verifier: `verify_fold_leakage()` requires each fold's training IDs to equal `canonical_18 - {val_id}` exactly; rejects non-canonical, foreign, or omitted training IDs and checks redundant metadata.
+  3. Float concentration rejection and sample metadata cross-check: `make_group_id()` strictly rejects float/fractional concentrations (e.g. `5.9` or `5.0`); `validate_sample_metadata()` rejects contradictory sample metadata against group IDs; `split_samples_by_fold()` defaults to `allow_empty_validation=True` (documented as not checking plate completeness) with optional `allow_empty_validation=False`; added `validate_fold_evaluation_readiness()` for dataset completeness and evaluation readiness.
+  4. Documentation correction in `docs/PHASE_B_LOGO_PLAN.md`: clarified that standalone per-fold six-class macro-F1/AUROC/confusion metrics are not suitable for single-class validation folds, while single-class accuracy/recall/loss remain calculable; reconfirmed mandatory pooled out-of-fold primary evaluation.
+  5. Added 5 synthetic negative test methods in `tests/test_logo_plan.py` reproducing the review probes and proving rejection. Total 13 tests in module, all passing.
+  6. Preserved Entry 021; appended Entry 022 in `docs/RESEARCH_LAB_NOTEBOOK.md`.
+- Exact commands and observed outputs:
+  - `uv run python -m unittest discover -s tests -v`: 45 tests passed in 0.457s (exit code 0).
+  - `uv run python -m scientific_experiment_selection doctor`: exit code 0 (`scientific_runs: none`).
+  - `python3 scripts/check_research_notebook.py`: append-only validation passed (`valid_append: True`).
+  - `git diff --check`: exit code 0.
+- Boundaries:
+  - No access to raw XLSX, private manifests (`data/private/**`), or physical spectra.
+  - No ML models trained, no training authorization promoted.
+  - Work remains entirely local and unstaged on `feature/phase-b-logo-plan`. No commit, push, or PR performed.
+- Status: Stopped for follow-up ChatGPT review.
+
+
+## Checkpoint 024 — 2026-11-08 Draft PR #20 review fixes: sample metadata and evaluation-readiness integrity
+
+- Date: 2026-11-08; Ubuntu/Linux; Python 3.12.14.
+- Branch: `feature/phase-b-logo-plan` (Draft [PR #20](https://github.com/batuzunoglu/scientific-experiment-selection/pull/20) against `main` at `f686e923a76c409ff06c26cc13f0d806cce278bc`).
+- Response to ChatGPT review 5820798245 on Draft PR #20 and Issue #19 comment 6730328542:
+  1. Independent sample metadata validation and fractional concentration rejection (`logo_plan.py`):
+     - `validate_sample_metadata()` independently checks every present field (`experiment_id`, `batch_claim`, `group_id`, `technical_replicate_group`, `condition_claim`, `condition`, `pfas_claim`, `label_claim`, `concentration_ppm`, `concentration_claim_ppm`, `physical_well`, `well`).
+     - `_validate_exact_concentration()` rejects boolean and float/fractional concentration values (e.g. `5.9`, `5.0`) rather than truncating via `int()`.
+  2. Evaluation-readiness integrity (`validate_fold_evaluation_readiness()`):
+     - Calls `verify_fold_leakage(fold_record)` and `validate_sample_metadata()` on every validation and training sample.
+     - Validates and enforces `min_validation_samples` and `expected_training_groups` (`17`).
+     - Rejects duplicate or overlapping physical well IDs (`physical_well` / `well`) within and across validation and training partitions, and rejects inconsistent presence/omission of well IDs across samples.
+     - Updated docstrings and `docs/PHASE_B_LOGO_PLAN.md` Section 5 to accurately state that readiness verifies condition-group coverage and metadata consistency, not full 70-well physical plate completeness or verified chemistry.
+  3. Focused negative synthetic tests in `tests/test_logo_plan.py`:
+     - Added negative probes for simultaneous contradictory `condition_claim`/`condition`, `pfas_claim`/`label_claim`, `experiment_id`/`batch_claim`, `physical_well`/`well`, fractional `concentration_ppm` (`5.9`, `5.0`), corrupted fold/sample records in `validate_fold_evaluation_readiness`, duplicate/overlapping physical wells, and invalid `expected_training_groups`. Total 14 tests in `test_logo_plan.py` (46 overall).
+  4. Preserved Entries 021–022; appended Entry 023 in `docs/RESEARCH_LAB_NOTEBOOK.md`.
+- Exact commands and observed outputs:
+  - `PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. python3 -m unittest discover -s tests -p test_logo_plan.py -v`: 14/14 passed in 0.019s (exit code 0).
+  - `uv run python -m unittest discover -s tests -v`: 46/46 passed in 0.465s (exit code 0).
+  - `uv run python -m scientific_experiment_selection doctor`: exit code 0 (`scientific_runs: none`).
+  - `python3 scripts/check_research_notebook.py`: exit code 0 (`Notebook gate: dated append-only research entry found.`).
+  - `git diff --check`: exit code 0.
+- Boundaries:
+  - Five-file scope preserved; no raw XLSX, private manifests, or Exp5/Exp8 data accessed.
+  - No ML models trained, no merge performed.
+- Status: Pushed to `feature/phase-b-logo-plan` on Draft PR #20; stopped for final ChatGPT review.

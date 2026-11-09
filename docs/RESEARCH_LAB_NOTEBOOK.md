@@ -470,3 +470,106 @@ uncertainty, prior negative results, label/QC claims and method limits unchanged
 **Other limitations.** Group separation avoids directly splitting the same prepared solution, but independence among different conditions is unverified (possible shared stocks, batches). Exp5 is reconstructed/historically exposed and not a pristine test; Exp8 remains locked pending exposure audit. No raw data, held-out outcomes, CV code, experiment or ML model was used or changed in this decision.
 
 **Evidence and next action.** Researcher confirmation and reviewed scientific limits are recorded in [Issue #5 comment 6729822449](https://github.com/batuzunoglu/scientific-experiment-selection/issues/5#issuecomment-6729822449). Next prepare a metadata-only LOGO fold map and leakage audit for scientific review, then freeze eligibility and model/metric protocol before any separate training authorization.
+
+
+## Entry 021 — 2026-11-08 | Phase B deterministic 18-fold LOGO plan and leakage tests
+
+**Question.** How should the researcher-approved 18-fold Leave-One-Group-Out (LOGO) cross-validation plan (D-019) be implemented and verified in code without accessing private experimental spectra, violating same-solution replicate constraints (D-017), dropping the PFHxA_10 group under Exp3 D6/D7 primary exclusion (D-016), or training machine learning models?
+
+**Context and authorization.** Under Issue #19, Antigravity was assigned as the bounded implementation owner on dedicated branch `feature/phase-b-logo-plan`. Codex is not active in this worktree during this task. Authorized actions are strictly standard-library implementation, synthetic group-leakage tests, and evaluation plan documentation. No raw lab files, private manifests, or model training were accessed or performed.
+
+**Implementation.**
+1. Created `scientific_experiment_selection/logo_plan.py` (standard-library only). Provides canonical Exp3 condition groups (`TFA, PFPA, PFBA, PFHxA, PFOA, PFNA` × `5, 10, 20` ppm), canonical group formatting (`Exp3:{PFAS}_{concentration}` consistent with `dataset_contract.py`), deterministic 18-fold LOGO plan generator (`generate_logo_plan`), group ID validation (`validate_group_ids`), and sample partitioning with strict within-fold leakage guards (`split_samples_by_fold`, `verify_fold_leakage`, `verify_plan_integrity`).
+2. Created `tests/test_logo_plan.py` containing synthetic test cases:
+   - `test_canonical_groups_count_and_content`: verifies exactly 18 groups across 6 PFAS and 3 concentrations.
+   - `test_make_and_parse_group_id`: verifies round-trip string formatting and validation.
+   - `test_eighteen_folds_generated_deterministically`: verifies 18 folds, pure determinism, and that each canonical group is held out exactly once.
+   - `test_zero_group_leakage_in_all_folds`: verifies 1 validation group and 17 training groups per fold with zero overlap.
+   - `test_fail_closed_on_malformed_duplicate_or_unexpected_groups`: verifies rejection of duplicate, missing, unexpected, or malformed group IDs.
+   - `test_synthetic_well_partition_and_technical_replicate_inseparability`: demonstrates that all 4 technical replicate wells of each condition group stay strictly together on one side of each split.
+   - `test_synthetic_d6_d7_primary_exclusion_preserves_pfhxa_10_group`: demonstrates that under D-016 primary exclusion of wells D6 and D7, the provisional primary candidate pool has 70 wells and the `Exp3:PFHxA_10` condition retains 2 candidate wells (`D5`, `D8`), ensuring the group is preserved across all folds.
+   - `test_split_samples_fail_closed_on_bad_inputs`: verifies rejection of missing or malformed sample group keys.
+3. Created `docs/PHASE_B_LOGO_PLAN.md` documenting the 18-row group-to-fold mapping, replicate inseparability, provisional 70-well primary candidate counts, and mandatory evaluation rules:
+   - Six-class PFAS classification requires pooled out-of-fold predictions and equal group weighting because validation folds each have only one true class.
+   - Known-identity concentration regression has only two training concentration groups per analyte per fold and is exploratory.
+   - Distinguishes static metadata and evaluation structures from physical measurements and unverified chemical ground truth.
+
+**Exact execution and observed test results.**
+- `uv run python -m unittest discover -s tests -v`: executed all 40 tests (32 prior tests + 8 test methods in `test_logo_plan.py`), 40 passed in 0.444s, exit code 0.
+- `uv run python -m scientific_experiment_selection doctor`: passed with exit code 0 (`scientific_runs: none`).
+- `python3 scripts/check_research_notebook.py`: verified append-only integrity of research notebook.
+
+**Limitations and boundaries.**
+- Static metadata and synthetic fixtures only; no raw laboratory workbooks (`.xlsx`) or private candidate manifests were accessed.
+- Replicate independence across different conditions remains unverified (`preparation_group='UNKNOWN'`, `group_independence_verified=False`).
+- Exp5 remains historically exposed and reconstructed; Exp8 remains locked pending exposure audit. Neither is included in this Exp3 LOGO plan.
+- No machine learning models were trained, no hyperparameter search was conducted, and no model performance was estimated.
+- No git commits, pushes, PRs, or training authorizations were made.
+
+**Next step.** Stop for researcher and ChatGPT scientific/code review.
+
+
+## Entry 022 — 2026-11-08 | Harden LOGO fail-closed validation and clarify per-fold metrics
+
+**Question.** How to address the three fail-closed validation weaknesses identified in ChatGPT independent code review of Issue #19, and correct the overly broad characterization of per-fold single-class validation metrics, without altering the approved 18-fold LOGO architecture or touching private experimental data?
+
+**Review feedback and identified vulnerabilities.**
+1. Contradictory caller-supplied group metadata: `generate_logo_plan(groups=...)` accepted caller-provided dicts with mismatched metadata (e.g. `pfas_claim='PFNA'` on `Exp3:TFA_5`), trusting caller fields rather than deriving authoritative metadata from group IDs.
+2. Incomplete training-group validation: `verify_fold_leakage` checked group count and disjointness from the validation ID, but did not enforce that training group IDs equal the exact canonical 17-group complement; altered training IDs (e.g. foreign experiment IDs like `Exp5:PFOA_10`) passed without error.
+3. Loose numeric conversions and unverified sample metadata: `make_group_id('TFA', 5.9)` silently truncated float concentration to integer 5; `split_samples_by_fold` did not check consistency between optional sample metadata (e.g. `experiment_id='Exp5'`, `condition_claim='PFNA_20'`) and `technical_replicate_group='Exp3:TFA_5'`; and an arbitrary subset missing the held-out group could silently produce an empty validation partition without warning.
+4. Overly broad documentation wording: stating that all per-fold multiclass metrics are "statistically invalid" overlooked valid single-class metrics (accuracy, true-class recall, proper loss), whereas the true methodological issue is that standalone six-class macro-F1, AUROC, and full confusion matrices are not suitable representations of multiclass performance when only one class is present.
+
+**Implementation and hardening.**
+1. Authoritative group validation (`validate_group_record`): all group records passed to `generate_logo_plan` or verified in fold records are checked against authoritative metadata parsed from the group ID (`parse_group_id`). Contradictory caller metadata raises `ValueError`.
+2. Canonical complement enforcement in verifier: `verify_fold_leakage` now enforces that the set of training group IDs in every fold equals `canonical_18_groups - {validation_group_id}` exactly. Foreign, duplicate, non-canonical, or missing training IDs are rejected with detailed diagnostics. Redundant `training_groups` dicts and fold-level summary fields (`held_out_pfas`, `held_out_concentration_ppm`) are also verified for consistency.
+3. Strict concentration typing and sample metadata cross-check:
+   - `make_group_id` strictly rejects float/fractional concentrations (e.g. `5.9` or `5.0`), requiring exact integers or clean integer strings in `{5, 10, 20}`.
+   - `validate_sample_metadata` cross-checks optional sample keys (`experiment_id`, `condition`, `condition_claim`, `pfas_claim`, `label_claim`, `concentration_ppm`, `concentration_claim_ppm`) against the group ID; contradictions fail closed.
+   - Added `allow_empty_validation: bool = True` to `split_samples_by_fold` (documented as not validating dataset completeness by default) and added `validate_fold_evaluation_readiness` to explicitly confirm non-empty validation and complete 17-group training coverage before evaluation.
+4. Corrected documentation: refined `docs/PHASE_B_LOGO_PLAN.md` Section 4.1 to clarify that standalone per-fold six-class macro-F1, AUROC, and confusion summaries are not suitable, while single-class accuracy/recall/loss remain calculable, and reconfirmed mandatory pooled out-of-fold predictions and equal group weighting for primary evaluation.
+5. Added 5 synthetic negative test methods in `tests/test_logo_plan.py` (total 13 tests in suite) verifying rejection of float concentrations, contradictory caller group metadata, foreign/altered training sets, contradictory sample metadata, and empty validation/incomplete training readiness.
+
+**Exact execution and observed test results.**
+- `uv run python -m unittest discover -s tests -v`: all 45 tests passed in 0.457s (exit code 0; 32 baseline + 13 LOGO plan/leakage/hardening tests).
+- `uv run python -m scientific_experiment_selection doctor`: exit code 0 (`scientific_runs: none`).
+- `python3 scripts/check_research_notebook.py` validation: append-only check confirmed valid (`valid_append: True`).
+- `git diff --check`: exit code 0.
+
+**Boundaries.** No raw data or private manifests accessed; no models trained; work remains local on `feature/phase-b-logo-plan` without commit or push.
+**Next step.** Submit updated five-file review package for follow-up ChatGPT review.
+
+
+## Entry 023 — 2026-11-08 | Fix redundant sample metadata and readiness integrity guards
+
+**Question.** How to resolve the two remaining validation weaknesses identified in ChatGPT's Draft PR #20 review (review 5820798245 / Issue #19 comment 6730328542) while preserving the five-file scope, LOGO design, and prior notebook history?
+
+**Review feedback and identified gaps.**
+1. Redundant sample metadata and fractional concentration truncation (`logo_plan.py:311–336`):
+   - `sample.get('condition_claim') or sample.get('condition')` and `sample.get('pfas_claim') or sample.get('label_claim')` only validated the first truthy field when both were present, allowing contradictory pairs such as `{'condition_claim': 'TFA_5', 'condition': 'PFNA_20'}` or `{'pfas_claim': 'TFA', 'label_claim': 'PFNA'}` to pass.
+   - `int(conc_num)` in `validate_sample_metadata` truncated float values such as `concentration_ppm=5.9` to `5`.
+2. Evaluation readiness integrity and scope documentation (`logo_plan.py:393–435`):
+   - `validate_fold_evaluation_readiness` did not call `verify_fold_leakage(fold_record)`, did not validate per-sample metadata via `validate_sample_metadata`, did not check for duplicate or overlapping physical well IDs (`physical_well` / `well`) within or across validation and training partitions, and did not validate or enforce its `expected_training_groups` parameter.
+   - Documentation described the check as "dataset completeness" rather than condition-group coverage and metadata consistency.
+
+**Implementation and fixes.**
+1. Independent sample field validation and strict integer concentrations:
+   - Added `_validate_exact_concentration` to reject `bool`, `float`/fractional values (e.g. `5.9`, `5.0`), and malformed strings across `make_group_id` and `validate_sample_metadata`.
+   - Updated `validate_sample_metadata` to independently check every present field among `group_id`, `technical_replicate_group`, `experiment_id`, `batch_claim`, `condition_claim`, `condition`, `pfas_claim`, `label_claim`, `concentration_claim_ppm`, `concentration_ppm`, `physical_well`, and `well`.
+   - Added `_extract_sample_well` to validate `physical_well` and `well` independently and reject disagreements when both are present.
+2. Hardened `validate_fold_evaluation_readiness` and `split_samples_by_fold`:
+   - `validate_fold_evaluation_readiness` now verifies `fold_record` via `verify_fold_leakage`, validates `min_validation_samples` and `expected_training_groups` (`17`), validates every validation and training sample via `validate_sample_metadata`, rejects duplicate or overlapping physical well IDs within and across validation and training sets, and rejects mixed presence/absence of well identifiers across samples.
+   - `split_samples_by_fold` also rejects duplicate physical well IDs when present.
+   - Updated docstrings and `docs/PHASE_B_LOGO_PLAN.md` Section 5 to state that `validate_fold_evaluation_readiness` establishes condition-group coverage and metadata consistency, not full 70-well physical plate completeness or verified chemical ground truth.
+3. Focused negative synthetic tests in `tests/test_logo_plan.py`:
+   - Expanded `test_rejects_contradictory_sample_metadata_and_fractional_concentrations` to test simultaneous contradictory `condition_claim`/`condition`, `pfas_claim`/`label_claim`, `experiment_id`/`batch_claim`, `physical_well`/`well`, and fractional/float `concentration_ppm` (`5.9`, `5.0`) and `concentration_claim_ppm` (`'5.9'`).
+   - Added `test_readiness_rejects_corrupted_fold_samples_and_duplicate_wells` testing corrupted `fold_record`, corrupted sample metadata in `split_result`, duplicate physical wells in validation or training, overlapping physical wells between validation and training (`physical_well` vs `well`), inconsistent well key presence, and invalid `expected_training_groups`.
+
+**Exact execution and observed test results.**
+- `PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. python3 -m unittest discover -s tests -p test_logo_plan.py -v`: 14/14 tests passed in 0.019s (exit code 0).
+- `uv run python -m unittest discover -s tests -v`: 46/46 tests passed in 0.465s (exit code 0; 32 baseline + 14 LOGO plan/leakage/hardening tests).
+- `uv run python -m scientific_experiment_selection doctor`: exit code 0 (`scientific_runs: none`).
+- `python3 scripts/check_research_notebook.py`: passed (`Notebook gate: dated append-only research entry found`).
+- `git diff --check`: exit code 0.
+
+**Boundaries.** No raw data or private manifests accessed; no ML models trained; no merge performed.
+**Next step.** Push commit to `feature/phase-b-logo-plan` on Draft PR #20 and stop for final ChatGPT review.
