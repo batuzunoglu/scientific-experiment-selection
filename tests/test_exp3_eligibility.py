@@ -4,6 +4,7 @@ import json
 import os
 from pathlib import Path
 import subprocess
+import sys
 import tempfile
 import unittest
 from scripts.audit_exp3_eligibility import audit_exp3, synthetic_logo_check
@@ -95,12 +96,12 @@ class EligibilityTests(unittest.TestCase):
             for contents in ['bad PRIVATE_CANARY',json.dumps(fixture()+[{'experiment_id':'Exp8','secret':'PRIVATE_CANARY'}])]:
                 path.write_text(contents)
                 before=path.read_bytes()
-                r=subprocess.run(['.venv/bin/python','scripts/audit_exp3_eligibility.py','--manifest',str(path)],capture_output=True,text=True,env=env)
+                r=subprocess.run([sys.executable,'scripts/audit_exp3_eligibility.py','--manifest',str(path)],capture_output=True,text=True,env=env)
                 self.assertNotIn('PRIVATE_CANARY',r.stdout+r.stderr)
                 self.assertEqual(path.read_bytes(),before)
                 self.assertIn(r.returncode,(0,2))
                 json.loads(r.stdout)
-            r=subprocess.run(['.venv/bin/python','scripts/audit_exp3_eligibility.py','--manifest',str(path/'missing')],capture_output=True,text=True,env=env)
+            r=subprocess.run([sys.executable,'scripts/audit_exp3_eligibility.py','--manifest',str(path/'missing')],capture_output=True,text=True,env=env)
             self.assertEqual(r.returncode,2)
             self.assertNotIn('PRIVATE_CANARY',r.stdout+r.stderr)
 
@@ -117,7 +118,7 @@ class EligibilityTests(unittest.TestCase):
             self.assertNotIn('PRIVATE_CANARY',json.dumps(result))
 
     def test_cli_argument_errors_do_not_echo_sensitive_arguments(self):
-        r=subprocess.run(['.venv/bin/python','scripts/audit_exp3_eligibility.py','--PRIVATE_CANARY'],
+        r=subprocess.run([sys.executable,'scripts/audit_exp3_eligibility.py','--PRIVATE_CANARY'],
             capture_output=True,text=True,env=dict(os.environ,PYTHONPATH='.',PYTHONDONTWRITEBYTECODE='1'))
         self.assertEqual(r.returncode,2)
         self.assertNotIn('PRIVATE_CANARY',r.stdout+r.stderr)

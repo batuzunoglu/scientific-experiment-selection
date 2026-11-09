@@ -487,3 +487,12 @@ Security audit passed: exact five-file scope, no raw/private/unrelated artifacts
 source text, private locations/digests or detected credentials in new diff;
 append-only history and staged whitespace passed. Draft publication authorized
 under Issue #23; subsequent PR URL/CI outcomes belong in the PR handoff.
+
+## Checkpoint 028 — 2026-11-08 Issue #23 Draft CI correction
+
+Draft PR #25 opened. First remote run passed notebook gate but failed two CLI tests
+because their interpreter path assumed the local virtual environment. Reproduced
+without that environment; tests now use sys.executable. Clean copied public-only
+suite and full local suite both pass 57 tests. Audit code/results unchanged;
+private metadata not reopened. Entry 027 records failed run and correction.
+Same five-file PR scope; final CI outcome to be reported in PR handoff.

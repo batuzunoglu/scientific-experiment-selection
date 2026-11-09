@@ -680,3 +680,23 @@ in newly added content. Synthetic fixtures and issue-approved constants only.
 Notebook/handoff append-only checks and staged whitespace check passed. Authorized
 next step: commit/push safe five-file scope and open Draft PR; outcome and CI will
 be reported in the PR handoff after observation. Stop at independent review.
+
+## Entry 027 — 2026-11-08 | Issue #23 CI test-launcher portability correction
+
+**Observed negative result.** First Draft PR #25 workflow run 42551592982 passed
+the notebook gate but failed two new CLI tests: the tests invoked a local virtual
+environment interpreter unavailable on the clean CI runner. This was a test harness
+portability defect, not a private-data discrepancy or changed scientific result.
+
+**Correction and evidence.** Reproduced the two launcher errors using copies of
+only public source/scripts/tests in an isolated temporary directory without a local
+virtual environment. Changed only the test subprocess interpreter to `sys.executable`.
+Audit implementation, private input, real aggregate results and scientific flags
+unchanged; private metadata was not reopened. After the fix, both the clean copied
+suite and repository suite passed all 57 tests. Exact repository command:
+`PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m unittest discover -s tests -v`.
+The copied-suite check invokes the same `-m unittest discover -s tests -v` arguments
+with `sys.executable` and bytecode disabled, after copying only the three public code,
+script and test directories. Only synthetic fixtures are used. No model/Exp8/raw
+access, no decisions modified. Original Entry 026 retained. Reaudit the same five-file
+publication scope and push correction to the existing Draft; stop for review.

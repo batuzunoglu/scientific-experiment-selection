@@ -134,3 +134,11 @@ Pre-publication result: staged five-file allowlist and full new diff reviewed;
 privacy/credential-pattern scan, append-only notebook/handoff and staged whitespace
 checks passed. Only synthetic fixtures and explicitly approved rule constants are
 in source/tests. No actual metadata row or private artifact is proposed for Git.
+
+CI portability follow-up: first Draft PR #25 run passed notebook gate but failed
+two new CLI tests because they assumed a local virtual environment interpreter.
+The test subprocesses now use `sys.executable`. Reproduced the failure and confirmed
+57/57 passes after correction in an isolated copy of public code/scripts/tests with
+no local virtual environment, as well as in the full repository. No audit logic,
+real metadata/result or scientific policy changed; no private data was reopened.
+Notebook Entry 027 preserves this negative result and correction.
