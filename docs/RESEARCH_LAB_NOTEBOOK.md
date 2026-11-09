@@ -612,3 +612,91 @@ uncertainty, prior negative results, label/QC claims and method limits unchanged
 **Still proposed, not scientifically frozen.** Notebook Entry 024's group-equal accuracy, condition-weighted pooled F1/confusion, concentration MAE, dummy/logistic/Ridge settings and feature A/B/C/D comparison remain candidates for a separate pre-fit review. Neither a model nor a preprocessing fit is authorized by the present approval.
 
 **Execution status and next gate.** No raw/private file was accessed by ChatGPT; no audit, software code, model fit, metrics, or scientific experiment was executed here. Approval and scope are recorded in [Issue #21 comment 6730714986](https://github.com/batuzunoglu/scientific-experiment-selection/issues/21#issuecomment-6730714986) and Decision D-020. Next: obtain private eligibility-audit handoff and then separately freeze model/metric protocol and authorize fitting.
+
+## Entry 026 — 2026-11-08 | Issue #23 private Exp3 metadata eligibility audit
+
+**Owner/authority/question.** Owner Codex; scientific reviewers researcher + ChatGPT.
+Read AGENTS.md, AGENT_WORKFLOW.md, Issue #23 (no comments), D-020 and Entry 025.
+Question: does inherited provisional Exp3 metadata support the expected primary
+pool while preserving all uncertainty? Started from clean latest main after merged
+PR #22, base `f08acbd`, dedicated `feature/phase-b-exp3-eligibility-audit`. No concurrent
+writing agent was used. Scope permits private read-only metadata audit, synthetic
+checks and a safe Draft PR after security/test gates; no training or merge.
+
+**Rationale/alternatives.** Compared expected contract/count/group structure with
+existing metadata claims. Did not promote provisional labels or require expected
+unknown physical verification to become true. Only the previously approved primary
+analysis exclusion is applied as a derived count; historical-note candidates remain
+retained. Any new structural/claim/provenance discrepancy would stop for review,
+not cause silent repair, relabeling or additional exclusion. No new scientific
+approval, model/metric or split design selected; DECISIONS.md unchanged.
+
+**Implementation/commands.** Added `scripts/audit_exp3_eligibility.py`, fabricated
+synthetic fixtures/tests and `docs/EXP3_ELIGIBILITY_AUDIT.md`; appended this entry and
+handoff checkpoint. Complete exact audit wrapper, CLI template, commands, public
+allowlist and limitations are in that report. Private input: documented Phase A
+candidate metadata, description only. Combined file is parsed locally and Exp3
+selected before any validation/diagnostics; foreign rows never enter analysis,
+logs or model context. No private source paths/digests, well-level records, original
+source text, class-by-well assignments, spectra or private artifacts are reproduced.
+The tool returns only fixed aggregate categories/counts and redacts CLI failures.
+Source bytes compared before/after; flags/QC/labels not modified.
+
+**Observed aggregate results.** 96 unique Exp3 coordinates; 72 original candidate
+and 24 noncandidate records. Two analysis-only exclusions leave **70 provisional
+primary candidates across 18 groups**, including two retained members of the special
+reduced group. Three disclosed historical-note candidates remain included. Two
+original candidate QC-review records preserved. All 96 records remain physically
+unverified with source warnings; seven retain unresolved-conflict warnings and seven
+retain historical-findings warnings (overlapping categories). **Zero new structural,
+claim or provenance discrepancies**. Both local audit invocations exit 0; final
+status `consistent-pending-scientific-review`. No row or flag is training-authorized.
+
+**Software evidence and negative tests.** Baseline 46 tests passed. New synthetic
+suite initially failed for missing module; later negative tests exposed incomplete
+conflict/lineage/source-reference checks in the new audit and were fixed before
+final run. No metadata repair. `PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m unittest
+discover -s tests -p test_exp3_eligibility.py -v`: 11 passed. Full command
+`PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m unittest discover -s tests -v`: 57 passed,
+exit 0. `synthetic_logo_check()` uses only canonical synthetic metadata: 18 folds,
+18 distinct held-out groups, zero group overlap. No real-metadata folds/fits run.
+Python 3.12.14, standard library only, deterministic/no seed. Tests use fabricated
+fixtures, not hidden copies of real records.
+
+**Limitations / stop.** Observed metadata/software checks, not new laboratory
+measurements, simulations of chemistry, physical verification or performance.
+Source provenance is checked internally; raw measurements are deliberately not
+opened/rehashed. Historical-note disclosure does not validate preparations; group
+independence remains unverified. No raw XLSX, Exp5 transfer, Exp8 measurements,
+preprocessing fit, predictions, metrics or models accessed/performed. No scientific
+label, original candidate/QC or authorization flag changes. Follow Issue #23's
+staged privacy audit and allowlisted Draft publication; next ChatGPT/researcher
+review of aggregate eligibility and remaining Issue #21 protocol must precede fitting.
+
+**Pre-publication security result.** Exact five-file staged allowlist verified;
+complete new diff reviewed. No raw/private/unrelated artifact, actual per-well
+assignment, source text, private location/digest or detected credential pattern
+in newly added content. Synthetic fixtures and issue-approved constants only.
+Notebook/handoff append-only checks and staged whitespace check passed. Authorized
+next step: commit/push safe five-file scope and open Draft PR; outcome and CI will
+be reported in the PR handoff after observation. Stop at independent review.
+
+## Entry 027 — 2026-11-08 | Issue #23 CI test-launcher portability correction
+
+**Observed negative result.** First Draft PR #25 workflow run 42551592982 passed
+the notebook gate but failed two new CLI tests: the tests invoked a local virtual
+environment interpreter unavailable on the clean CI runner. This was a test harness
+portability defect, not a private-data discrepancy or changed scientific result.
+
+**Correction and evidence.** Reproduced the two launcher errors using copies of
+only public source/scripts/tests in an isolated temporary directory without a local
+virtual environment. Changed only the test subprocess interpreter to `sys.executable`.
+Audit implementation, private input, real aggregate results and scientific flags
+unchanged; private metadata was not reopened. After the fix, both the clean copied
+suite and repository suite passed all 57 tests. Exact repository command:
+`PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m unittest discover -s tests -v`.
+The copied-suite check invokes the same `-m unittest discover -s tests -v` arguments
+with `sys.executable` and bytecode disabled, after copying only the three public code,
+script and test directories. Only synthetic fixtures are used. No model/Exp8/raw
+access, no decisions modified. Original Entry 026 retained. Reaudit the same five-file
+publication scope and push correction to the existing Draft; stop for review.

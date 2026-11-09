@@ -465,3 +465,34 @@ scientific eligibility/metric protocol sign-off and separate training approval.
 - **Hard boundaries:** No raw spectroscopic measurements, `data/private/**` files in Git, Exp5/Exp8 access, spectrum-derived model fits, label/authorization flag promotion, automatic new exclusion or change in science. B4/B5/C9 historical concerns should be reported without silent reclassification.
 - **Outstanding:** Exact 70-well eligibility, class/condition/group/claim and QC reconciliation, model and metric freeze, standalone permission to fit actual data. D-019 LOGO and A/B/C/D features unchanged.
 - **Status:** Documentation-only record of explicit limited approval; no audit or model execution by ChatGPT. Codex to perform bounded audit and hand off results before any model training.
+
+## Checkpoint 027 — 2026-11-08 Issue #23 aggregate eligibility audit
+
+Owner Codex; next reviewers researcher + ChatGPT. Latest-main base `f08acbd`
+(PR #22 merged), dedicated `feature/phase-b-exp3-eligibility-audit`. Private source:
+existing Phase A candidate metadata only, Exp3-filtered before diagnostics; no raw
+workbooks or foreign-record analysis. Aggregate 96 coordinates, 72 candidates,
+24 noncandidates, 2 approved analysis-only exclusions => 70 primary candidates in
+18 groups; 3 historical-note candidates retained; 96 provisional/source-warning
+records; zero new inconsistencies. Existing conflict/history warnings preserved.
+
+Five-file scope: new audit script, synthetic test module, safe aggregate report,
+append-only Notebook Entry 026 and this checkpoint. 11 new/57 total tests passed;
+synthetic LOGO 18 folds, zero overlap. Exact commands/limits in
+`EXP3_ELIGIBILITY_AUDIT.md`. No label/flag changes, fitting, raw/Exp8 access or metrics.
+Issue #23 authorizes safe Draft PR after staged security audit/tests only. Next:
+complete staged allowlist/private-content audit, publish Draft for ChatGPT review,
+then stop. Training permission NO; eligibility/protocol sign-off remains separate.
+Security audit passed: exact five-file scope, no raw/private/unrelated artifacts,
+source text, private locations/digests or detected credentials in new diff;
+append-only history and staged whitespace passed. Draft publication authorized
+under Issue #23; subsequent PR URL/CI outcomes belong in the PR handoff.
+
+## Checkpoint 028 — 2026-11-08 Issue #23 Draft CI correction
+
+Draft PR #25 opened. First remote run passed notebook gate but failed two CLI tests
+because their interpreter path assumed the local virtual environment. Reproduced
+without that environment; tests now use sys.executable. Clean copied public-only
+suite and full local suite both pass 57 tests. Audit code/results unchanged;
+private metadata not reopened. Entry 027 records failed run and correction.
+Same five-file PR scope; final CI outcome to be reported in PR handoff.
