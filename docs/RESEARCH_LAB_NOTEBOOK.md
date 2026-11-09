@@ -1051,3 +1051,83 @@ preserved and `valid_append` accepted the dated entry. Measured implementation c
 is unchanged from the recorded actual execution. Eight-file public allowlist and
 staged privacy check precede feature-branch commit; GitHub notebook/ML CI outcomes
 will be reported only after observation. No merge.
+
+## Entry 035 — 2026-11-09 | Authorized sanitized measured-results publication
+
+**Question/owner/approval.** Owner Codex; reviewers researcher + ChatGPT. The latest
+researcher instruction on PR #35 (comment 6753082959) explicitly authorizes public
+aggregate measured performance so ChatGPT can review complete trajectories directly
+in GitHub. This supersedes Entry 034's private-only **score reporting** boundary;
+it does not authorize private inputs/outputs, new fitting, tuning, label changes,
+Exp8 access or merge. Read the full instruction and preceding scientific review.
+Continue the existing feature branch, preserving all prior notebook entries. PR
+#33's separate Entry 033 remains on its untouched branch; future authorized notebook
+reconciliation must retain both histories before any merge.
+
+**Alternatives/why.** Copying the private report wholesale was rejected by the
+instruction. Implemented an explicit deterministic allowlist exporter that reads
+only the completed aggregate REVIEW.md and run summary, constructs static arm/
+representation/policy/seed labels and numeric checkpoint scores, and discards all
+private prose and non-score fields. Published both human-readable
+MEASURED_PILOT_RESULTS.md and machine-readable aggregate JSON for review/reuse.
+Six decimal places match the original report; the full-precision run summary is
+rounded to that precision for comparison, without rerunning any model. DoE's
+runner name `coverage` is displayed as DoE/nominal coverage; deterministic seed is
+JSON null. Selected-condition sequences are intentionally omitted as unnecessary.
+No private file was copied wholesale; no requested aggregate artifact was omitted.
+
+**Observed measured results (existing run, not synthetic).** Published all **16
+trajectories × 13 checkpoints**, with acquired condition count, cumulative proxy
+cost, BA, sensitivity and specificity. All B and D checkpoints have BA 0.500000,
+sensitivity 0.000000 and specificity 1.000000. A's common baseline/final BA is
+0.933333/0.833333; C's is 0.900000/0.600000. All intermediate fluctuations and all
+three Random seeds plus DoE are retained in the result files. These are descriptive
+retrospective measured Exp3→Exp5 model results, not new physical experiments or
+independent validation. No best arm/policy/seed/checkpoint selected or model retuned.
+
+**Validation and runnable record.** The exporter verifies each of **624 metric
+values** against both private originals; exit 0 for export and subsequent --check,
+reporting 16 trajectories / 208 checkpoints / status verified. It fails closed on
+missing/duplicate/unknown trajectories, invalid curve keys, scores outside [0,1],
+nonfinite or boolean scores, mismatched/missing checkpoints/costs, BA arithmetic
+inconsistency (six-decimal tolerance), source/report disagreement and per-arm
+baseline/final inconsistency. Source/output aliases and hardlinks are rejected;
+private source hashes are compared internally, never published. Independent byte
+integrity checks cover the entire existing private run directory before/after.
+Exact local source-variable commands (values remain outside Git):
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m scientific_experiment_selection.pilot_results_export --review "$PRIVATE_REVIEW" --summary "$PRIVATE_SUMMARY" --markdown docs/MEASURED_PILOT_RESULTS.md --json docs/results/exp3-exp5-nes-2026-11-09-aggregate.json
+PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m scientific_experiment_selection.pilot_results_export --review "$PRIVATE_REVIEW" --summary "$PRIVATE_SUMMARY" --markdown docs/MEASURED_PILOT_RESULTS.md --json docs/results/exp3-exp5-nes-2026-11-09-aggregate.json --check
+PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m unittest discover -s tests -p test_pilot_results_export.py -v
+PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m unittest discover -s tests -v
+PYTHONDONTWRITEBYTECODE=1 /tmp/issue34-stdlib-env/bin/python -m unittest discover -s tests -v
+git diff --check
+PYTHONDONTWRITEBYTECODE=1 .venv/bin/python scripts/check_research_notebook.py
+```
+
+**Synthetic software tests.** Six new tests use fabricated aggregate trajectories
+and privacy canaries only, not measured scores or private inputs. Initial missing-
+module failure preceded implementation; the first parser run caught the Markdown
+separator being mistaken for a numeric row. A separate failing hardlink test led
+to rejecting inode aliases before writing. All six targeted tests subsequently
+passed. Public Actions runs only synthetic software tests, never private-source
+export or measured fitting. Final full-suite and publication checks follow below
+once observed.
+
+**Limitations/next.** Labels remain provisional; the 70/35/18 fixed eligibility and
+condition-equal scoring are unchanged. Exp5 is historically exposed; its sole
+positive evaluator condition TFA_10 and technical replicates do not establish
+independent positive preparations, confidence or generalization. Cost is one proxy
+unit per whole prepared condition, not measured money/time. Random and nominal DoE
+are not model-adaptive or uncertainty selectors. Numerical outcome review is still
+pending, including negative/no-improvement results. Raw spectra, well-level labels/
+predictions, feature matrices, fitted models, local paths and private hashes remain
+excluded. Stop at Draft PR #35 for ChatGPT review; no merge or scientific changes.
+
+**Final local verification.** Full pinned-ML suite: **127 tests in 19.063s, OK,
+exit 0** (121 prior + six exporter tests, no skips). Clean standard-library suite:
+**127 tests in 1.542s, OK (skipped=16), exit 0**. Final aggregate --check again
+verified all 208 checkpoints/624 scores; `git diff --check` exited 0. Final staged
+allowlist/privacy/source-integrity and appended-entry checks precede publication;
+CI results will be reported on the PR after observation. No measured refitting.

@@ -636,3 +636,31 @@ Final local verification: optional ML **121/121 passed** (19.257s); clean stdlib
 **121 run / 16 expected skips passed** (1.559s); whitespace and prior-text/dated-append
 checks passed. Actual-run implementation remains unchanged; only test portability
 and documentation followed execution. Await staged audit and Draft CI, not merge.
+
+## Checkpoint 035 — 2026-11-09 safe aggregate results for PR #35 review
+
+Owner Codex; next researcher + ChatGPT numerical/scientific review. Latest PR #35
+comment 6753082959 explicitly authorizes sanitized aggregate scores on GitHub;
+prior private-only score boundary is superseded only within this limited scope.
+Same feature branch; no model/spectral/label/split changes or new measured fitting.
+
+New allowlist exporter, six synthetic tests, complete measured-results Markdown
+and JSON, current methodology authorization note, appended Notebook Entry 035 and
+this checkpoint. All 16 trajectories / 13 checkpoints / 624 metric values checked
+against the unchanged private report and original summary at six decimals. Export
+and read-only --check exited 0. Baseline/final and all intermediate scores retained,
+including B/D zero sensitivity and full-spectrum score fluctuations; no winner
+selected. Synthetic tests are fabricated fixtures only, never actual measured data.
+
+Private report and all existing run artifacts stay unchanged and ignored. No raw
+spectra, well labels/predictions, model/scaler/feature artifacts, sensitive paths or
+source digests published. Exact commands and limits are in Entry 035/result docs.
+Remaining gates: final full tests/privacy/append checks and both CI checks, then
+stop at Draft PR #35 for ChatGPT review. Future PR #33/35 notebook reconciliation
+must preserve Entry 033/034/035 under separate merge authority; no branch merge now.
+Scientific limits: provisional chemistry, historically exposed Exp5, one positive
+evaluator condition, correlated technical wells and proxy acquisition costs.
+Final local observations: full optional ML **127 passed**, clean stdlib **127 run /
+16 expected skips**, six new exporter tests passed; repeated aggregate --check
+verified all 208 checkpoints / 624 metric values. Whitespace passed. Await staged
+privacy/private-integrity/append checks and Draft CI, then stop for review.

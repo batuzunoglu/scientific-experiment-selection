@@ -145,3 +145,15 @@ LOGO task, uncertainty acquisition, Exp8 access, source-label edits or new physi
 experiment. Review every paired trajectory privately; do not use it to select a
 winning configuration without a new protocol. Next: ChatGPT + researcher scientific
 and code review of the safe Draft and private aggregate report. No merge.
+
+## 2026-11-09 aggregate publication authorization update
+
+The [researcher's latest PR #35 instruction](https://github.com/batuzunoglu/scientific-experiment-selection/pull/35#issuecomment-6753082959)
+supersedes the earlier private-only score-reporting boundary **for sanitized aggregate
+performance only**. [Complete measured results](MEASURED_PILOT_RESULTS.md) and the
+linked aggregate JSON now preserve all predeclared curves for direct GitHub review.
+Raw data, well labels/predictions, feature/scaler/model artifacts, local paths and
+source hashes remain private. The original private report and run artifacts are
+unchanged. Exporting completed results adds no model fit or methodological change.
+Scientific numerical review and eventual PR #33/35 notebook reconciliation remain
+open; neither PR is authorized to merge. Notebook Entry 035 records this update.
