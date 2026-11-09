@@ -1,0 +1,7 @@
+# Optional synthetic Logistic Regression integration; Python 3.11–3.13.
+# Exact direct and transitive runtime pins; not required by the stdlib scaffold.
+numpy==2.2.6
+scipy==1.15.3
+scikit-learn==1.7.2
+joblib==1.5.2
+threadpoolctl==3.6.0
