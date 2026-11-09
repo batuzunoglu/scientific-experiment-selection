@@ -447,3 +447,13 @@ scientific eligibility/metric protocol sign-off and separate training approval.
   - Five-file scope preserved; no raw XLSX, private manifests, or Exp5/Exp8 data accessed.
   - No ML models trained, no merge performed.
 - Status: Pushed to `feature/phase-b-logo-plan` on Draft PR #20; stopped for final ChatGPT review.
+
+## Checkpoint 025 — 2026-11-08 Phase B pre-fit scientific protocol proposed (NO fitting)
+
+- Scope: First milestone after merged PR #20 / Issue #19; preliminary Exp3 eligibility and model/metric protocol in [Issue #21](https://github.com/batuzunoglu/scientific-experiment-selection/issues/21).
+- Owner: Researcher + ChatGPT (scientific review); eventual implementation owner Codex, Antigravity available for an isolated reviewer/test task.
+- Existing approvals retained: D-016 Exp3 D6/D7 excluded in primary analysis; D-017 same-solution replicate groups indivisible; D-019 18-fold LOGO; four A/B/C/D fixed spectral representations.
+- Proposed only: Exp3 70/72 provisional candidate metadata audit; group-equal validation accuracy for identity classification, group-weighted pooled macro-F1 as secondary; group-equal MAE (ppm) for known-identity exploratory concentration regression; logistic and per-PFAS Ridge fixed baselines plus dummy controls, training-fold-only scaling. No choice treated as frozen without researcher sign-off.
+- Open gates: eligibility and nominal-label permission, history of other review flags, exact estimator/weighting details, scientific validity of claims, separate authorization to access private/local Exp3 metadata and fit models. Never silently set source verification or training flags true.
+- Exp5 remains historically exposed/reconstructed, Exp8 locked, no datasets/private manifests/spectra/model output accessed. Only GitHub project docs and issue discussion inspected.
+- Research notebook: Entry 024 records alternatives, proposed choices, no-execution status and limitations. Next owner: researcher reviews Issue #21 before delegating any real-data work.
