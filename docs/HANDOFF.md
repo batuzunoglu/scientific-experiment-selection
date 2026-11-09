@@ -315,3 +315,15 @@ historically exposed/reconstructed and Exp8 remains locked. No defects fixed,
 data uploaded, ML models trained, or new scientific approval given.
 Next: researcher-led Phase B eligibility and grouped-CV decision; Antigravity
 may continue as a bounded read-only reviewer, Codex remains main implementer.
+
+## Checkpoint 018 — 2026-11-08 researcher approved Exp3 D6/D7 primary exclusion
+
+Researcher agreed to exclude physical Exp3 D6/D7 from primary Phase B ML
+analysis, while preserving these historically review-retain PFHxA_10
+measurements for a future frozen-protocol sensitivity analysis.
+Decision and scientific reasoning: Issue #5 comment 6729516343, Notebook
+Entry 017 and D-016. Existing 72 candidate rows/QC/source files unchanged;
+the provisional primary subset would have 70 rows before any other eligibility
+decisions. No code or model training, no label promotion and no split changed.
+Next scientific review: preparation-group/replicate evidence and grouped CV,
+then separate identity and known-identity concentration task protocols.
