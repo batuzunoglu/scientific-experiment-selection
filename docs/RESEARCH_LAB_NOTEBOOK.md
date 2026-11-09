@@ -383,3 +383,17 @@ uncertainty, prior negative results, label/QC claims and method limits unchanged
 **Scientific status:** **Phase A engineering published, but physical chemistry labels, QC inclusion, preparation independence, grouped CV design and authorization to train remain unresolved.** Previous reports of 168/168 Exp3/Exp5 measured spectra successfully transforming are from the historical local smoke run, not a new experiment performed during merge. Exp5 historical exposure remains explicit; Exp8 remains locked.
 
 **Next decision gate:** Scientifically review the proposed training eligibility, concentration target, replicate/preparation-group definitions and evaluation split. Do not train a model or inspect Exp8 outcomes until those decisions are explicitly approved.
+
+## Entry 015 — 2026-11-08 | Lightweight collaboration between Codex and Antigravity
+
+**Researcher request:** Codex's short-window usage allowance is limited, while the researcher also has a Gemini account and an Ubuntu workstation. They asked for a practical Antigravity installation and a simple, generally accepted way for different agents to know their responsibilities and hand off work without creating unnecessary complexity.
+
+**Question and alternatives:** Introduce a custom multi-agent orchestrator/server, duplicate tool-specific instructions, or reuse existing project conventions. A full orchestrator adds unnecessary infrastructure, concurrency and security concerns for the current research stage. Antigravity officially recognizes root `AGENTS.md` instructions, so a second `GEMINI.md` would introduce divergence risk.
+
+**Decision/proposal implemented on a documentation feature branch:** Retain the root `AGENTS.md` as the shared coding-agent rulebook; add one short `docs/AGENT_WORKFLOW.md` for explicit one-owner-per-issue responsibility, isolated branches/worktrees, read-only reviewer by default, GitHub Issue/PR handoffs and a compact status template. ChatGPT/researcher coordinate scientific decisions, Codex owns main implementation, Antigravity is initially a bounded independent reviewer/tester. No concurrent writes to the same tree, no overlapping undocumented notebook edits, and no independent agent approval of chemistry, training, raw release or merge.
+
+**Why:** Shared file-based instructions, Git branches/PRs and auditable Issue updates are simple, portable across model providers and already familiar to the project. The current notebook gate continues to ensure dated records in authorized research PRs, with human checking scientific completeness.
+
+**What was done:** Authored the workflow guide and updated `AGENTS.md`, `docs/DECISIONS.md`, the notebook and handoff in a new GitHub branch. The user requested Ubuntu setup guidance; **Antigravity was not installed on the researcher's machine by ChatGPT** and no model execution/test results or physical experimental measurements are claimed.
+
+**Limitations and next step:** This is human-directed task coordination, not automatic agent-to-agent messaging. Start with a safe Antigravity CLI installation verified from Google's official docs, then run a small read-only pilot. PR must be reviewed before merge. Phase B scientific eligibility, grouping, holdout and model-training approval remain entirely separate and unresolved.
