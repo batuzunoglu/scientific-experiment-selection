@@ -581,3 +581,19 @@ Final B CLI repeated byte-identically at all 13 checkpoints per method; 102/102
 full tests passed with ML pins. Clean standard-library environment passed with
 10 optional skips. Publication allowlist: 11 safe code/test/requirements/workflow/
 doc files; no actual data. Await staged audit/notebook gate and Draft publication.
+
+## Checkpoint 033 — 2026-11-09 Issue #31 bounded raw-column join
+
+Owner Codex; next researcher + ChatGPT. Dedicated branch
+`feature/exp3-exp5-raw-label-join` from main after PR #30 (`5ae57fb`). Used existing
+permitted historical mapping metadata as reference, not reconstructed labels.
+Preferred attachment/original/supplemental exact model source absent locally;
+permitted Step4 Well_Metadata fallback available. No open-ended recovery.
+Aggregate join **70 training / 35 acquisition / 18 holdout / 3 excluded**; all 123
+included columns matched; 18/12/6 groups; zero mismatches; source bytes unchanged.
+Only authorized mapping sheet and Exp3/5 raw exports read, no scores or Exp8.
+7 new synthetic tests and full 109-test suite passed. Notebook Entry 032 and
+RAW_LABEL_JOIN_AUDIT.md record exact commands, findings and limits. Five-file
+safe scope, no private sources/maps/rows/arrays or locations/digests in new public
+docs. Next staged privacy/notebook/whitespace checks and Draft PR, then stop for
+scientific review. No merge or actual-data model training authorized.
