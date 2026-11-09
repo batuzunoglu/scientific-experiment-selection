@@ -371,3 +371,15 @@ uncertainty, prior negative results, label/QC claims and method limits unchanged
 **Decision/status:** ChatGPT's scientific/code **review supports merging this scoped Phase A PR after the researcher's separate approval**, contingent on final PR CI passing after this documentation entry. This is **not** an authorization to perform the merge, train models, change labels, expose Exp8, or publish private data. No computation, model training or experimental run was performed as part of this entry.
 
 **Next decision:** merge approval, then an independent scientific review of candidate well eligibility, chemistry provenance, preparation-group-aware CV and a prospective untouched evaluation protocol before any supervised ML fitting.
+
+## Entry 014 — 2026-11-08 | Phase A engineering PR merged to main
+
+**Researcher approval:** The researcher explicitly approved merging [PR #10](https://github.com/batuzunoglu/scientific-experiment-selection/pull/10) after scientific/code review.
+
+**Observed GitHub action:** PR #10 was squash-merged to `main` with commit `8922ee3783db97c4f67084671375982daa93a2f4`. Its final reviewed head was `3cb699735a76c169416dcb674c3dcbd616c0c037`; the corresponding [CI run](https://github.com/batuzunoglu/scientific-experiment-selection/actions/runs/42537955788) completed successfully (32 unit tests and the research-notebook gate). Only the agreed 15 implementation/test/documentation files were included; no raw workbooks or private candidate manifests were committed. The merge itself did not retrain models, decide any chemical identities, or evaluate Exp8.
+
+**Why this milestone matters:** The approved Raw/full, Raw/Compact8, Area/full and Area/Compact8 representations, audited source reader, provisional well manifest builder and documented Exp3/Exp5 smoke-test procedure are now a versioned, reproducible engineering foundation for *future* supervised experiments. The existing notebook preserves why preprocessing was compared rather than assumed helpful.
+
+**Scientific status:** **Phase A engineering published, but physical chemistry labels, QC inclusion, preparation independence, grouped CV design and authorization to train remain unresolved.** Previous reports of 168/168 Exp3/Exp5 measured spectra successfully transforming are from the historical local smoke run, not a new experiment performed during merge. Exp5 historical exposure remains explicit; Exp8 remains locked.
+
+**Next decision gate:** Scientifically review the proposed training eligibility, concentration target, replicate/preparation-group definitions and evaluation split. Do not train a model or inspect Exp8 outcomes until those decisions are explicitly approved.
