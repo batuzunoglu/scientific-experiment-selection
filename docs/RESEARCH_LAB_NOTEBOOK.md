@@ -921,3 +921,49 @@ documentation files only; no raw/private artifacts. Prior notebook/handoff bytes
 must remain intact; decisions, spectral formulas and standard-library fake demo
 unchanged. Complete staged privacy/credential/path audit and notebook gate precede
 Draft handoff. CI/PR outcome will be reported after actual observation, not assumed.
+
+## Entry 032 — 2026-11-09 | Issue #31 existing-label to raw-column consistency check
+
+**Owner/scope.** Codex; reviewers researcher + ChatGPT. Read updated Issue #31,
+its supplemental comment, Issue #21 approvals and the required project/agent/source
+reports. Latest main after PR #30, base `5ae57fb`; dedicated branch
+`feature/exp3-exp5-raw-label-join`. Authorized bounded read-only join of the existing
+mapping to Exp3/5 raw columns, not label reconstruction, fitting or Exp8 access.
+
+**Reference / alternative.** Three preferred source options (compact attachment,
+original all-wells and supplemental exact supervised-classification workbook) were
+absent in the documented local source folder. Used the explicitly permitted existing
+historical Step4 Well_Metadata fallback. No home crawl, source import or unnecessary
+historical archaeology. Only that metadata sheet was parsed, not prediction/score
+sheets. Existing labels/roles were the reference; no spectral shape inferred chemistry.
+This does not independently certify the exact historical fitted y-vector lineage
+or wet-lab identities. The source's historical assertions remain assertions.
+
+**Implementation and actual result.** Small standard-library join module keyed by
+experiment and physical well, with approved analysis-only exclusions, frozen 12/6
+Exp5 role assignment, raw hash/header/grid/finite-176-point/presence checks and
+metadata claim/group/role checks. Original source labels/QC and eligibility flags
+not edited; no model-use flag used alone for inclusion. Read-only checks passed:
+**70 training / 35 acquisition / 18 holdout / 3 excluded**, 123 included columns
+matched, group counts 18/12/6, **zero mismatch categories**. Source bytes unchanged.
+No per-well report, private digest/path, label map or raw/feature arrays exported.
+Having passed the bounded join, source investigation stopped as instructed.
+
+**Commands and software evidence.** Exact redacted CLI, source-resolution wrapper,
+source description, limitations and full test commands in RAW_LABEL_JOIN_AUDIT.md.
+Actual join CLI exited 0. New suite command
+`PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m unittest discover -s tests -p test_raw_label_join.py -v`
+passed 7 synthetic tests. Full
+`PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m unittest discover -s tests -v`
+passed 109 tests (102 existing + 7 new). Initial missing-module failure preceded
+implementation. Negative tests cover schema/provenance/join/role failures and
+redaction using fabricated workbooks only. Python 3.12.14, no new dependency/seed.
+
+**Status / limits / next.** Observed file/metadata consistency, not new measured or
+simulated chemical results. No actual-spectrum model fitting, metrics, preprocessing
+or held-out outcome selection. No Exp8 workbook/row inspection. Labels are the
+researcher-endorsed provisional analytical reference, not newly physically verified.
+No original source, exclusion, formula, model protocol or scientific decision changes.
+Five safe code/test/doc files only for Draft review after staged privacy/notebook/
+whitespace checks; prior entries preserved. Next researcher + ChatGPT reviews the
+aggregate join and then separately decides on actual Exp3/Exp5 pilot fitting.
