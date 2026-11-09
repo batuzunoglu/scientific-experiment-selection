@@ -355,3 +355,19 @@ append-only notebook, secret/private-content exclusions and whitespace; commit,
 push feature branch and create reviewable PR. Final PR URL/CI outcomes will be
 reported after observation in the session/PR, not predicted here. Scientific
 uncertainty, prior negative results, label/QC claims and method limits unchanged.
+
+## Entry 013 — 2026-11-08 | ChatGPT review of GitHub PR #10
+
+**Question:** Does the published Phase A engineering pull request match the approved scope and preserve scientific safeguards, and can it be considered ready for a separate merge decision?
+
+**Evidence inspected directly on GitHub:** [PR #10](https://github.com/batuzunoglu/scientific-experiment-selection/pull/10) at original reviewed commit `0429de91a024585481e948ad557f64b3301ebcdb`. Confirmed exactly 15 changed paths: three implementation modules, one measured-spectrum smoke script, two test files, and nine methods/review/notebook documentation files. PR patches include no raw workbook, `data/private/**` file, per-well output or private candidate manifest. Documentation refers to local paths but does not embed their contents. No obvious credential/token patterns appeared in the changed text. Read the full Python source and relevant review/decision/notebook content.
+
+**CI observed:** [GitHub Actions run 42537656978](https://github.com/batuzunoglu/scientific-experiment-selection/actions/runs/42537656978) passed the append-only notebook check and unit test step; the job log explicitly reports `Ran 32 tests ... OK`. This checks the repository's software behavior using synthetic fixtures; it does not independently reproduce the historical laboratory measurements or certify reconstruction of Exp5 preparations.
+
+**Review finding:** The implementation is appropriately scoped as **provisional, label-independent Phase A infrastructure**: 176-channel raw reader, deterministic raw/area/Compact8 branches, evidence-preserving candidate manifest and explicit training-authorization false flags. The Exp3/Exp5 measured-spectra smoke success and hashes are supported by prior local execution reports; the reviewer did not rerun those raw-file operations in GitHub. Exp8 is still a locked candidate holdout; no ML model training, performance estimate, automatic chemical-label adjudication or superiority claim is included.
+
+**Known limitations remain visible:** strict Compact8 negative-weight and ratio thresholds; absolute epsilon and signed-area near-cancellation policy not established for future spectra; non-atomic output files; provisional identity/concentration claims and unknown independent preparation groups; Exp5 reconstructed and historically exposed. These do not block publishing this **versioned engineering research baseline**, but they block a claim of validated chemistry or automatic permission to train predictive models. The versioned notebook and PR reviews are the audit trail for later research reporting.
+
+**Decision/status:** ChatGPT's scientific/code **review supports merging this scoped Phase A PR after the researcher's separate approval**, contingent on final PR CI passing after this documentation entry. This is **not** an authorization to perform the merge, train models, change labels, expose Exp8, or publish private data. No computation, model training or experimental run was performed as part of this entry.
+
+**Next decision:** merge approval, then an independent scientific review of candidate well eligibility, chemistry provenance, preparation-group-aware CV and a prospective untouched evaluation protocol before any supervised ML fitting.
