@@ -457,3 +457,11 @@ scientific eligibility/metric protocol sign-off and separate training approval.
 - Open gates: eligibility and nominal-label permission, history of other review flags, exact estimator/weighting details, scientific validity of claims, separate authorization to access private/local Exp3 metadata and fit models. Never silently set source verification or training flags true.
 - Exp5 remains historically exposed/reconstructed, Exp8 locked, no datasets/private manifests/spectra/model output accessed. Only GitHub project docs and issue discussion inspected.
 - Research notebook: Entry 024 records alternatives, proposed choices, no-execution status and limitations. Next owner: researcher reviews Issue #21 before delegating any real-data work.
+
+## Checkpoint 026 — 2026-11-08 limited researcher authorization of Exp3 provisional-label policy
+
+- **Approval:** Researcher explicitly approved using historical PFAS/concentration **claims** for a clearly labeled prospective **provisional-label pilot**; do not claim physical-chemical label verification. [Issue #21 approval](https://github.com/batuzunoglu/scientific-experiment-selection/issues/21#issuecomment-6730714986), Decision D-020, Notebook Entry 025.
+- **Immediate task:** Separate Codex-owned, private/local **Exp3 candidate metadata-only eligibility audit** for 70 provisional primary well candidates; 18 nominal condition groups with D6/D7 primary exclusions, but original QC/provenance and D5/D8 retained. Publish only aggregate/redacted findings.
+- **Hard boundaries:** No raw spectroscopic measurements, `data/private/**` files in Git, Exp5/Exp8 access, spectrum-derived model fits, label/authorization flag promotion, automatic new exclusion or change in science. B4/B5/C9 historical concerns should be reported without silent reclassification.
+- **Outstanding:** Exact 70-well eligibility, class/condition/group/claim and QC reconciliation, model and metric freeze, standalone permission to fit actual data. D-019 LOGO and A/B/C/D features unchanged.
+- **Status:** Documentation-only record of explicit limited approval; no audit or model execution by ChatGPT. Codex to perform bounded audit and hand off results before any model training.
