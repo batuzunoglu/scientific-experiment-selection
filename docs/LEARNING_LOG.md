@@ -113,3 +113,14 @@ the method. Here the ratio was 1 for all 168 spectra and no band intensities
 were negative. Current denominators exceed numerical epsilon by many orders of
 magnitude, but future near-zero/noisy data and thresholds still need review.
 Notebook Entry 010 and PHASE_A_REVIEW.md record exact observations/commands.
+
+## 2026-11-09 — Selecting before measuring
+
+Uncertainty based on a not-yet-measured spectrum is unavailable for a true
+next-measurement decision unless a separately validated surrogate or explicitly
+costed screening step supplies it. Random and nominal factor-level coverage can
+work on prospective settings alone. The synthetic MVP therefore blocks uncertainty
+execution, keeps hidden outcomes in the oracle, and counts complete shared-solution
+conditions rather than individual technical wells as acquisitions. A fixed separate
+holdout is evaluator-only; changing its labels must not alter actions. Fake-adapter
+curves test information flow and accounting, not chemical accuracy or policy superiority.
