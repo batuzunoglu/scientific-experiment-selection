@@ -416,3 +416,15 @@ uncertainty, prior negative results, label/QC claims and method limits unchanged
 **Actions actually taken.** Posted the reviewed findings and qualifications in [Issue #13 comment 6729448802](https://github.com/batuzunoglu/scientific-experiment-selection/issues/13#issuecomment-6729448802); this entry documents the rationale. No code, raw workbooks, private manifests, model artifacts or data splits were changed.
 
 **Next:** Resume Phase B *scientific protocol discussion* with the researcher; only after sign-off delegate a bounded implementation issue to a named coding agent.
+
+## Entry 017 — 2026-11-08 | Exp3 D6/D7 primary analysis exclusion with sensitivity follow-up
+
+**Researcher-approved decision.** The researcher explicitly accepted the recommendation to **exclude physical Exp3 wells D6 and D7 from the primary supervised ML analysis** and preserve them for a separate sensitivity analysis. Approval followed Antigravity's read-only Issue #13 audit and ChatGPT's scientific discussion. The decision is also recorded in [Issue #5 comment 6729516343](https://github.com/batuzunoglu/scientific-experiment-selection/issues/5#issuecomment-6729516343).
+
+**Evidence and alternatives.** `docs/WELL_MAP_DISCREPANCIES.md` identifies D6/D7 as historical `review-retain` PFHxA_10 wells with a preparation concern and available raw spectra. Options considered: include them in primary fitting despite uncertainty, delete/exclude entirely, or exclude from the primary analysis while preserving them for a transparent controlled sensitivity analysis. The third approach was approved because it reduces dependence on disputed preparation while showing whether their inclusion materially changes conclusions.
+
+**Interpretation and boundaries.** These are **physical well identifiers, not condition codes**. The Phase A manifest's 72 Exp3 individual-PFAS candidate wells remain historical candidate records; excluding these two would give a **provisional primary subset of 70** if no other exclusion applies. This decision **does not rewrite** source QC labels, candidate manifest, source hashes or raw data; does not verify remaining chemistry; and does **not** set `training_authorized=True` for any sample. Keep D6/D7 traceable and use a *frozen* primary procedure in the later +D6/D7 sensitivity comparison rather than tuning on them.
+
+**What was actually done.** Documented researcher approval and rationale in the Issue, notebook, decision register and handoff. **No code, source workbooks, split implementation, test result, new experimental measurement or model fit** was produced by this decision.
+
+**Next unresolved scientific decision.** Establish defensible grouping for technical replicates and any shared sample preparations before selecting grouped validation/CV. Current `experiment:condition` grouping is a proxy, not proof of physically independent preparations. Later decide full eligible-well list, task-specific six-class identity and known-identity concentration evaluation, Exp5's historically exposed status and Exp8's lock. No training authorization yet.
