@@ -170,3 +170,11 @@ Physical labels, eligibility/grouping, CV and training approval remain unresolve
 - **Reason/tradeoff:** Git branches/worktrees isolate writes; single-owner Issue tasks and compact handoffs preserve traceability without model-specific integration. Human review remains required; there is no automatic cross-agent synchronization or authorization.
 - **Pilot:** Codex retains core implementation responsibility; Antigravity starts read-only on a bounded review/test task. No GPU or local LLM required for this change.
 - **Scope and authorization:** Documentation-only workflow proposal. No training, raw-file access, new chemical approval, experimental execution, and no branch merge without researcher review. Research notebook Entry 015 records the reasoning.
+
+## D-016 — 2026-11-08 Exp3 D6/D7 primary-analysis eligibility
+
+- **Researcher-approved:** Exclude **physical Exp3 D6 and D7** (historical PFHxA_10 `review-retain` preparation concern) from the **primary Phase B model-development/validation pool**; preserve them in source records and use a separate, clearly labeled sensitivity comparison under the frozen primary protocol.
+- **Why:** Avoid relying on questioned preparation status for the main benchmark while transparently reporting the effect of including the two uncertain wells.
+- **Scope:** Do not rewrite historical QC flags, `candidate_included`, the raw files or the Phase A 72-well candidate manifest. The **provisional** primary pool is 70 of 72 Exp3 individual-PFAS candidates before other eligibility decisions. No well becomes training-authorized by this choice.
+- **Still pending:** independent preparation grouping, leakage-aware grouped CV design, remaining labels/eligibility, concentration calibration protocol, and final evaluation holdout approval. Exp5 is historically exposed/reconstructed; Exp8 locked.
+- **Evidence:** [Issue #5 comment 6729516343](https://github.com/batuzunoglu/scientific-experiment-selection/issues/5#issuecomment-6729516343), [Research Lab Notebook Entry 017](RESEARCH_LAB_NOTEBOOK.md). No implementation or model training authorized.
