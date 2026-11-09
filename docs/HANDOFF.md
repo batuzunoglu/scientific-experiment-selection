@@ -327,3 +327,19 @@ the provisional primary subset would have 70 rows before any other eligibility
 decisions. No code or model training, no label promotion and no split changed.
 Next scientific review: preparation-group/replicate evidence and grouped CV,
 then separate identity and known-identity concentration task protocols.
+
+## Checkpoint 019 — 2026-11-08 Exp3 shared-solution technical repeats confirmed
+
+Researcher stated that the four technical replicate wells for each Exp3
+PFAS × concentration condition all came from the same prepared solution and
+approved keeping them together in any Phase B train/validation split.
+Documented as scientific provenance (researcher first-hand report, not
+independently audited preparation record): Issue #5 comment 6729570912,
+Notebook Entry 018, Decision D-017. Existing technical_replicate_group is
+a suitable proposed Exp3 shared-solution identifier; original
+preparation_group=UNKNOWN and group_independence_verified=False remain
+conservative and unchanged. No assumption of independence between conditions
+or reuse for Exp5/8; no code, raw data, model training or CV implementation.
+Next: select scientific CV schemes for identity and known-identity regression,
+while recognizing at most 18 nominal shared-solution groups and D6/D7 primary
+exclusion.

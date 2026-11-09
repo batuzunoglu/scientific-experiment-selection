@@ -178,3 +178,11 @@ Physical labels, eligibility/grouping, CV and training approval remain unresolve
 - **Scope:** Do not rewrite historical QC flags, `candidate_included`, the raw files or the Phase A 72-well candidate manifest. The **provisional** primary pool is 70 of 72 Exp3 individual-PFAS candidates before other eligibility decisions. No well becomes training-authorized by this choice.
 - **Still pending:** independent preparation grouping, leakage-aware grouped CV design, remaining labels/eligibility, concentration calibration protocol, and final evaluation holdout approval. Exp5 is historically exposed/reconstructed; Exp8 locked.
 - **Evidence:** [Issue #5 comment 6729516343](https://github.com/batuzunoglu/scientific-experiment-selection/issues/5#issuecomment-6729516343), [Research Lab Notebook Entry 017](RESEARCH_LAB_NOTEBOOK.md). No implementation or model training authorized.
+
+## D-017 — 2026-11-08 Exp3 shared-solution replicate grouping
+
+- **Researcher-confirmed:** Each set of **four Exp3 technical replicate wells** within the same PFAS × concentration condition was taken from **one prepared solution**. This is direct researcher evidence of within-condition shared preparation, not an independently verified original preparation log.
+- **Approved mandatory split constraint:** keep the full `Exp3:PFAS_concentration` group **on one side only** of any future training/validation split. **No random well-level split.** The existing `technical_replicate_group` naming fits this Exp3 rule, without changing `preparation_group='UNKNOWN'` or `group_independence_verified=False`; do not generalize this to Exp5/Exp8 or claim independence between condition solutions/stocks.
+- **Why:** Avoid optimistic scores from the same prepared solution contributing correlated replicate wells to training and validation. Exp3 nominally has 18 condition-level groups; approved Exp3 D6/D7 exclusion remains in place for primary evaluation, followed by frozen-protocol sensitivity analysis.
+- **Limits:** This only sets the **grouping constraint**, not a complete CV scheme, training permission, chemical label verification, or independent batch performance claim.
+- **Evidence:** [Notebook Entry 018](RESEARCH_LAB_NOTEBOOK.md) and [Issue #5 comment 6729570912](https://github.com/batuzunoglu/scientific-experiment-selection/issues/5#issuecomment-6729570912).
