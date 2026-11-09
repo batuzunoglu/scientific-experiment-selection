@@ -496,3 +496,50 @@ without that environment; tests now use sys.executable. Clean copied public-only
 suite and full local suite both pass 57 tests. Audit code/results unchanged;
 private metadata not reopened. Entry 027 records failed run and correction.
 Same five-file PR scope; final CI outcome to be reported in PR handoff.
+
+
+## Checkpoint 029 — 2026-11-08 Issue #24 research-notebook gate merge-race fix
+
+- Date: 2026-11-08; Ubuntu/Linux; Python 3.12.14.
+- Owner: Antigravity; reviewers: ChatGPT + researcher ([Issue #24 comment 6731003297](https://github.com/batuzunoglu/scientific-experiment-selection/issues/24#issuecomment-6731003297)).
+- Branch: `fix/notebook-gate-merge-race` from clean `main` at `424ea813a9e96acd9085236054a903ffdb00a697`.
+- Problem and root cause: Post-`ready_for_review` CI runs `42550850591` (PR #22) and `42552272582` (PR #25) overlapped PR merge and failed at `scripts/check_research_notebook.py` with `ERROR: No new notebook content was appended.` because changed files were computed via `git diff origin/main...HEAD` (merge-base semantics) while baseline notebook content was read from `origin/main:docs/RESEARCH_LAB_NOTEBOOK.md` (already-merged branch tip).
+- Baseline strategy implemented:
+  1. Pass `GITHUB_BASE_SHA: ${{ github.event.pull_request.base.sha }}` in `.github/workflows/research-notebook.yml` (falling back to `origin/<GITHUB_BASE_REF or main>` when unset) and verify the target resolves to a valid commit object.
+  2. In `scripts/check_research_notebook.py` (`resolve_base_commit()`), inspect `HEAD` parents (`git rev-list --parents -n 1 HEAD`). When `HEAD` is a two-parent PR synthetic merge commit `(P1, P2)` (`refs/pull/<N>/merge`) with `P1` (`HEAD^1`) on the base history and `P2` (`HEAD^2`) as the PR head, use `P1` directly as the immutable pre-merge base commit. Unlike naive `git merge-base origin/main HEAD`, this remains invariant under both **squash merges** and **normal (`--no-ff`) merge commits** (where naive `merge-base` would return the feature tip `P2`).
+  3. For single-parent checkouts, compute `git merge-base <target_ref> HEAD`.
+  4. Use the single resolved `base_commit` for both `git diff --name-only --diff-filter=ACMR <base_commit> HEAD` and `git show <base_commit>:docs/RESEARCH_LAB_NOTEBOOK.md`.
+  5. Fail closed (exit code 2) if the baseline ref is missing/invalid or if `base_commit == HEAD`.
+- Tests and verification:
+  - Added 8 synthetic Git-history tests in `tests/test_research_notebook_gate.py` (13 total in module, all passing): unmerged PR pass, post-squash-merge `refs/pull/N/merge` pass, post-normal-merge `refs/pull/N/merge` pass, missing notebook entry fail, rewritten history fail, undated entry fail, plain docs pass without entry, and missing/identical baseline fail-closed.
+  - `PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. python3 -m unittest discover -s tests -p test_research_notebook_gate.py -v`: 13/13 passed in 0.217s (exit 0).
+  - `PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m unittest discover -s tests -v`: 65/65 passed in 0.751s (exit 0).
+  - `PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m scientific_experiment_selection doctor`: exit 0 (`scientific_runs: none`).
+  - `git diff --check`: exit 0.
+- Scope and boundaries:
+  - Five allowlisted files only: `.github/workflows/research-notebook.yml`, `scripts/check_research_notebook.py`, `tests/test_research_notebook_gate.py`, `docs/RESEARCH_LAB_NOTEBOOK.md` (Entry 028), and `docs/HANDOFF.md` (Checkpoint 029).
+  - No scientific code, dataset contracts, eligibility rules, labels, or decisions modified; no raw XLSX, `data/private/**`, or Exp5/Exp8 accessed; no models trained.
+- Next: Commit, push, and open a Draft PR against `main`; stop for ChatGPT review (do not mark ready-for-review or merge).
+
+
+## Checkpoint 030 — 2026-11-09 PR #26 review fix: bidirectional base-history check when main advances before checkout
+
+- Date: 2026-11-09; Ubuntu/Linux; Python 3.12.14.
+- Owner: Antigravity; reviewers: ChatGPT + researcher ([PR #26 review 5821207205](https://github.com/batuzunoglu/scientific-experiment-selection/pull/26#pullrequestreview-5821207205), [Issue #24 comment 6731187621](https://github.com/batuzunoglu/scientific-experiment-selection/issues/24#issuecomment-6731187621)).
+- Branch: `fix/notebook-gate-merge-race` (Draft [PR #26](https://github.com/batuzunoglu/scientific-experiment-selection/pull/26) against `main` at `424ea813a9e96acd9085236054a903ffdb00a697`).
+- Blocking edge case addressed:
+  - When `main` advances from event base `GITHUB_BASE_SHA = B` to `N` (with an unrelated notebook append) *before* `refs/pull/<N>/merge` is checked out as `M = (N, F)`, `is_ancestor(N, B)` is `False`. Previously, `resolve_base_commit()` fell back to `git merge-base(B, M) == B`, allowing `N`'s unrelated notebook append to satisfy the gate for a feature branch `F` that added research code without its own notebook entry.
+  - Updated `resolve_base_commit()` in `scripts/check_research_notebook.py` to select `P1` (`parents[0]`) when `P1` and `target_ref` belong to the same base-history line in **either direction** (`same_base_history(parents[0], target_ref)`), keeping `not is_ancestor(parents[1], parents[0])` and adding optional `GITHUB_HEAD_SHA` synthetic merge shape verification (also passed in `.github/workflows/research-notebook.yml`).
+- Synthetic Git-history regression tests added in `tests/test_research_notebook_gate.py`:
+  - `test_git_pr_merge_ref_rejects_missing_entry_when_main_advances_after_event_base`: verifies `resolve_base_commit() == N` and `check_repo() == 1` (`require an appended`) when `main` advances `B -> N` with Entry 002 and `F` adds research code without a notebook entry.
+  - `test_git_pr_merge_ref_passes_when_main_advances_after_event_base_and_pr_appends_own_entry`: positive counterpart where `F` genuinely appends dated Entry 003; verifies `resolve_base_commit() == N` and `check_repo() == 0`.
+  - Extended `test_git_missing_or_identical_base_fails_closed` to verify invalid `GITHUB_HEAD_SHA` fails closed with exit code 2.
+- Exact commands and observed outputs:
+  - `PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. python3 -m unittest discover -s tests -p test_research_notebook_gate.py -v`: 15/15 passed in 0.317s (exit 0).
+  - `PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m unittest discover -s tests -v`: 67/67 passed in 0.819s (exit 0).
+  - `PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m scientific_experiment_selection doctor`: exit 0 (`scientific_runs: none`).
+  - `git diff --check`: exit 0.
+- Scope and boundaries:
+  - Same five allowlisted files: `.github/workflows/research-notebook.yml`, `scripts/check_research_notebook.py`, `tests/test_research_notebook_gate.py`, `docs/RESEARCH_LAB_NOTEBOOK.md` (Entry 028 preserved, Entry 029 appended), and `docs/HANDOFF.md` (Checkpoint 029 preserved, Checkpoint 030 appended).
+  - No scientific code, dataset contracts, eligibility rules, labels, or decisions modified; no raw XLSX, `data/private/**`, or Exp5/Exp8 accessed; no ML models trained.
+- Next: Push updated commit to Draft PR #26, verify CI checks, and stop for ChatGPT review (keep Draft and unmerged).
