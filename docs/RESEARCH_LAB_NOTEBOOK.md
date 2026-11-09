@@ -977,3 +977,179 @@ aggregate join and then separately decides on actual Exp3/Exp5 pilot fitting.
 **Storage and safeguards.** Private archive: `/Scientific_Experiment_Selection/CeARS_All_Experiments_Exp3_to_Exp8_Well_Label_Master_original.xlsx`. Existing private reference: `/Scientific_Experiment_Selection/Exp3_Exp5_Pilot_Label_Map.xlsx`. New public register: `docs/EXPERIMENT_LABEL_MASTER_REGISTER.md`; no actual well-level master, private manifests or raw spectra included in the public repository. Archive may contain Exp8 labels but **Exp8 remains locked and unused**. `verification_status=Verified` belongs to the supplied workbook and is not a new independent physical verification claim.
 
 **Next step/permission.** Resume from the verified Exp3 70 / Exp5 acquisition 35 / Exp5 fixed holdout 18 pilot boundary. When the researcher later expressly authorizes actual-spectra fitting, supply/copy the verified private dataset into Codex's offline controlled workspace, validate file SHA-256, obey the frozen group split and provenance/exclusion rules, and do not commit source workbooks to public GitHub. No current model-training or public-release authorization is inferred from this archival request. Documentation-only Draft PR awaits review/merge.
+
+## Entry 034 — 2026-11-09 | Issue #34 controlled measured Exp3→Exp5 NES pilot
+
+**Owner/question/authority.** Codex; scientific and code reviewers researcher +
+ChatGPT. Read Issue #34 and latest Issue #21 approval 6752036077, AGENTS/workflow,
+charter, decisions, notebook/handoff, prior join audit and synthetic LR protocol.
+Dedicated branch `feature/measured-exp3-exp5-pilot`, latest main `8beacead30c6fd9e33ccaf7454f67fed46ddd0cb`
+after reviewed PR #32. Narrow authorization is actual local retrospective binary
+TFA/non-TFA fitting/evaluation on the previously validated Exp3/5 mapping, followed
+by safe Draft publication and review. No new scientific decision or merge authority.
+Entry 033 is reserved for the separate optional archival documentation PR; its
+branch/register is untouched. All earlier notebook entries remain byte-for-byte.
+
+**Design/alternatives/why.** Issue #34 explicitly requires a measured-specific
+loader/adapter rather than weakening synthetic guards or misnaming actual batches
+as synthetic. Reused the read-only raw/join checks, frozen feature functions,
+existing Random/DoE selectors and budget state. Extracted only numeric weighted LR
+fit and condition-score arithmetic for shared use, retaining synthetic wrapper
+validation. No spectral formula, split, reward, label, source flag, model setting,
+seed or exclusion changed. Required exact frozen 70/35/18 counts, 18/12/6 groups,
+three exclusions, source claims/checksums/grid and complete transforms before fit.
+No label archaeology or fresh reconstruction. Known audited Step4 metadata remains
+the existing local reference, distinct from independent physical verification.
+
+**Approved scientific recipe.** B Raw/Compact8 first; A raw/full, C area/full and D
+area/Compact8 subsequently, with identical roles and fixed parameters. Fresh weighted
+StandardScaler + L2 LR C=1, class_weight=None, lbfgs, max_iter=5000, tol=1e-4,
+random_state=0, fit_intercept=True, warm_start=False and existing exact dependency
+pins. Both fit steps use `N/(G*n_group)`, recomputed after each complete condition.
+Random seeds 7/11/19 and deterministic nominal DoE, checkpoints/cost 0–12, one
+whole condition per proxy unit. DoE novelty is within acquisition history only.
+Evaluator predicts on copied models, averages well correctness within condition
+then within class, and records BA/sensitivity/specificity privately. No evaluator
+feedback reaches selectors/scaling/weighting or method choice.
+
+**Observed actual measured-data execution, separate from synthetic tests.** Ran
+one local B-first then A/C/D protocol. CLI exit 0, 16 full trajectories and **208
+fresh converged fits**. All **123 included wells** transformed in each arm. No
+additional exclusions or source edits; before/after source hashes unchanged. Private
+artifact consistency checks passed: 13 checkpoints/run, 12 unique acquisitions,
+paired orders across representations, 70 initial and 105 final training wells,
+identical per-arm baseline/final metrics across policies and correct BA arithmetic.
+These are actual computations on previously measured spectra, not new physical
+experiments, a calibrated simulation or evidence of policy superiority. Complete
+measured trajectories and all models/predictions remain private; no real metric
+values, spectra, per-well map or source digest/location are published in this entry.
+
+**Exact commands / evidence.** Runnable source-variable CLI and full protocol are
+in MEASURED_PILOT.md. Actual local wrapper resolved only the two documented roots
+and exact prior Step4 relative location; no home search or Exp8 open. Private
+reproduction record retains resolved interpreter/argv/environment, hashes, code
+hashes, versions, authorization and input mapping. Private aggregate REVIEW.md
+contains every arm/policy/seed BA, sensitivity and specificity checkpoint without
+per-well exports; detailed JSON and 208 fitted checkpoints remain ignored locally.
+`PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m unittest discover -s tests -v`
+initially passed **121/121** after implementation (109 prior + 12 new). Final checks
+are appended below after observation. New tests use analytic synthetic spectra and
+fabricated workbook mappings only. Initial new-module import failure preceded code.
+A separate no-ML run exposed one test assertion invoking the optional adapter without
+dependencies; guarded that assertion on ML availability, leaving implementation and
+measured execution unchanged. Clean standard-library command
+`PYTHONDONTWRITEBYTECODE=1 /tmp/issue34-stdlib-env/bin/python -m unittest discover -s tests -v`
+passed **121 tests, 16 optional ML skips**. No actual data fitting in public CI.
+
+**Limitations/next decision.** Historical labels remain researcher-endorsed
+provisional analytical references, not independently proven physical solutions;
+source authorization/verification assertions remain unchanged and pilot authority
+is separate. Exp5 is historically exposed and retrospective, with only one positive
+evaluator condition; correlated technical wells do not give independent conditions
+or confidence/generalization guarantees. Budget is a proxy, not measured laboratory
+cost. No holdout tuning, uncertainty policy, LOGO task, Exp8 access or private GitHub
+upload. Trusted Python interfaces are not a hostile-code security sandbox. Publish
+safe code/synthetic tests/method docs only after final privacy, notebook and tests;
+open Draft and stop for ChatGPT/researcher review of both code and private aggregate
+trajectories. Do not merge or choose a best arm/seed/checkpoint using this holdout.
+
+**Final local verification.** Full optional-ML suite after the test-only portability
+correction: **121 tests in 19.257s, OK, exit 0**, no skips. Clean standard-library
+suite: **121 tests in 1.559s, OK (skipped=16), exit 0**. `git diff --check` exited 0;
+byte-prefix checks against origin/main confirmed all prior notebook/HANDOFF text
+preserved and `valid_append` accepted the dated entry. Measured implementation code
+is unchanged from the recorded actual execution. Eight-file public allowlist and
+staged privacy check precede feature-branch commit; GitHub notebook/ML CI outcomes
+will be reported only after observation. No merge.
+
+## Entry 035 — 2026-11-09 | Authorized sanitized measured-results publication
+
+**Question/owner/approval.** Owner Codex; reviewers researcher + ChatGPT. The latest
+researcher instruction on PR #35 (comment 6753082959) explicitly authorizes public
+aggregate measured performance so ChatGPT can review complete trajectories directly
+in GitHub. This supersedes Entry 034's private-only **score reporting** boundary;
+it does not authorize private inputs/outputs, new fitting, tuning, label changes,
+Exp8 access or merge. Read the full instruction and preceding scientific review.
+Continue the existing feature branch, preserving all prior notebook entries. PR
+#33's separate Entry 033 remains on its untouched branch; future authorized notebook
+reconciliation must retain both histories before any merge.
+
+**Alternatives/why.** Copying the private report wholesale was rejected by the
+instruction. Implemented an explicit deterministic allowlist exporter that reads
+only the completed aggregate REVIEW.md and run summary, constructs static arm/
+representation/policy/seed labels and numeric checkpoint scores, and discards all
+private prose and non-score fields. Published both human-readable
+MEASURED_PILOT_RESULTS.md and machine-readable aggregate JSON for review/reuse.
+Six decimal places match the original report; the full-precision run summary is
+rounded to that precision for comparison, without rerunning any model. DoE's
+runner name `coverage` is displayed as DoE/nominal coverage; deterministic seed is
+JSON null. Selected-condition sequences are intentionally omitted as unnecessary.
+No private file was copied wholesale; no requested aggregate artifact was omitted.
+
+**Observed measured results (existing run, not synthetic).** Published all **16
+trajectories × 13 checkpoints**, with acquired condition count, cumulative proxy
+cost, BA, sensitivity and specificity. All B and D checkpoints have BA 0.500000,
+sensitivity 0.000000 and specificity 1.000000. A's common baseline/final BA is
+0.933333/0.833333; C's is 0.900000/0.600000. All intermediate fluctuations and all
+three Random seeds plus DoE are retained in the result files. These are descriptive
+retrospective measured Exp3→Exp5 model results, not new physical experiments or
+independent validation. No best arm/policy/seed/checkpoint selected or model retuned.
+
+**Validation and runnable record.** The exporter verifies each of **624 metric
+values** against both private originals; exit 0 for export and subsequent --check,
+reporting 16 trajectories / 208 checkpoints / status verified. It fails closed on
+missing/duplicate/unknown trajectories, invalid curve keys, scores outside [0,1],
+nonfinite or boolean scores, mismatched/missing checkpoints/costs, BA arithmetic
+inconsistency (six-decimal tolerance), source/report disagreement and per-arm
+baseline/final inconsistency. Source/output aliases and hardlinks are rejected;
+private source hashes are compared internally, never published. Independent byte
+integrity checks cover the entire existing private run directory before/after.
+Exact local source-variable commands (values remain outside Git):
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m scientific_experiment_selection.pilot_results_export --review "$PRIVATE_REVIEW" --summary "$PRIVATE_SUMMARY" --markdown docs/MEASURED_PILOT_RESULTS.md --json docs/results/exp3-exp5-nes-2026-11-09-aggregate.json
+PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m scientific_experiment_selection.pilot_results_export --review "$PRIVATE_REVIEW" --summary "$PRIVATE_SUMMARY" --markdown docs/MEASURED_PILOT_RESULTS.md --json docs/results/exp3-exp5-nes-2026-11-09-aggregate.json --check
+PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m unittest discover -s tests -p test_pilot_results_export.py -v
+PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m unittest discover -s tests -v
+PYTHONDONTWRITEBYTECODE=1 /tmp/issue34-stdlib-env/bin/python -m unittest discover -s tests -v
+git diff --check
+PYTHONDONTWRITEBYTECODE=1 .venv/bin/python scripts/check_research_notebook.py
+```
+
+**Synthetic software tests.** Six new tests use fabricated aggregate trajectories
+and privacy canaries only, not measured scores or private inputs. Initial missing-
+module failure preceded implementation; the first parser run caught the Markdown
+separator being mistaken for a numeric row. A separate failing hardlink test led
+to rejecting inode aliases before writing. All six targeted tests subsequently
+passed. Public Actions runs only synthetic software tests, never private-source
+export or measured fitting. Final full-suite and publication checks follow below
+once observed.
+
+**Limitations/next.** Labels remain provisional; the 70/35/18 fixed eligibility and
+condition-equal scoring are unchanged. Exp5 is historically exposed; its sole
+positive evaluator condition TFA_10 and technical replicates do not establish
+independent positive preparations, confidence or generalization. Cost is one proxy
+unit per whole prepared condition, not measured money/time. Random and nominal DoE
+are not model-adaptive or uncertainty selectors. Numerical outcome review is still
+pending, including negative/no-improvement results. Raw spectra, well-level labels/
+predictions, feature matrices, fitted models, local paths and private hashes remain
+excluded. Stop at Draft PR #35 for ChatGPT review; no merge or scientific changes.
+
+**Final local verification.** Full pinned-ML suite: **127 tests in 19.063s, OK,
+exit 0** (121 prior + six exporter tests, no skips). Clean standard-library suite:
+**127 tests in 1.542s, OK (skipped=16), exit 0**. Final aggregate --check again
+verified all 208 checkpoints/624 scores; `git diff --check` exited 0. Final staged
+allowlist/privacy/source-integrity and appended-entry checks precede publication;
+CI results will be reported on the PR after observation. No measured refitting.
+
+## Entry 036 — 2026-11-09 | Independent numerical review, accepted retrospective record, and researcher pause
+
+**Researcher instruction and status.** The researcher authorized integrating Draft PR #33 first and then PR #35 with necessary accurate scientific notes, while explicitly choosing to **review the existing results before initiating any next research step**. This is **not** authorization for a new experiment, model rerun, reweighting, feature tuning, holdout-guided selection, or use of Exp8.
+
+**Independent review and evidence boundaries.** ChatGPT independently inspected the public measured-pilot results report and aggregate JSON at PR #35 head `606d0ad63e06d0b8ac851059ddf4253be0befc44`: all **16** A/B/C/D × Random(7/11/19)/DoE trajectories, all **208** cost checkpoints (0–12), and **624** reported BA/sensitivity/specificity values. Every Markdown row matched the corresponding published JSON value, without discrepancies; the BA identity and score bounds were coherent. Codex's private-original 624-value verification was reported, but the original private Ubuntu `REVIEW.md` and `summary.json` were **not independently accessed by ChatGPT**. GitHub CI at that reviewed head passed **127 software tests**, and notebook checks passed. These are retrospective **measured-spectra model calculations**, not new laboratory measurements.
+
+**Observed fixed evaluator BA and TFA sensitivity:** A Raw/Full `k=0: 0.933333 / 1.000000`, `k=12: 0.833333 / 0.666667`; C Area/Full `k=0: 0.900000 / 1.000000`, `k=12: 0.600000 / 0.333333`; B Raw/Compact8 and D Area/Compact8 show `BA=0.500000, sensitivity=0, specificity=1.000000` at **every checkpoint for every predeclared selection strategy**. Additional acquired conditions did not produce a reliable monotone improvement on the fixed evaluator. A/C intermediate values depend on acquisition ordering, but **Random vs DoE superiority is not established** and no winner or best budget was selected. DoE is nominal coverage of acquisition history only and is **not** model-adaptive active learning.
+
+**Critical interpretation limits.** Fixed evaluator has **one TFA-positive prepared condition** (three related technical wells) and five non-TFA conditions; one positive-well decision changes BA by about `1/6`. Historical Exp5 has already been explored; the evaluator is not pristine. Labels are researcher-endorsed provisional analyses, not independently confirmed physical preparation. Costs are proxy whole-condition units. The possible reasons for B/D failure or A/C degradation are **hypotheses** requiring separately authorized group-level diagnostics; they are not yet verified causes. The frozen results, including unfavorable runs, must be preserved without tuning to this evaluator.
+
+**Version-control integration and future boundary.** PR #33's archive note **Entry 033** must remain before PR #35's Entries 034–035; the corresponding HANDOFF checkpoints are renumbered to prevent duplicate headings. The PR #35 branch is reconciled by preserving original content and joining the current `main` documentation branch. This Entry 036 captures independent scientific assessment before the authorized merge; neither scripts nor private artifacts or training inputs are changed by this entry. After final CI and merged-commit checks, **pause here for researcher review**. Potential future work such as Exp3 preparation-level leave-one-group-out assessment or training-only Compact8 diagnosis requires a fresh explicit decision; **Exp8 remains locked**.

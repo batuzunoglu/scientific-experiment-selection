@@ -603,3 +603,78 @@ scientific review. No merge or actual-data model training authorized.
 Researcher uploaded `CeARS_All_Experiments_Exp3_to_Exp8_Well_Label_Master(1).xlsx` and requested preservation for later continuation, **not new fitting**. Source workbook (576 rows, 10 sheets, SHA-256 `68cf034687f167fac1c5b881c95a140e87b33cdf8b61ef75db839f1b4c556761`) saved unchanged to **private ChatGPT File Library** `/Scientific_Experiment_Selection/CeARS_All_Experiments_Exp3_to_Exp8_Well_Label_Master_original.xlsx`. Prior combined Exp3/5/8 file overlap 288/288 rows, 23 shared fields with 0 mismatches; existing Exp3/Exp5 pilot included label-map 123/123 with 0 mismatches in checked metadata. No independent chemical validation claim. Full workbook and per-well rows **not** put in public GitHub. `docs/EXPERIMENT_LABEL_MASTER_REGISTER.md` provides the safe locator and hash, and Notebook Entry 033 records the decision.
 
 Next step: researcher explicitly requests actual Exp3/Exp5 model fitting later; Codex must locally receive controlled source and match checksum, then follow fixed 70/35/18 and exclusions. **No training in this archive task; Exp8 locked.** Repo metadata is a locator only, not remote access to private ChatGPT Library. Documentation-only Draft PR pending scientific/repo review and merge consent.
+
+## Checkpoint 035 — 2026-11-09 Issue #34 local measured-data pilot
+
+Owner Codex; next owners researcher + ChatGPT for scientific/code review. Branch
+`feature/measured-exp3-exp5-pilot`, main base `8beacead30c6fd9e33ccaf7454f67fed46ddd0cb`
+after PR #32. Issue #34 and latest Issue #21 comment explicitly authorize this
+bounded local fitting; no general training, data release or merge authority.
+
+Implemented a separate measured scenario/loader/adapter and explicit consent CLI;
+synthetic guards, spectral methods and source records preserved. Shared numeric
+fit and metric helpers prevent two method implementations drifting. Existing
+Random seeds 7/11/19, DoE and unit budget accounting reused. No source-label
+reconstruction. Frozen 70/35/18 counts and 18/12/6 groups, existing exclusions,
+checksums and all representations checked before fitting. B first then A/C/D.
+
+Observed measured execution: exit 0, **16 complete trajectories / 208 converged
+fresh fits**, all 123 included spectra transform in each arm, source hashes
+unchanged. Private artifact verification confirms matched orders and all cost
+checkpoints, fit counts, training counts and metric consistency. Every measured
+curve/prediction/model, source/implementation digest and exact invocation stays in
+ignored private local storage; aggregate REVIEW.md is for private researcher review.
+No actual performance values in public docs/PR. Synthetic results and real measured
+execution are explicitly distinguished. MEASURED_PILOT.md has runnable commands and
+architecture/limits; Notebook Entry 034 is appended, earlier entries preserved.
+
+Tests: 12 new synthetic methods; initial full optional-ML suite 121 passed. Clean
+stdlib suite 121 run/16 optional skips passed after guarding a test-only optional
+adapter assertion; implementation was unchanged by that correction. Final observed
+verification follows below. Existing optional ML CI executes synthetic tests only.
+Public scope: four source files, one synthetic test file, MEASURED_PILOT.md and
+append-only notebook/HANDOFF (eight files). No raw/private data, results or models.
+Next: final privacy/append/whitespace checks, feature commit + Draft PR, CI report;
+stop for ChatGPT review, never merge. Unresolved: provisional physical labels,
+retrospective exposed Exp5, one positive evaluator condition, proxy acquisition cost
+and trusted-interface limitations. No Exp8, holdout tuning, LOGO or label changes.
+Final local verification: optional ML **121/121 passed** (19.257s); clean stdlib
+**121 run / 16 expected skips passed** (1.559s); whitespace and prior-text/dated-append
+checks passed. Actual-run implementation remains unchanged; only test portability
+and documentation followed execution. Await staged audit and Draft CI, not merge.
+
+## Checkpoint 036 — 2026-11-09 safe aggregate results for PR #35 review
+
+Owner Codex; next researcher + ChatGPT numerical/scientific review. Latest PR #35
+comment 6753082959 explicitly authorizes sanitized aggregate scores on GitHub;
+prior private-only score boundary is superseded only within this limited scope.
+Same feature branch; no model/spectral/label/split changes or new measured fitting.
+
+New allowlist exporter, six synthetic tests, complete measured-results Markdown
+and JSON, current methodology authorization note, appended Notebook Entry 035 and
+this checkpoint. All 16 trajectories / 13 checkpoints / 624 metric values checked
+against the unchanged private report and original summary at six decimals. Export
+and read-only --check exited 0. Baseline/final and all intermediate scores retained,
+including B/D zero sensitivity and full-spectrum score fluctuations; no winner
+selected. Synthetic tests are fabricated fixtures only, never actual measured data.
+
+Private report and all existing run artifacts stay unchanged and ignored. No raw
+spectra, well labels/predictions, model/scaler/feature artifacts, sensitive paths or
+source digests published. Exact commands and limits are in Entry 035/result docs.
+Remaining gates: final full tests/privacy/append checks and both CI checks, then
+stop at Draft PR #35 for ChatGPT review. Future PR #33/35 notebook reconciliation
+must preserve Entry 033/034/035 under separate merge authority; no branch merge now.
+Scientific limits: provisional chemistry, historically exposed Exp5, one positive
+evaluator condition, correlated technical wells and proxy acquisition costs.
+Final local observations: full optional ML **127 passed**, clean stdlib **127 run /
+16 expected skips**, six new exporter tests passed; repeated aggregate --check
+verified all 208 checkpoints / 624 metric values. Whitespace passed. Await staged
+privacy/private-integrity/append checks and Draft CI, then stop for review.
+
+## Checkpoint 037 — 2026-11-09 Independent measured-results review / pause pending researcher analysis
+
+PR #33 archives the private Exp3–Exp8 label master reference and Notebook Entry 033. PR #35's bounded real-data pilot (Entries 034–035) produced 16 full trajectories, 208 fresh reported fits and a **public sanitized aggregate** with 624 values; code + public Markdown/JSON numerical consistency independently reviewed. This checkpoint accompanies Notebook Entry 036 and preserves prior entries in order. No new training is performed by this merge operation.
+
+Key outcomes: Raw/Full A baseline/final BA `0.933333/0.833333`; Area/Full C `0.900000/0.600000`; Compact8 B and D `0.500000` throughout with zero TFA sensitivity. New acquisitions did not reliably increase fixed Exp5 performance. Random and nominal-coverage DoE are non-model-adaptive, no superiority claim. Results are retrospective, with only one independent positive evaluator condition, prior Exp5 exposure, provisional labels and proxy costs; no re-tuning from the fixed evaluator.
+
+**Current task ends at merge and preservation.** Researcher wants to inspect the existing results before any next steps. Do not start new feature work, model reruns, Exp8 access, active learning, interpretation as chemical truth, or publishing private inputs absent a new researcher instruction. Private original remains outside public GitHub; generated public aggregate remains versioned. PR #35 merge/CI must be verified after integration.

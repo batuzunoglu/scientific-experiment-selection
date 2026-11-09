@@ -1,0 +1,1591 @@
+{
+  "schema_version": 1,
+  "data_kind": "retrospective measured Exp3→Exp5 model results",
+  "decimal_places": 6,
+  "trajectories": [
+    {
+      "arm": "B",
+      "representation": "Raw/Compact8",
+      "policy": "random",
+      "seed": 7,
+      "checkpoints": [
+        {
+          "acquired_conditions": 0,
+          "spent_proxy_cost": 0,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 1,
+          "spent_proxy_cost": 1,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 2,
+          "spent_proxy_cost": 2,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 3,
+          "spent_proxy_cost": 3,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 4,
+          "spent_proxy_cost": 4,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 5,
+          "spent_proxy_cost": 5,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 6,
+          "spent_proxy_cost": 6,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 7,
+          "spent_proxy_cost": 7,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 8,
+          "spent_proxy_cost": 8,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 9,
+          "spent_proxy_cost": 9,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 10,
+          "spent_proxy_cost": 10,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 11,
+          "spent_proxy_cost": 11,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 12,
+          "spent_proxy_cost": 12,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        }
+      ]
+    },
+    {
+      "arm": "B",
+      "representation": "Raw/Compact8",
+      "policy": "random",
+      "seed": 11,
+      "checkpoints": [
+        {
+          "acquired_conditions": 0,
+          "spent_proxy_cost": 0,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 1,
+          "spent_proxy_cost": 1,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 2,
+          "spent_proxy_cost": 2,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 3,
+          "spent_proxy_cost": 3,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 4,
+          "spent_proxy_cost": 4,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 5,
+          "spent_proxy_cost": 5,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 6,
+          "spent_proxy_cost": 6,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 7,
+          "spent_proxy_cost": 7,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 8,
+          "spent_proxy_cost": 8,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 9,
+          "spent_proxy_cost": 9,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 10,
+          "spent_proxy_cost": 10,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 11,
+          "spent_proxy_cost": 11,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 12,
+          "spent_proxy_cost": 12,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        }
+      ]
+    },
+    {
+      "arm": "B",
+      "representation": "Raw/Compact8",
+      "policy": "random",
+      "seed": 19,
+      "checkpoints": [
+        {
+          "acquired_conditions": 0,
+          "spent_proxy_cost": 0,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 1,
+          "spent_proxy_cost": 1,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 2,
+          "spent_proxy_cost": 2,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 3,
+          "spent_proxy_cost": 3,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 4,
+          "spent_proxy_cost": 4,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 5,
+          "spent_proxy_cost": 5,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 6,
+          "spent_proxy_cost": 6,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 7,
+          "spent_proxy_cost": 7,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 8,
+          "spent_proxy_cost": 8,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 9,
+          "spent_proxy_cost": 9,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 10,
+          "spent_proxy_cost": 10,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 11,
+          "spent_proxy_cost": 11,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 12,
+          "spent_proxy_cost": 12,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        }
+      ]
+    },
+    {
+      "arm": "B",
+      "representation": "Raw/Compact8",
+      "policy": "doe",
+      "seed": null,
+      "checkpoints": [
+        {
+          "acquired_conditions": 0,
+          "spent_proxy_cost": 0,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 1,
+          "spent_proxy_cost": 1,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 2,
+          "spent_proxy_cost": 2,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 3,
+          "spent_proxy_cost": 3,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 4,
+          "spent_proxy_cost": 4,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 5,
+          "spent_proxy_cost": 5,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 6,
+          "spent_proxy_cost": 6,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 7,
+          "spent_proxy_cost": 7,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 8,
+          "spent_proxy_cost": 8,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 9,
+          "spent_proxy_cost": 9,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 10,
+          "spent_proxy_cost": 10,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 11,
+          "spent_proxy_cost": 11,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 12,
+          "spent_proxy_cost": 12,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        }
+      ]
+    },
+    {
+      "arm": "A",
+      "representation": "Raw/Full",
+      "policy": "random",
+      "seed": 7,
+      "checkpoints": [
+        {
+          "acquired_conditions": 0,
+          "spent_proxy_cost": 0,
+          "balanced_accuracy": 0.933333,
+          "sensitivity": 1.0,
+          "specificity": 0.866667
+        },
+        {
+          "acquired_conditions": 1,
+          "spent_proxy_cost": 1,
+          "balanced_accuracy": 0.966667,
+          "sensitivity": 1.0,
+          "specificity": 0.933333
+        },
+        {
+          "acquired_conditions": 2,
+          "spent_proxy_cost": 2,
+          "balanced_accuracy": 0.833333,
+          "sensitivity": 0.666667,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 3,
+          "spent_proxy_cost": 3,
+          "balanced_accuracy": 0.833333,
+          "sensitivity": 0.666667,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 4,
+          "spent_proxy_cost": 4,
+          "balanced_accuracy": 0.833333,
+          "sensitivity": 0.666667,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 5,
+          "spent_proxy_cost": 5,
+          "balanced_accuracy": 0.833333,
+          "sensitivity": 0.666667,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 6,
+          "spent_proxy_cost": 6,
+          "balanced_accuracy": 0.933333,
+          "sensitivity": 1.0,
+          "specificity": 0.866667
+        },
+        {
+          "acquired_conditions": 7,
+          "spent_proxy_cost": 7,
+          "balanced_accuracy": 0.766667,
+          "sensitivity": 0.666667,
+          "specificity": 0.866667
+        },
+        {
+          "acquired_conditions": 8,
+          "spent_proxy_cost": 8,
+          "balanced_accuracy": 0.766667,
+          "sensitivity": 0.666667,
+          "specificity": 0.866667
+        },
+        {
+          "acquired_conditions": 9,
+          "spent_proxy_cost": 9,
+          "balanced_accuracy": 0.766667,
+          "sensitivity": 0.666667,
+          "specificity": 0.866667
+        },
+        {
+          "acquired_conditions": 10,
+          "spent_proxy_cost": 10,
+          "balanced_accuracy": 0.766667,
+          "sensitivity": 0.666667,
+          "specificity": 0.866667
+        },
+        {
+          "acquired_conditions": 11,
+          "spent_proxy_cost": 11,
+          "balanced_accuracy": 0.833333,
+          "sensitivity": 0.666667,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 12,
+          "spent_proxy_cost": 12,
+          "balanced_accuracy": 0.833333,
+          "sensitivity": 0.666667,
+          "specificity": 1.0
+        }
+      ]
+    },
+    {
+      "arm": "A",
+      "representation": "Raw/Full",
+      "policy": "random",
+      "seed": 11,
+      "checkpoints": [
+        {
+          "acquired_conditions": 0,
+          "spent_proxy_cost": 0,
+          "balanced_accuracy": 0.933333,
+          "sensitivity": 1.0,
+          "specificity": 0.866667
+        },
+        {
+          "acquired_conditions": 1,
+          "spent_proxy_cost": 1,
+          "balanced_accuracy": 0.933333,
+          "sensitivity": 1.0,
+          "specificity": 0.866667
+        },
+        {
+          "acquired_conditions": 2,
+          "spent_proxy_cost": 2,
+          "balanced_accuracy": 0.766667,
+          "sensitivity": 0.666667,
+          "specificity": 0.866667
+        },
+        {
+          "acquired_conditions": 3,
+          "spent_proxy_cost": 3,
+          "balanced_accuracy": 0.766667,
+          "sensitivity": 0.666667,
+          "specificity": 0.866667
+        },
+        {
+          "acquired_conditions": 4,
+          "spent_proxy_cost": 4,
+          "balanced_accuracy": 0.766667,
+          "sensitivity": 0.666667,
+          "specificity": 0.866667
+        },
+        {
+          "acquired_conditions": 5,
+          "spent_proxy_cost": 5,
+          "balanced_accuracy": 0.766667,
+          "sensitivity": 0.666667,
+          "specificity": 0.866667
+        },
+        {
+          "acquired_conditions": 6,
+          "spent_proxy_cost": 6,
+          "balanced_accuracy": 0.766667,
+          "sensitivity": 0.666667,
+          "specificity": 0.866667
+        },
+        {
+          "acquired_conditions": 7,
+          "spent_proxy_cost": 7,
+          "balanced_accuracy": 0.766667,
+          "sensitivity": 0.666667,
+          "specificity": 0.866667
+        },
+        {
+          "acquired_conditions": 8,
+          "spent_proxy_cost": 8,
+          "balanced_accuracy": 0.833333,
+          "sensitivity": 0.666667,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 9,
+          "spent_proxy_cost": 9,
+          "balanced_accuracy": 0.833333,
+          "sensitivity": 0.666667,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 10,
+          "spent_proxy_cost": 10,
+          "balanced_accuracy": 0.833333,
+          "sensitivity": 0.666667,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 11,
+          "spent_proxy_cost": 11,
+          "balanced_accuracy": 0.766667,
+          "sensitivity": 0.666667,
+          "specificity": 0.866667
+        },
+        {
+          "acquired_conditions": 12,
+          "spent_proxy_cost": 12,
+          "balanced_accuracy": 0.833333,
+          "sensitivity": 0.666667,
+          "specificity": 1.0
+        }
+      ]
+    },
+    {
+      "arm": "A",
+      "representation": "Raw/Full",
+      "policy": "random",
+      "seed": 19,
+      "checkpoints": [
+        {
+          "acquired_conditions": 0,
+          "spent_proxy_cost": 0,
+          "balanced_accuracy": 0.933333,
+          "sensitivity": 1.0,
+          "specificity": 0.866667
+        },
+        {
+          "acquired_conditions": 1,
+          "spent_proxy_cost": 1,
+          "balanced_accuracy": 0.933333,
+          "sensitivity": 1.0,
+          "specificity": 0.866667
+        },
+        {
+          "acquired_conditions": 2,
+          "spent_proxy_cost": 2,
+          "balanced_accuracy": 0.933333,
+          "sensitivity": 1.0,
+          "specificity": 0.866667
+        },
+        {
+          "acquired_conditions": 3,
+          "spent_proxy_cost": 3,
+          "balanced_accuracy": 0.766667,
+          "sensitivity": 0.666667,
+          "specificity": 0.866667
+        },
+        {
+          "acquired_conditions": 4,
+          "spent_proxy_cost": 4,
+          "balanced_accuracy": 0.833333,
+          "sensitivity": 0.666667,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 5,
+          "spent_proxy_cost": 5,
+          "balanced_accuracy": 0.833333,
+          "sensitivity": 0.666667,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 6,
+          "spent_proxy_cost": 6,
+          "balanced_accuracy": 0.833333,
+          "sensitivity": 0.666667,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 7,
+          "spent_proxy_cost": 7,
+          "balanced_accuracy": 0.833333,
+          "sensitivity": 0.666667,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 8,
+          "spent_proxy_cost": 8,
+          "balanced_accuracy": 0.833333,
+          "sensitivity": 0.666667,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 9,
+          "spent_proxy_cost": 9,
+          "balanced_accuracy": 0.833333,
+          "sensitivity": 0.666667,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 10,
+          "spent_proxy_cost": 10,
+          "balanced_accuracy": 0.833333,
+          "sensitivity": 0.666667,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 11,
+          "spent_proxy_cost": 11,
+          "balanced_accuracy": 0.833333,
+          "sensitivity": 0.666667,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 12,
+          "spent_proxy_cost": 12,
+          "balanced_accuracy": 0.833333,
+          "sensitivity": 0.666667,
+          "specificity": 1.0
+        }
+      ]
+    },
+    {
+      "arm": "A",
+      "representation": "Raw/Full",
+      "policy": "doe",
+      "seed": null,
+      "checkpoints": [
+        {
+          "acquired_conditions": 0,
+          "spent_proxy_cost": 0,
+          "balanced_accuracy": 0.933333,
+          "sensitivity": 1.0,
+          "specificity": 0.866667
+        },
+        {
+          "acquired_conditions": 1,
+          "spent_proxy_cost": 1,
+          "balanced_accuracy": 0.933333,
+          "sensitivity": 1.0,
+          "specificity": 0.866667
+        },
+        {
+          "acquired_conditions": 2,
+          "spent_proxy_cost": 2,
+          "balanced_accuracy": 0.833333,
+          "sensitivity": 0.666667,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 3,
+          "spent_proxy_cost": 3,
+          "balanced_accuracy": 0.833333,
+          "sensitivity": 0.666667,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 4,
+          "spent_proxy_cost": 4,
+          "balanced_accuracy": 0.833333,
+          "sensitivity": 0.666667,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 5,
+          "spent_proxy_cost": 5,
+          "balanced_accuracy": 0.833333,
+          "sensitivity": 0.666667,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 6,
+          "spent_proxy_cost": 6,
+          "balanced_accuracy": 0.833333,
+          "sensitivity": 0.666667,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 7,
+          "spent_proxy_cost": 7,
+          "balanced_accuracy": 0.833333,
+          "sensitivity": 0.666667,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 8,
+          "spent_proxy_cost": 8,
+          "balanced_accuracy": 0.833333,
+          "sensitivity": 0.666667,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 9,
+          "spent_proxy_cost": 9,
+          "balanced_accuracy": 0.833333,
+          "sensitivity": 0.666667,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 10,
+          "spent_proxy_cost": 10,
+          "balanced_accuracy": 0.833333,
+          "sensitivity": 0.666667,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 11,
+          "spent_proxy_cost": 11,
+          "balanced_accuracy": 0.833333,
+          "sensitivity": 0.666667,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 12,
+          "spent_proxy_cost": 12,
+          "balanced_accuracy": 0.833333,
+          "sensitivity": 0.666667,
+          "specificity": 1.0
+        }
+      ]
+    },
+    {
+      "arm": "C",
+      "representation": "Area/Full",
+      "policy": "random",
+      "seed": 7,
+      "checkpoints": [
+        {
+          "acquired_conditions": 0,
+          "spent_proxy_cost": 0,
+          "balanced_accuracy": 0.9,
+          "sensitivity": 1.0,
+          "specificity": 0.8
+        },
+        {
+          "acquired_conditions": 1,
+          "spent_proxy_cost": 1,
+          "balanced_accuracy": 0.9,
+          "sensitivity": 1.0,
+          "specificity": 0.8
+        },
+        {
+          "acquired_conditions": 2,
+          "spent_proxy_cost": 2,
+          "balanced_accuracy": 0.6,
+          "sensitivity": 0.333333,
+          "specificity": 0.866667
+        },
+        {
+          "acquired_conditions": 3,
+          "spent_proxy_cost": 3,
+          "balanced_accuracy": 0.433333,
+          "sensitivity": 0.0,
+          "specificity": 0.866667
+        },
+        {
+          "acquired_conditions": 4,
+          "spent_proxy_cost": 4,
+          "balanced_accuracy": 0.433333,
+          "sensitivity": 0.0,
+          "specificity": 0.866667
+        },
+        {
+          "acquired_conditions": 5,
+          "spent_proxy_cost": 5,
+          "balanced_accuracy": 0.466667,
+          "sensitivity": 0.0,
+          "specificity": 0.933333
+        },
+        {
+          "acquired_conditions": 6,
+          "spent_proxy_cost": 6,
+          "balanced_accuracy": 0.766667,
+          "sensitivity": 0.666667,
+          "specificity": 0.866667
+        },
+        {
+          "acquired_conditions": 7,
+          "spent_proxy_cost": 7,
+          "balanced_accuracy": 0.6,
+          "sensitivity": 0.333333,
+          "specificity": 0.866667
+        },
+        {
+          "acquired_conditions": 8,
+          "spent_proxy_cost": 8,
+          "balanced_accuracy": 0.6,
+          "sensitivity": 0.333333,
+          "specificity": 0.866667
+        },
+        {
+          "acquired_conditions": 9,
+          "spent_proxy_cost": 9,
+          "balanced_accuracy": 0.6,
+          "sensitivity": 0.333333,
+          "specificity": 0.866667
+        },
+        {
+          "acquired_conditions": 10,
+          "spent_proxy_cost": 10,
+          "balanced_accuracy": 0.766667,
+          "sensitivity": 0.666667,
+          "specificity": 0.866667
+        },
+        {
+          "acquired_conditions": 11,
+          "spent_proxy_cost": 11,
+          "balanced_accuracy": 0.6,
+          "sensitivity": 0.333333,
+          "specificity": 0.866667
+        },
+        {
+          "acquired_conditions": 12,
+          "spent_proxy_cost": 12,
+          "balanced_accuracy": 0.6,
+          "sensitivity": 0.333333,
+          "specificity": 0.866667
+        }
+      ]
+    },
+    {
+      "arm": "C",
+      "representation": "Area/Full",
+      "policy": "random",
+      "seed": 11,
+      "checkpoints": [
+        {
+          "acquired_conditions": 0,
+          "spent_proxy_cost": 0,
+          "balanced_accuracy": 0.9,
+          "sensitivity": 1.0,
+          "specificity": 0.8
+        },
+        {
+          "acquired_conditions": 1,
+          "spent_proxy_cost": 1,
+          "balanced_accuracy": 0.9,
+          "sensitivity": 1.0,
+          "specificity": 0.8
+        },
+        {
+          "acquired_conditions": 2,
+          "spent_proxy_cost": 2,
+          "balanced_accuracy": 0.733333,
+          "sensitivity": 0.666667,
+          "specificity": 0.8
+        },
+        {
+          "acquired_conditions": 3,
+          "spent_proxy_cost": 3,
+          "balanced_accuracy": 0.733333,
+          "sensitivity": 0.666667,
+          "specificity": 0.8
+        },
+        {
+          "acquired_conditions": 4,
+          "spent_proxy_cost": 4,
+          "balanced_accuracy": 0.9,
+          "sensitivity": 1.0,
+          "specificity": 0.8
+        },
+        {
+          "acquired_conditions": 5,
+          "spent_proxy_cost": 5,
+          "balanced_accuracy": 0.766667,
+          "sensitivity": 0.666667,
+          "specificity": 0.866667
+        },
+        {
+          "acquired_conditions": 6,
+          "spent_proxy_cost": 6,
+          "balanced_accuracy": 0.766667,
+          "sensitivity": 0.666667,
+          "specificity": 0.866667
+        },
+        {
+          "acquired_conditions": 7,
+          "spent_proxy_cost": 7,
+          "balanced_accuracy": 0.766667,
+          "sensitivity": 0.666667,
+          "specificity": 0.866667
+        },
+        {
+          "acquired_conditions": 8,
+          "spent_proxy_cost": 8,
+          "balanced_accuracy": 0.766667,
+          "sensitivity": 0.666667,
+          "specificity": 0.866667
+        },
+        {
+          "acquired_conditions": 9,
+          "spent_proxy_cost": 9,
+          "balanced_accuracy": 0.633333,
+          "sensitivity": 0.333333,
+          "specificity": 0.933333
+        },
+        {
+          "acquired_conditions": 10,
+          "spent_proxy_cost": 10,
+          "balanced_accuracy": 0.633333,
+          "sensitivity": 0.333333,
+          "specificity": 0.933333
+        },
+        {
+          "acquired_conditions": 11,
+          "spent_proxy_cost": 11,
+          "balanced_accuracy": 0.766667,
+          "sensitivity": 0.666667,
+          "specificity": 0.866667
+        },
+        {
+          "acquired_conditions": 12,
+          "spent_proxy_cost": 12,
+          "balanced_accuracy": 0.6,
+          "sensitivity": 0.333333,
+          "specificity": 0.866667
+        }
+      ]
+    },
+    {
+      "arm": "C",
+      "representation": "Area/Full",
+      "policy": "random",
+      "seed": 19,
+      "checkpoints": [
+        {
+          "acquired_conditions": 0,
+          "spent_proxy_cost": 0,
+          "balanced_accuracy": 0.9,
+          "sensitivity": 1.0,
+          "specificity": 0.8
+        },
+        {
+          "acquired_conditions": 1,
+          "spent_proxy_cost": 1,
+          "balanced_accuracy": 0.9,
+          "sensitivity": 1.0,
+          "specificity": 0.8
+        },
+        {
+          "acquired_conditions": 2,
+          "spent_proxy_cost": 2,
+          "balanced_accuracy": 0.9,
+          "sensitivity": 1.0,
+          "specificity": 0.8
+        },
+        {
+          "acquired_conditions": 3,
+          "spent_proxy_cost": 3,
+          "balanced_accuracy": 0.9,
+          "sensitivity": 1.0,
+          "specificity": 0.8
+        },
+        {
+          "acquired_conditions": 4,
+          "spent_proxy_cost": 4,
+          "balanced_accuracy": 0.6,
+          "sensitivity": 0.333333,
+          "specificity": 0.866667
+        },
+        {
+          "acquired_conditions": 5,
+          "spent_proxy_cost": 5,
+          "balanced_accuracy": 0.6,
+          "sensitivity": 0.333333,
+          "specificity": 0.866667
+        },
+        {
+          "acquired_conditions": 6,
+          "spent_proxy_cost": 6,
+          "balanced_accuracy": 0.6,
+          "sensitivity": 0.333333,
+          "specificity": 0.866667
+        },
+        {
+          "acquired_conditions": 7,
+          "spent_proxy_cost": 7,
+          "balanced_accuracy": 0.6,
+          "sensitivity": 0.333333,
+          "specificity": 0.866667
+        },
+        {
+          "acquired_conditions": 8,
+          "spent_proxy_cost": 8,
+          "balanced_accuracy": 0.766667,
+          "sensitivity": 0.666667,
+          "specificity": 0.866667
+        },
+        {
+          "acquired_conditions": 9,
+          "spent_proxy_cost": 9,
+          "balanced_accuracy": 0.766667,
+          "sensitivity": 0.666667,
+          "specificity": 0.866667
+        },
+        {
+          "acquired_conditions": 10,
+          "spent_proxy_cost": 10,
+          "balanced_accuracy": 0.6,
+          "sensitivity": 0.333333,
+          "specificity": 0.866667
+        },
+        {
+          "acquired_conditions": 11,
+          "spent_proxy_cost": 11,
+          "balanced_accuracy": 0.6,
+          "sensitivity": 0.333333,
+          "specificity": 0.866667
+        },
+        {
+          "acquired_conditions": 12,
+          "spent_proxy_cost": 12,
+          "balanced_accuracy": 0.6,
+          "sensitivity": 0.333333,
+          "specificity": 0.866667
+        }
+      ]
+    },
+    {
+      "arm": "C",
+      "representation": "Area/Full",
+      "policy": "doe",
+      "seed": null,
+      "checkpoints": [
+        {
+          "acquired_conditions": 0,
+          "spent_proxy_cost": 0,
+          "balanced_accuracy": 0.9,
+          "sensitivity": 1.0,
+          "specificity": 0.8
+        },
+        {
+          "acquired_conditions": 1,
+          "spent_proxy_cost": 1,
+          "balanced_accuracy": 0.9,
+          "sensitivity": 1.0,
+          "specificity": 0.8
+        },
+        {
+          "acquired_conditions": 2,
+          "spent_proxy_cost": 2,
+          "balanced_accuracy": 0.433333,
+          "sensitivity": 0.0,
+          "specificity": 0.866667
+        },
+        {
+          "acquired_conditions": 3,
+          "spent_proxy_cost": 3,
+          "balanced_accuracy": 0.433333,
+          "sensitivity": 0.0,
+          "specificity": 0.866667
+        },
+        {
+          "acquired_conditions": 4,
+          "spent_proxy_cost": 4,
+          "balanced_accuracy": 0.433333,
+          "sensitivity": 0.0,
+          "specificity": 0.866667
+        },
+        {
+          "acquired_conditions": 5,
+          "spent_proxy_cost": 5,
+          "balanced_accuracy": 0.433333,
+          "sensitivity": 0.0,
+          "specificity": 0.866667
+        },
+        {
+          "acquired_conditions": 6,
+          "spent_proxy_cost": 6,
+          "balanced_accuracy": 0.633333,
+          "sensitivity": 0.333333,
+          "specificity": 0.933333
+        },
+        {
+          "acquired_conditions": 7,
+          "spent_proxy_cost": 7,
+          "balanced_accuracy": 0.633333,
+          "sensitivity": 0.333333,
+          "specificity": 0.933333
+        },
+        {
+          "acquired_conditions": 8,
+          "spent_proxy_cost": 8,
+          "balanced_accuracy": 0.633333,
+          "sensitivity": 0.333333,
+          "specificity": 0.933333
+        },
+        {
+          "acquired_conditions": 9,
+          "spent_proxy_cost": 9,
+          "balanced_accuracy": 0.633333,
+          "sensitivity": 0.333333,
+          "specificity": 0.933333
+        },
+        {
+          "acquired_conditions": 10,
+          "spent_proxy_cost": 10,
+          "balanced_accuracy": 0.633333,
+          "sensitivity": 0.333333,
+          "specificity": 0.933333
+        },
+        {
+          "acquired_conditions": 11,
+          "spent_proxy_cost": 11,
+          "balanced_accuracy": 0.633333,
+          "sensitivity": 0.333333,
+          "specificity": 0.933333
+        },
+        {
+          "acquired_conditions": 12,
+          "spent_proxy_cost": 12,
+          "balanced_accuracy": 0.6,
+          "sensitivity": 0.333333,
+          "specificity": 0.866667
+        }
+      ]
+    },
+    {
+      "arm": "D",
+      "representation": "Area/Compact8",
+      "policy": "random",
+      "seed": 7,
+      "checkpoints": [
+        {
+          "acquired_conditions": 0,
+          "spent_proxy_cost": 0,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 1,
+          "spent_proxy_cost": 1,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 2,
+          "spent_proxy_cost": 2,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 3,
+          "spent_proxy_cost": 3,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 4,
+          "spent_proxy_cost": 4,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 5,
+          "spent_proxy_cost": 5,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 6,
+          "spent_proxy_cost": 6,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 7,
+          "spent_proxy_cost": 7,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 8,
+          "spent_proxy_cost": 8,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 9,
+          "spent_proxy_cost": 9,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 10,
+          "spent_proxy_cost": 10,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 11,
+          "spent_proxy_cost": 11,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 12,
+          "spent_proxy_cost": 12,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        }
+      ]
+    },
+    {
+      "arm": "D",
+      "representation": "Area/Compact8",
+      "policy": "random",
+      "seed": 11,
+      "checkpoints": [
+        {
+          "acquired_conditions": 0,
+          "spent_proxy_cost": 0,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 1,
+          "spent_proxy_cost": 1,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 2,
+          "spent_proxy_cost": 2,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 3,
+          "spent_proxy_cost": 3,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 4,
+          "spent_proxy_cost": 4,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 5,
+          "spent_proxy_cost": 5,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 6,
+          "spent_proxy_cost": 6,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 7,
+          "spent_proxy_cost": 7,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 8,
+          "spent_proxy_cost": 8,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 9,
+          "spent_proxy_cost": 9,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 10,
+          "spent_proxy_cost": 10,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 11,
+          "spent_proxy_cost": 11,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 12,
+          "spent_proxy_cost": 12,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        }
+      ]
+    },
+    {
+      "arm": "D",
+      "representation": "Area/Compact8",
+      "policy": "random",
+      "seed": 19,
+      "checkpoints": [
+        {
+          "acquired_conditions": 0,
+          "spent_proxy_cost": 0,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 1,
+          "spent_proxy_cost": 1,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 2,
+          "spent_proxy_cost": 2,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 3,
+          "spent_proxy_cost": 3,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 4,
+          "spent_proxy_cost": 4,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 5,
+          "spent_proxy_cost": 5,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 6,
+          "spent_proxy_cost": 6,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 7,
+          "spent_proxy_cost": 7,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 8,
+          "spent_proxy_cost": 8,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 9,
+          "spent_proxy_cost": 9,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 10,
+          "spent_proxy_cost": 10,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 11,
+          "spent_proxy_cost": 11,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 12,
+          "spent_proxy_cost": 12,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        }
+      ]
+    },
+    {
+      "arm": "D",
+      "representation": "Area/Compact8",
+      "policy": "doe",
+      "seed": null,
+      "checkpoints": [
+        {
+          "acquired_conditions": 0,
+          "spent_proxy_cost": 0,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 1,
+          "spent_proxy_cost": 1,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 2,
+          "spent_proxy_cost": 2,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 3,
+          "spent_proxy_cost": 3,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 4,
+          "spent_proxy_cost": 4,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 5,
+          "spent_proxy_cost": 5,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 6,
+          "spent_proxy_cost": 6,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 7,
+          "spent_proxy_cost": 7,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 8,
+          "spent_proxy_cost": 8,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 9,
+          "spent_proxy_cost": 9,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 10,
+          "spent_proxy_cost": 10,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 11,
+          "spent_proxy_cost": 11,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        },
+        {
+          "acquired_conditions": 12,
+          "spent_proxy_cost": 12,
+          "balanced_accuracy": 0.5,
+          "sensitivity": 0.0,
+          "specificity": 1.0
+        }
+      ]
+    }
+  ]
+}
