@@ -835,3 +835,89 @@ code/test/docs scope only, prior notebook/handoff/learning bytes preserved, deci
 register unchanged. Before Draft publication, exact staged allowlist/full diff and
 secret/path/data exclusion audit must pass; actual PR/CI outcome will be reported
 in the PR handoff after observation. No model or real-data access authorization.
+
+## Entry 031 — 2026-11-09 | Synthetic Logistic Regression NES integration
+
+**Owner/authority.** Codex, Issue #29; scientific reviewers ChatGPT + researcher.
+Read AGENTS/workflow, required decisions and latest Issue #21 approvals (6749253141,
+6749392851, 6749605069). Dedicated `feature/synthetic-logistic-nes` from latest main
+`861e07e` after PR #28. Approval covers the synthetic implementation and Draft PR,
+not real measured-data access/fitting, eligibility certification or merge.
+
+**Question/rationale.** Exercise the approved binary learner, train-only weighting/
+scaling, fixed acquisition/evaluation split and condition-aware metrics with existing
+Random/DoE engine. Unlike the fake mean adapter, optional scikit-learn Logistic
+Regression learns only from fabricated spectral arrays. Preserve all four planned
+representations; start B Raw/Compact8, no blank/baseline/area correction in B.
+Standard-library scaffold remains usable without optional ML libraries.
+
+**Implementation.** New public nominal-protocol/synthetic generator/metric module,
+lazy optional LR adapter, paired demonstration and 16 synthetic tests. Engine gains
+an explicit condition-balanced evaluation mode, preserving default accuracy behavior
+and oracle/selector/budget/holdout guards. Optional requirements pin numpy 2.2.6,
+scipy 1.15.3, scikit-learn 1.7.2, joblib 1.5.2 and threadpoolctl 3.6.0. Dedicated
+CI installs/verifies pins before full tests/demo; old standard-library job unchanged.
+No spectral formula, decision-register, historical eligibility or source-flag edits.
+
+Approved constraints: binary TFA=1/other=0, LR L2/C=1.0/class_weight=None; weighted
+training-only StandardScaler and condition-equal fitting. Fixed engineering solver
+settings for review: lbfgs/max_iter=5000/random_state=0/tol=1e-4/intercept=True,
+no warm start, native thread limit 1. No hyperparameter search. Every acquisition
+recomputes per-well N/(G*n_group), fits a fresh scaler and classifier on initial+
+already acquired whole groups only, and logs training provenance/convergence.
+A feature/convergence failure aborts without dropping samples or changing recipe.
+
+**Split/evaluation.** The public six-holdout/twelve-acquisition nominal assignment
+from Issue #21 is encoded and validated before the demo, using synthetic prefixes
+and fabricated analytic Gaussian curves only. Initial fixture has 18 groups/70
+rows; acquisition 12/35; fixed evaluator 6/18. These illustrate public design counts,
+not a private manifest or real-world preparation certification. Each class recall
+averages correctness within conditions first, then equally over same-label conditions;
+BA is mean sensitivity/specificity. Missing class is an error, not a fabricated
+score. Every curve includes all costs 0–12, with whole-condition unit acquisition
+cost. Evaluator uses a deep-copied fitted model; no scores/features enter selectors.
+Uncertainty remains blocked. D-019 LOGO is a separate protocol, not run here.
+
+**Exact commands / observed results.** Full reproducible installation/demo/test
+commands, model details, exact synthetic curves and caveats are in
+`docs/SYNTHETIC_LOGISTIC_NES.md`. Executed:
+- `uv pip install --python .venv/bin/python -r requirements/logistic.txt`: exact five
+  optional packages installed; no real datasets or models downloaded.
+- `PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m unittest discover -s tests -p test_logistic_nes.py -v`:
+  16 passed. Initial missing-module failure preceded implementation; negative tests
+  include convergence and bad-transform errors as expected failure cases.
+- `PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m unittest discover -s tests -v`:
+  102 passed (86 existing + 16 new), no skips with optional dependencies installed.
+- In a clean venv created with `venv.EnvBuilder(with_pip=False)`, same unittest
+  arguments passed all available tests: 102 run, 10 ML-dependent tests skipped.
+- Full B-arm `demonstrate()` default (equivalent to
+  `PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m scientific_experiment_selection.logistic_demo --arm B --budget 12 --seeds 7 11 19`)
+  completed four runs, each with 13 scaler/classifier fits (baseline+12 acquisitions).
+
+**Synthetic observations, not chemical results.** All four BA curves start at 0.5
+and end at 1.0. For seeds 7/11/19 and DoE respectively, BA remains 0.5 until cost
+6/4/1/6 and then is 1.0; every checkpoint and seed is retained in the report.
+Specificity stays 1.0; sensitivity changes from 0 to 1. These are computations on
+one predeclared fabricated fixture, not proof of laboratory gains or a winning
+selector. Generator constants were not changed to improve held-out scores.
+The one positive evaluator condition creates severe condition-level uncertainty.
+
+**Limits/next.** No real Exp3/5/8 files, private manifests, experimental spectra,
+source labels or outcomes accessed; no actual-spectra fitting/metrics, new chemical
+claims or benchmark tuning. Pure Python boundaries assume trusted adapters/canonical
+IDs and cannot sandbox malicious introspection/global state. Optional pins constrain
+reproducibility; other platforms need independent numerical checks. All four arms
+are supported/tested, but only B budget curves reported, with no arm selection by
+holdout score. Separate real access/eligibility/fitting and future Exp8 audit gates
+remain. After final notebook/privacy/whitespace checks, open Draft only and stop
+for ChatGPT/researcher scientific and code review.
+
+**Final local verification.** Exact documented B-arm CLI executed twice with
+--budget 12 --seeds 7 11 19; stdout byte-identical and every run contains cost
+checkpoints 0–12 and 13 refits. Final full suite 102/102 passed after adding explicit
+weighted-scaler variance verification; no skips with pinned dependencies installed.
+Whitespace passed. Publication scope is 11 public code/test/workflow/requirements/
+documentation files only; no raw/private artifacts. Prior notebook/handoff bytes
+must remain intact; decisions, spectral formulas and standard-library fake demo
+unchanged. Complete staged privacy/credential/path audit and notebook gate precede
+Draft handoff. CI/PR outcome will be reported after actual observation, not assumed.

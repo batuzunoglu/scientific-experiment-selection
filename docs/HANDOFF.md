@@ -560,3 +560,24 @@ Final local verification: full suite 86/86 passed (67 prior + 19 new); demo twic
 byte-identical at seed 7/budget 3. Whitespace passed. Public eight-file scope:
 selection.py, selection_demo.py, test_selection.py, SELECTION_MVP.md, short plan,
 append-only notebook/handoff/learning notes. No decisions/dependencies/data edits.
+
+## Checkpoint 032 — 2026-11-09 Issue #29 synthetic Logistic Regression NES
+
+Owner Codex; next ChatGPT + researcher. Branch `feature/synthetic-logistic-nes`,
+base `861e07e` after PR #28. New lazy optional pinned LR adapter, approved public
+nominal split/synthetic generator and group-aware binary metrics, paired B-arm
+Random/DoE demo. Engine evaluation mode extends existing guards/default behavior;
+all A/B/C/D functions preserved. Entry 031 and SYNTHETIC_LOGISTIC_NES.md record
+commands, observed synthetic curves, versions and scientific caveats.
+
+102 tests pass with optional ML installed (86 prior+16 new); clean stdlib venv
+102 run/10 ML skips passes. Synthetic B demo: 3 Random seeds and DoE, unit costs
+0–12, 13 fresh weighted-scaler/LR fits per run, all checkpoints retained. BA moves
+0.5→1.0 on this fabricated fixture only; no scientific superiority/generalization.
+No raw/private/Exp8 or actual-spectra fitting. Decision register, source labels,
+feature math and uncertainty rejection unchanged. Next: staged privacy/security
+and notebook checks, safe Draft PR, stop for independent review. No merge.
+Final B CLI repeated byte-identically at all 13 checkpoints per method; 102/102
+full tests passed with ML pins. Clean standard-library environment passed with
+10 optional skips. Publication allowlist: 11 safe code/test/requirements/workflow/
+doc files; no actual data. Await staged audit/notebook gate and Draft publication.

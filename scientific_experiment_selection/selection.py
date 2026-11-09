@@ -241,6 +241,13 @@ class _Evaluator:
             accuracies.append(sum(p == r.label for p, r in zip(predicted, group.replicates)) / len(predicted))
         return sum(accuracies) / len(accuracies)
 
+    def balanced(self, model):
+        from .nes_protocol import condition_binary_metrics
+        evaluation_model = copy.deepcopy(model)
+        predictions = tuple(evaluation_model.predict(tuple(r.spectrum for r in g.replicates))
+                            for g in self.__holdout)
+        return condition_binary_metrics(self.__holdout, predictions)
+
 
 @dataclass(frozen=True)
 class Action:
@@ -255,6 +262,9 @@ class CurvePoint:
     acquired_conditions: int
     spent: int
     accuracy: float
+    balanced_accuracy: float | None = None
+    sensitivity: float | None = None
+    specificity: float | None = None
 
 
 @dataclass(frozen=True)
@@ -268,9 +278,11 @@ class RunResult:
     data_kind: str = 'synthetic-only'
 
 
-def run_selection(scenario, selector: Selector, budget, model: ModelAdapter):
+def run_selection(scenario, selector: Selector, budget, model: ModelAdapter, *, evaluation='accuracy'):
     if type(scenario) is not SyntheticScenario:
         raise ValueError('Only a validated synthetic scenario is supported')
+    if evaluation not in ('accuracy', 'condition_balanced'):
+        raise ValueError('Unknown synthetic evaluation mode')
     state = BudgetState(budget)
     oracle = SyntheticOracle(scenario.designs, scenario.outcomes)
     evaluator = _Evaluator(scenario.holdout)
@@ -278,8 +290,17 @@ def run_selection(scenario, selector: Selector, budget, model: ModelAdapter):
     history = ()
     training = scenario.initial
     actions = []
+    def checkpoint(k, spent):
+        if evaluation == 'accuracy':
+            return CurvePoint(k, spent, evaluator.accuracy(model))
+        scores = evaluator.balanced(model)
+        # Legacy accuracy remains explicitly condition-equal accuracy, not BA.
+        p, n = scores['positive_conditions'], scores['negative_conditions']
+        accuracy = (p*scores['sensitivity'] + n*scores['specificity'])/(p+n)
+        return CurvePoint(k, spent, accuracy, scores['balanced_accuracy'],
+                          scores['sensitivity'], scores['specificity'])
     model.fit(_training_view(training))
-    curve = [CurvePoint(0, 0, evaluator.accuracy(model))]
+    curve = [checkpoint(0, 0)]
     while available:
         affordable = tuple(sorted((d for d in available.values() if d.cost <= state.remaining), key=lambda d: d.group_id))
         if not affordable:
@@ -299,7 +320,7 @@ def run_selection(scenario, selector: Selector, budget, model: ModelAdapter):
         history = history + (design,)
         actions.append(Action(chosen, design.cost, state.spent))
         model.fit(_training_view(training))
-        curve.append(CurvePoint(len(actions), state.spent, evaluator.accuracy(model)))
+        curve.append(checkpoint(len(actions), state.spent))
     else:
         reason = 'pool_exhausted'
     return RunResult(selector.name, selector.seed, budget, tuple(actions), tuple(curve), reason)
