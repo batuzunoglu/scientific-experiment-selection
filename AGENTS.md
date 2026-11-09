@@ -16,3 +16,10 @@
 
 13. Before any **authorized** research-affecting commit/PR, append a dated `## Entry NNN — YYYY-MM-DD` section to `docs/RESEARCH_LAB_NOTEBOOK.md` in the **same PR**. Never modify previous entries; use a correction/new entry instead. GitHub's `research-notebook` PR check enforces the presence of an appended entry for research code/method changes, but humans must check scientific completeness. Do not bypass by directly pushing research changes to `main`.
 14. For chat-only research decisions, ChatGPT should promptly propose/record the entry in a documentation PR; Codex must read the committed entry rather than reconstructing motivations from code. If commit/push is not yet approved, maintain a proposed local notebook entry for later review; do not mistake the notebook requirement for new authorization to publish data or code.
+
+## Multi-agent working agreement (Codex, Antigravity, other coding assistants)
+
+15. Read `docs/AGENT_WORKFLOW.md` before accepting a delegated task. This `AGENTS.md` is the **shared canonical rules file**; do not add a second `GEMINI.md` that might diverge.
+16. Work on only the **explicitly assigned GitHub Issue scope**. Name one owner and one reviewer; stop at the stated review gate. No assistant may grant scientific, publishing, model-training or merge approval on the researcher's behalf.
+17. Never run two writing agents in the same working tree; use separate branches/worktrees or work sequentially. Keep GitHub Issue/PR comments as the handoff channel; a short handoff must include changed files, tests, observed outcomes, provenance, blockers, notebook status and next owner.
+18. A read-only reviewer does not edit files. Do not expose private spectra, provisional per-well manifests or secrets to external models, commits or PRs; use non-sensitive summaries and synthetic fixtures. Preserve the existing append-only notebook and PR checks.
