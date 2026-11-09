@@ -357,3 +357,20 @@ changed. See Notebook Entry 019, Decision D-018, Issue #5 comment 6729701226.
 Before supervised fitting, review metadata-only group→fold manifest,
 model/metric and label eligibility protocols; Exp5/Exp8 gates unchanged.
 No code or model run in this documentation step.
+
+## Checkpoint 021 — 2026-11-08 approved LOGO primary validation choice
+
+Researcher explicitly preferred Leave-One-Group-Out and approved LOGO as
+primary Phase B Exp3 cross-validation after comparing it with fixed balanced
+three-fold grouped CV. The former D-018 three-fold primary method is
+**superseded** (not removed); shared-solution grouping D-017 and Exp3 D6/D7
+primary exclusion D-016 still apply. Nominally 18 shared-solution groups:
+each entire group held out in turn, remaining 17 for training. No model fits
+or code changes performed. A single held-out group has one PFAS true class,
+so metrics must be predefined and aggregated over held-out predictions
+across folds; condition/group-balanced evaluation needed. Known-identity
+concentration regression has only two other concentrations per PFAS in
+each fit and is exploratory. See Notebook Entry 020, Decision D-019 and
+Issue #5 comment 6729822449.
+Next: metadata-only 18-fold LOGO manifest and leakage review before
+scientific eligibility/metric protocol sign-off and separate training approval.
