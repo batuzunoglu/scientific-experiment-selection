@@ -343,3 +343,17 @@ or reuse for Exp5/8; no code, raw data, model training or CV implementation.
 Next: select scientific CV schemes for identity and known-identity regression,
 while recognizing at most 18 nominal shared-solution groups and D6/D7 primary
 exclusion.
+
+## Checkpoint 020 — 2026-11-08 chosen Phase B balanced grouped CV
+
+Researcher requested the best grouped evaluation design after confirming shared
+Exp3 condition solutions. We selected a fixed 3-fold, class- and concentration-
+balanced group split: 18 nominal PFAS×concentration shared-solution groups,
+6 per held-out fold (1/PFAS and 2/concentration). Initial deterministic proposal:
+fold=(class_index+concentration_index)%3 with documented class/concentration order.
+No well shares prepared solution between train/validation. Existing D6/D7
+exclusions yield provisional 70 primary wells; no source eligibility/status
+changed. See Notebook Entry 019, Decision D-018, Issue #5 comment 6729701226.
+Before supervised fitting, review metadata-only group→fold manifest,
+model/metric and label eligibility protocols; Exp5/Exp8 gates unchanged.
+No code or model run in this documentation step.
