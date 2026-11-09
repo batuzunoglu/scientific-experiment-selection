@@ -260,10 +260,106 @@ class NotebookGateTests(unittest.TestCase):
             self.assertEqual(code, 2)
             self.assertIn("Notebook gate could not run", msg)
 
+            # Invalid GITHUB_HEAD_SHA fails closed
+            code, msg = check_repo(
+                cwd=repo,
+                env={"GITHUB_BASE_SHA": base_sha, "GITHUB_HEAD_SHA": "0" * 40},
+            )
+            self.assertEqual(code, 2)
+            self.assertIn("Notebook gate could not run", msg)
+
             # Running directly on base_sha where base_commit == HEAD fails closed instead of bypassing
             code, msg = check_repo(cwd=repo, env={})
             self.assertEqual(code, 2)
             self.assertIn("Baseline commit resolves to HEAD", msg)
+
+    def test_git_pr_merge_ref_rejects_missing_entry_when_main_advances_after_event_base(self):
+        """Scenario 9: When main advances B -> N (with an unrelated notebook entry) after GITHUB_BASE_SHA=B
+        and before refs/pull/N/merge checkout M=(N, F), a feature branch F with research code but NO
+        notebook entry must compare against P1=N and fail (exit code 1), never borrowing N's entry."""
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            base_sha = _init_synthetic_repo(repo)
+
+            # Feature branch F branched from B adds research code without any notebook entry
+            _git(repo, "checkout", "-b", "feature/missing-entry-stale-event-base", base_sha)
+            _write(repo, "scientific_experiment_selection/model.py", "MODEL = 'synthetic'\n")
+            _git(repo, "add", "scientific_experiment_selection/model.py")
+            _git(repo, "commit", "-m", "Add research code without notebook entry")
+            feature_sha = _git(repo, "rev-parse", "HEAD")
+
+            # Another PR updates main B -> N with a legitimate unrelated Notebook Entry 002
+            _git(repo, "checkout", "main")
+            _write(repo, NOTEBOOK, INITIAL_NOTEBOOK + VALID_APPEND_ENTRY)
+            _git(repo, "add", NOTEBOOK)
+            _git(repo, "commit", "-m", "Unrelated PR on main appends Entry 002")
+            new_main_sha = _git(repo, "rev-parse", "HEAD")
+            _git(repo, "update-ref", "refs/remotes/origin/main", new_main_sha)
+
+            # GitHub regenerates synthetic PR merge M with parents (N, F), while workflow has GITHUB_BASE_SHA=B
+            pr_merge_sha = _create_pr_merge_ref(repo, new_main_sha, feature_sha)
+            _git(repo, "checkout", "--detach", pr_merge_sha)
+
+            for env in (
+                {"GITHUB_BASE_SHA": base_sha},
+                {"GITHUB_BASE_SHA": base_sha, "GITHUB_HEAD_SHA": feature_sha},
+                {},
+            ):
+                self.assertEqual(resolve_base_commit(cwd=repo, env=env), new_main_sha)
+                code, msg = check_repo(cwd=repo, env=env)
+                self.assertEqual(code, 1, f"Expected failure for env={env}, got {code}: {msg}")
+                self.assertIn("require an appended", msg)
+
+    def test_git_pr_merge_ref_passes_when_main_advances_after_event_base_and_pr_appends_own_entry(self):
+        """Scenario 10: Positive counterpart to Scenario 9 — when main advances B -> N (with Entry 002)
+        after GITHUB_BASE_SHA=B and feature F (branched from B) genuinely appends its own dated Entry 003,
+        M=(N, F) compares against P1=N and passes."""
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            base_sha = _init_synthetic_repo(repo)
+
+            # Feature branch F (branched from B) adds research code and its own dated Entry 003
+            _git(repo, "checkout", "-b", "feature/genuine-entry-stale-event-base", base_sha)
+            pr_entry = "\n## Entry 003 — 2026-11-09 | Feature PR dated entry\nGenuine PR notebook append.\n"
+            _write(repo, "scientific_experiment_selection/model.py", "MODEL = 'synthetic'\n")
+            _write(repo, NOTEBOOK, INITIAL_NOTEBOOK + pr_entry)
+            _git(repo, "add", "scientific_experiment_selection/model.py", NOTEBOOK)
+            _git(repo, "commit", "-m", "Add research code and Entry 003")
+            feature_sha = _git(repo, "rev-parse", "HEAD")
+
+            # Another PR updates main B -> N with Entry 002
+            _git(repo, "checkout", "main")
+            main_notebook = INITIAL_NOTEBOOK + VALID_APPEND_ENTRY
+            _write(repo, NOTEBOOK, main_notebook)
+            _git(repo, "add", NOTEBOOK)
+            _git(repo, "commit", "-m", "Unrelated PR on main appends Entry 002")
+            new_main_sha = _git(repo, "rev-parse", "HEAD")
+            _git(repo, "update-ref", "refs/remotes/origin/main", new_main_sha)
+
+            # Construct synthetic PR merge M with parents (N, F) containing N's notebook + F's Entry 003
+            _git(repo, "checkout", "--detach", new_main_sha)
+            subprocess.run(
+                ["git", "merge", "--no-ff", "--no-commit", feature_sha],
+                cwd=repo,
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL,
+                check=False,
+            )
+            _write(repo, NOTEBOOK, main_notebook + pr_entry)
+            _git(repo, "add", "scientific_experiment_selection/model.py", NOTEBOOK)
+            _git(repo, "commit", "-m", f"Merge {feature_sha} into {new_main_sha}")
+            pr_merge_sha = _git(repo, "rev-parse", "HEAD")
+            _git(repo, "update-ref", "refs/pull/1/merge", pr_merge_sha)
+
+            for env in (
+                {"GITHUB_BASE_SHA": base_sha},
+                {"GITHUB_BASE_SHA": base_sha, "GITHUB_HEAD_SHA": feature_sha},
+                {},
+            ):
+                self.assertEqual(resolve_base_commit(cwd=repo, env=env), new_main_sha)
+                code, msg = check_repo(cwd=repo, env=env)
+                self.assertEqual(code, 0, f"Expected pass for env={env}, got {code}: {msg}")
+                self.assertIn("dated append-only research entry found", msg)
 
 
 if __name__ == "__main__":

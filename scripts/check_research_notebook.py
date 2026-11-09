@@ -78,6 +78,13 @@ def is_ancestor(ancestor: str, descendant: str, cwd: Path | str | None = None) -
     return result.returncode == 0
 
 
+def same_base_history(commit_a: str, commit_b: str, cwd: Path | str | None = None) -> bool:
+    return (
+        is_ancestor(commit_a, commit_b, cwd=cwd)
+        or is_ancestor(commit_b, commit_a, cwd=cwd)
+    )
+
+
 def resolve_base_commit(
     cwd: Path | str | None = None,
     env: Mapping[str, str] | None = None,
@@ -86,18 +93,22 @@ def resolve_base_commit(
 
     Uses a single consistent commit SHA for both changed-file detection and
     baseline notebook retrieval, eliminating the race when a `ready_for_review`
-    workflow run overlaps a squash or normal merge of the same PR:
+    workflow run overlaps a squash or normal merge of the same PR, or when `main`
+    advances between the PR event and `refs/pull/<N>/merge` checkout:
     1. If `GITHUB_BASE_SHA` is provided (e.g. `github.event.pull_request.base.sha`),
        verify it resolves to a valid commit object and use it as the target base ref;
-       otherwise resolve `origin/<GITHUB_BASE_REF or main>`.
+       otherwise resolve `origin/<GITHUB_BASE_REF or main>`. If `GITHUB_HEAD_SHA` is
+       provided, verify it resolves to a valid commit in `HEAD`'s ancestry.
     2. Inspect `HEAD` parents (`git rev-list --parents -n 1 HEAD`). When `HEAD` is a
        two-parent PR synthetic merge commit `(P1, P2)` (`refs/pull/<N>/merge`) where
-       `P1` (`HEAD^1`) is on the base branch history (`is_ancestor(P1, target_ref)`)
-       and `P2` (`HEAD^2`) is the PR head (`not is_ancestor(P2, P1)`), `P1` is the
-       exact pre-merge base commit merged into `HEAD`. Using `P1` avoids the
-       `git merge-base origin/main HEAD` ambiguity after a normal merge commit (where
-       both `P1` and `P2` are ancestors of post-merge `origin/main` and `merge-base`
-       would return the feature tip `P2`).
+       `P1` (`HEAD^1`) and `target_ref` belong to the same base-history line in either
+       direction (`same_base_history(P1, target_ref)`) and `P2` (`HEAD^2`) is the PR
+       head (`not is_ancestor(P2, P1)`), `P1` is the exact pre-merge base commit
+       merged into `HEAD`. Checking both ancestor directions ensures `P1` is selected
+       both when `origin/main` advances *after* the synthetic merge commit was built
+       (`is_ancestor(P1, target_ref)`) and when `main` advances *between* the PR event
+       (`GITHUB_BASE_SHA`) and checkout (`is_ancestor(target_ref, P1)`), preventing an
+       unrelated notebook entry on `main` from satisfying the gate for the PR.
     3. For single-parent branch checkouts (or feature branches that merged base into
        themselves), compute `git merge-base <target_ref> HEAD`.
     4. Fail closed if the resolved base commit equals `HEAD` so an already-merged ref
@@ -112,16 +123,32 @@ def resolve_base_commit(
         base_ref = f"origin/{base_name}"
         target_ref = git("rev-parse", "--verify", f"{base_ref}^{{commit}}", cwd=cwd).strip()
 
+    head_env_sha = (environ.get("GITHUB_HEAD_SHA") or "").strip()
+    if head_env_sha:
+        expected_head = git("rev-parse", "--verify", f"{head_env_sha}^{{commit}}", cwd=cwd).strip()
+    else:
+        expected_head = ""
+
     rev_tokens = git("rev-list", "--parents", "-n", "1", "HEAD", cwd=cwd).strip().split()
     if not rev_tokens:
         raise ValueError("Could not resolve HEAD commit.")
     head_sha = rev_tokens[0]
     parents = rev_tokens[1:]
 
+    if expected_head and not is_ancestor(expected_head, head_sha, cwd=cwd):
+        raise ValueError("HEAD commit does not descend from GITHUB_HEAD_SHA.")
+
     if (
         len(parents) == 2
-        and is_ancestor(parents[0], target_ref, cwd=cwd)
+        and same_base_history(parents[0], target_ref, cwd=cwd)
         and not is_ancestor(parents[1], parents[0], cwd=cwd)
+        and (
+            not expected_head
+            or (
+                is_ancestor(expected_head, parents[1], cwd=cwd)
+                and not is_ancestor(expected_head, parents[0], cwd=cwd)
+            )
+        )
     ):
         base_commit = parents[0]
     else:
