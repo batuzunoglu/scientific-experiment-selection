@@ -220,3 +220,71 @@ No staging, commit, push or merge performed for this follow-up.
 - Notebook PR gate being added in a separate PR: every research-affecting PR should append a dated entry. Scientific accuracy and actual runtime outcomes still need human review.
 - **Next single technical task:** Issue #5 Phase A on clean Ubuntu clone: verify raw checksums and per-well identity/QC provenance for Exp3/5/8; generate reviewable candidate manifest and deterministic non-fitting A–D feature representations with synthetic tests. **No ML training, Exp8 evaluation, arbitrary relabeling, raw Git upload or feature-branch commit/push before researcher reviews Phase A results.**
 - Current GitHub work here is limited to docs and notebook process tooling; the Ubuntu raw laboratory data are not accessible through this connector, and no new ML scientific run is claimed.
+
+## Checkpoint 010 — 2026-11-08 Phase A preflight evidence stop
+
+Local Ubuntu checks supersede the previous connector-only access limitation.
+Initially clean main at `9f9089f7832aedaadc877a2bfb8e86af90a4ead9`.
+Exp3/5/8 raw hashes freshly match the tracked manifest. Exp5 CSV still has
+96 reconstructed preparation rows; referenced original preparation/final-label
+workbooks were not found under the recovered-records root. Latest Issue #5
+comment 6726670028 explicitly requires stopping for missing independent chemistry
+evidence. See `PHASE_A_PREFLIGHT_REVIEW.md` and Notebook Entry 007.
+Only four documentation files changed locally. No source/code changes, manifest,
+features, new tests, training, upload, staging, commit, push or branch creation.
+No fetch/sync performed. Next: researcher review of the evidence gap and explicit
+clarification or additional source evidence before resuming Phase A. Prior
+72/53/18 counts are not newly verified. Exp8 remains locked.
+
+## Checkpoint 011 — 2026-11-08 provisional Phase A implemented; review stop
+
+User accepted Issue #5 scientific review 6726841885. Entry 007/preflight report
+preserved; Entry 008 records continuation rationale and observed results. New
+manifest CLI/raw reader/four representations and synthetic tests implemented.
+Final artifacts: `data/private/phase-a-2026-11-08-final/` (ignored metadata-only
+CSV/JSON/summary). 288 rows, 72/53/18 candidate counts; all physical labels unverified,
+all Exp5 preparation statuses reconstructed, all Exp8 rows locked. Raw hashes and
+22 evidence-package checks pass; 28 inputs unchanged; final rerun byte-identical.
+32 tests passed. No actual experimental features or ML models generated.
+Full commands/conventions/limitations/file list: `PHASE_A_REVIEW.md`.
+Current main checkout and prior notes retained without sync/stash/branch change;
+all work local/unstaged, no commit/push/upload. Next: scientific review of eligibility,
+provisional chemistry, numerical details, preparation groups and split protocol.
+
+## Checkpoint 012 — 2026-11-08 local ChatGPT review package
+
+Read Issue #5 comment 6726971791. Package at
+`/tmp/phase-a-chatgpt-review-2026-11-08` with ZIP/combined Markdown, complete reports,
+code/test snapshots, full diffs including new files, fresh 32-test log and metadata
+checks. Code/tests unchanged; Entries 007–008 retained; Entry 009 records packaging.
+Scientific sign-off pending; next step ChatGPT review. No models, experimental
+feature smoke test, commits, push or upload performed.
+
+## Checkpoint 013 — 2026-11-08 Exp3/Exp5 measured-spectrum smoke test
+
+Issue #5 review 6727098915 and researcher authorize limited validation. Entry 010
+and appended PHASE_A_REVIEW report exact commands/results. Unchanged A–D functions
+succeed for all 96 Exp3/72 Exp5 measured wells, no failures. Exp5 24 empty columns
+reported absent. No negative band values or signed-area cancellation; normalized
+area/reconstruction errors ~machine precision. Both raw hashes and existing module
+hashes unchanged. Ignored diagnostics in `data/private/phase-a-smoke-exp3-exp5-2026-11-08`;
+repeat byte-identical. Exp8 untouched; no labels/models/method changes or publication.
+New script only orchestrates validation. Next: scientific review, no automatic sign-off.
+
+## Checkpoint 014 — 2026-11-08 final publication proposal
+
+Latest review 6727151818 provisionally accepts Phase A engineering. Exact proposed
+15-file allowlist: `PHASE_A_PUBLICATION_REVIEW.md`; includes Entries 007–010 plus
+publication-preparation Entry 011. Raw/private files explicitly excluded. Fresh
+32-test suite passed; source/tests unchanged. Local patch/hashes/test log at
+`/tmp/phase-a-publication-review-2026-11-08`. Await explicit approval of scope/diff
+before branch/stage/commit/push/PR. Training gate remains separate.
+
+## Checkpoint 015 — 2026-11-08 exact publication authorized
+
+Researcher explicitly approved the 15-file scope and feature-branch commit/push/PR
+against main, with no merge/training/label changes. Feature branch created from
+`9f9089f7832aedaadc877a2bfb8e86af90a4ead9`; fresh 32-test suite passed. Reviewed
+snapshot matched all 15 files before append-only authorization notes. Notebook
+007–011 preserved; Entry 012 records authorization. No extra files added to scope.
+Next: staged audit then authorized publication; observe/report PR link and CI.
