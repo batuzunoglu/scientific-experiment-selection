@@ -2,7 +2,6 @@
 from dataclasses import dataclass
 from importlib.metadata import version, PackageNotFoundError
 import math
-import warnings
 from .selection import TrainingGroup, Replicate
 from .nes_protocol import ARMS, feature_rows
 
@@ -45,10 +44,6 @@ class LogisticAdapter:
         self.scaler_=None;self.classifier_=None
         dependency_versions()
         import numpy as np
-        from sklearn.preprocessing import StandardScaler
-        from sklearn.linear_model import LogisticRegression
-        from sklearn.exceptions import ConvergenceWarning
-        from threadpoolctl import threadpool_limits
         if not groups or any(type(g) is not TrainingGroup for g in groups):
             raise ValueError('Synthetic grouped training view required')
         if len({g.group_id for g in groups})!=len(groups):raise ValueError('Duplicate training group')
@@ -68,14 +63,8 @@ class LogisticAdapter:
         y=np.asarray([r.label for g in groups for r in g.replicates],dtype=int)
         if set(y.tolist())!={0,1}:raise ValueError('Both synthetic training classes required')
         w=np.asarray([v for g in groups for v in g.sample_weights],dtype=float)
-        scaler=StandardScaler(with_mean=True,with_std=True)
-        classifier=LogisticRegression(**MODEL_CONFIG)
-        with threadpool_limits(limits=1),warnings.catch_warnings(record=True) as caught:
-            warnings.simplefilter('always',ConvergenceWarning)
-            scaler.fit(x,sample_weight=w)
-            classifier.fit(scaler.transform(x),y,sample_weight=w)
-        if any(issubclass(item.category,ConvergenceWarning) for item in caught):
-            raise RuntimeError('Synthetic Logistic Regression did not converge; no tuning/drop permitted')
+        from ._logistic_core import fit_weighted_logistic
+        scaler,classifier=fit_weighted_logistic(x,y,w)
         self.scaler_=scaler;self.classifier_=classifier
         self.fit_trace=self.fit_trace+(FitRecord(len(self.fit_trace)+1,tuple(g.group_id for g in groups),
             n,x.shape[1],tuple(sum(g.sample_weights) for g in groups),tuple(float(v) for v in scaler.mean_),

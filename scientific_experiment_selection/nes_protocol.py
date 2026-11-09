@@ -37,13 +37,22 @@ def condition_binary_metrics(groups, predictions):
         raise ValueError('Aligned nonempty groups/predictions required')
     if len({g.group_id for g in groups})!=len(groups):
         raise ValueError('Duplicate evaluation condition')
-    recalls={0:[],1:[]}
     for group,predicted in zip(groups,predictions):
         if type(group) is not OutcomeGroup or len(predicted)!=len(group.replicates):
             raise ValueError('Predictions must cover complete synthetic condition')
+    return binary_condition_scores(tuple(g.replicates[0].label for g in groups), predictions)
+
+
+def binary_condition_scores(labels, predictions):
+    """Data-independent metric math; callers validate complete disjoint groups."""
+    if not labels or len(labels)!=len(predictions):
+        raise ValueError('Aligned nonempty condition labels/predictions required')
+    recalls={0:[],1:[]}
+    for label,predicted in zip(labels,predictions):
+        if type(label) is not int or label not in (0,1) or not predicted:
+            raise ValueError('Expected binary condition label and nonempty predictions')
         if any(type(p) is not int or p not in (0,1) for p in predicted):
             raise ValueError('Expected integer binary predictions')
-        label=group.replicates[0].label
         recalls[label].append(sum(p==label for p in predicted)/len(predicted))
     if not recalls[0] or not recalls[1]:
         raise ValueError('Balanced accuracy undefined: both condition classes required')

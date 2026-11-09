@@ -597,3 +597,42 @@ RAW_LABEL_JOIN_AUDIT.md record exact commands, findings and limits. Five-file
 safe scope, no private sources/maps/rows/arrays or locations/digests in new public
 docs. Next staged privacy/notebook/whitespace checks and Draft PR, then stop for
 scientific review. No merge or actual-data model training authorized.
+
+## Checkpoint 034 — 2026-11-09 Issue #34 local measured-data pilot
+
+Owner Codex; next owners researcher + ChatGPT for scientific/code review. Branch
+`feature/measured-exp3-exp5-pilot`, main base `8beacead30c6fd9e33ccaf7454f67fed46ddd0cb`
+after PR #32. Issue #34 and latest Issue #21 comment explicitly authorize this
+bounded local fitting; no general training, data release or merge authority.
+
+Implemented a separate measured scenario/loader/adapter and explicit consent CLI;
+synthetic guards, spectral methods and source records preserved. Shared numeric
+fit and metric helpers prevent two method implementations drifting. Existing
+Random seeds 7/11/19, DoE and unit budget accounting reused. No source-label
+reconstruction. Frozen 70/35/18 counts and 18/12/6 groups, existing exclusions,
+checksums and all representations checked before fitting. B first then A/C/D.
+
+Observed measured execution: exit 0, **16 complete trajectories / 208 converged
+fresh fits**, all 123 included spectra transform in each arm, source hashes
+unchanged. Private artifact verification confirms matched orders and all cost
+checkpoints, fit counts, training counts and metric consistency. Every measured
+curve/prediction/model, source/implementation digest and exact invocation stays in
+ignored private local storage; aggregate REVIEW.md is for private researcher review.
+No actual performance values in public docs/PR. Synthetic results and real measured
+execution are explicitly distinguished. MEASURED_PILOT.md has runnable commands and
+architecture/limits; Notebook Entry 034 is appended, earlier entries preserved.
+
+Tests: 12 new synthetic methods; initial full optional-ML suite 121 passed. Clean
+stdlib suite 121 run/16 optional skips passed after guarding a test-only optional
+adapter assertion; implementation was unchanged by that correction. Final observed
+verification follows below. Existing optional ML CI executes synthetic tests only.
+Public scope: four source files, one synthetic test file, MEASURED_PILOT.md and
+append-only notebook/HANDOFF (eight files). No raw/private data, results or models.
+Next: final privacy/append/whitespace checks, feature commit + Draft PR, CI report;
+stop for ChatGPT review, never merge. Unresolved: provisional physical labels,
+retrospective exposed Exp5, one positive evaluator condition, proxy acquisition cost
+and trusted-interface limitations. No Exp8, holdout tuning, LOGO or label changes.
+Final local verification: optional ML **121/121 passed** (19.257s); clean stdlib
+**121 run / 16 expected skips passed** (1.559s); whitespace and prior-text/dated-append
+checks passed. Actual-run implementation remains unchanged; only test portability
+and documentation followed execution. Await staged audit and Draft CI, not merge.

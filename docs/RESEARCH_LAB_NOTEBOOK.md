@@ -967,3 +967,87 @@ No original source, exclusion, formula, model protocol or scientific decision ch
 Five safe code/test/doc files only for Draft review after staged privacy/notebook/
 whitespace checks; prior entries preserved. Next researcher + ChatGPT reviews the
 aggregate join and then separately decides on actual Exp3/Exp5 pilot fitting.
+
+## Entry 034 — 2026-11-09 | Issue #34 controlled measured Exp3→Exp5 NES pilot
+
+**Owner/question/authority.** Codex; scientific and code reviewers researcher +
+ChatGPT. Read Issue #34 and latest Issue #21 approval 6752036077, AGENTS/workflow,
+charter, decisions, notebook/handoff, prior join audit and synthetic LR protocol.
+Dedicated branch `feature/measured-exp3-exp5-pilot`, latest main `8beacead30c6fd9e33ccaf7454f67fed46ddd0cb`
+after reviewed PR #32. Narrow authorization is actual local retrospective binary
+TFA/non-TFA fitting/evaluation on the previously validated Exp3/5 mapping, followed
+by safe Draft publication and review. No new scientific decision or merge authority.
+Entry 033 is reserved for the separate optional archival documentation PR; its
+branch/register is untouched. All earlier notebook entries remain byte-for-byte.
+
+**Design/alternatives/why.** Issue #34 explicitly requires a measured-specific
+loader/adapter rather than weakening synthetic guards or misnaming actual batches
+as synthetic. Reused the read-only raw/join checks, frozen feature functions,
+existing Random/DoE selectors and budget state. Extracted only numeric weighted LR
+fit and condition-score arithmetic for shared use, retaining synthetic wrapper
+validation. No spectral formula, split, reward, label, source flag, model setting,
+seed or exclusion changed. Required exact frozen 70/35/18 counts, 18/12/6 groups,
+three exclusions, source claims/checksums/grid and complete transforms before fit.
+No label archaeology or fresh reconstruction. Known audited Step4 metadata remains
+the existing local reference, distinct from independent physical verification.
+
+**Approved scientific recipe.** B Raw/Compact8 first; A raw/full, C area/full and D
+area/Compact8 subsequently, with identical roles and fixed parameters. Fresh weighted
+StandardScaler + L2 LR C=1, class_weight=None, lbfgs, max_iter=5000, tol=1e-4,
+random_state=0, fit_intercept=True, warm_start=False and existing exact dependency
+pins. Both fit steps use `N/(G*n_group)`, recomputed after each complete condition.
+Random seeds 7/11/19 and deterministic nominal DoE, checkpoints/cost 0–12, one
+whole condition per proxy unit. DoE novelty is within acquisition history only.
+Evaluator predicts on copied models, averages well correctness within condition
+then within class, and records BA/sensitivity/specificity privately. No evaluator
+feedback reaches selectors/scaling/weighting or method choice.
+
+**Observed actual measured-data execution, separate from synthetic tests.** Ran
+one local B-first then A/C/D protocol. CLI exit 0, 16 full trajectories and **208
+fresh converged fits**. All **123 included wells** transformed in each arm. No
+additional exclusions or source edits; before/after source hashes unchanged. Private
+artifact consistency checks passed: 13 checkpoints/run, 12 unique acquisitions,
+paired orders across representations, 70 initial and 105 final training wells,
+identical per-arm baseline/final metrics across policies and correct BA arithmetic.
+These are actual computations on previously measured spectra, not new physical
+experiments, a calibrated simulation or evidence of policy superiority. Complete
+measured trajectories and all models/predictions remain private; no real metric
+values, spectra, per-well map or source digest/location are published in this entry.
+
+**Exact commands / evidence.** Runnable source-variable CLI and full protocol are
+in MEASURED_PILOT.md. Actual local wrapper resolved only the two documented roots
+and exact prior Step4 relative location; no home search or Exp8 open. Private
+reproduction record retains resolved interpreter/argv/environment, hashes, code
+hashes, versions, authorization and input mapping. Private aggregate REVIEW.md
+contains every arm/policy/seed BA, sensitivity and specificity checkpoint without
+per-well exports; detailed JSON and 208 fitted checkpoints remain ignored locally.
+`PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m unittest discover -s tests -v`
+initially passed **121/121** after implementation (109 prior + 12 new). Final checks
+are appended below after observation. New tests use analytic synthetic spectra and
+fabricated workbook mappings only. Initial new-module import failure preceded code.
+A separate no-ML run exposed one test assertion invoking the optional adapter without
+dependencies; guarded that assertion on ML availability, leaving implementation and
+measured execution unchanged. Clean standard-library command
+`PYTHONDONTWRITEBYTECODE=1 /tmp/issue34-stdlib-env/bin/python -m unittest discover -s tests -v`
+passed **121 tests, 16 optional ML skips**. No actual data fitting in public CI.
+
+**Limitations/next decision.** Historical labels remain researcher-endorsed
+provisional analytical references, not independently proven physical solutions;
+source authorization/verification assertions remain unchanged and pilot authority
+is separate. Exp5 is historically exposed and retrospective, with only one positive
+evaluator condition; correlated technical wells do not give independent conditions
+or confidence/generalization guarantees. Budget is a proxy, not measured laboratory
+cost. No holdout tuning, uncertainty policy, LOGO task, Exp8 access or private GitHub
+upload. Trusted Python interfaces are not a hostile-code security sandbox. Publish
+safe code/synthetic tests/method docs only after final privacy, notebook and tests;
+open Draft and stop for ChatGPT/researcher review of both code and private aggregate
+trajectories. Do not merge or choose a best arm/seed/checkpoint using this holdout.
+
+**Final local verification.** Full optional-ML suite after the test-only portability
+correction: **121 tests in 19.257s, OK, exit 0**, no skips. Clean standard-library
+suite: **121 tests in 1.559s, OK (skipped=16), exit 0**. `git diff --check` exited 0;
+byte-prefix checks against origin/main confirmed all prior notebook/HANDOFF text
+preserved and `valid_append` accepted the dated entry. Measured implementation code
+is unchanged from the recorded actual execution. Eight-file public allowlist and
+staged privacy check precede feature-branch commit; GitHub notebook/ML CI outcomes
+will be reported only after observation. No merge.
