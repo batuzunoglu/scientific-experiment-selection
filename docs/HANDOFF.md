@@ -597,3 +597,9 @@ RAW_LABEL_JOIN_AUDIT.md record exact commands, findings and limits. Five-file
 safe scope, no private sources/maps/rows/arrays or locations/digests in new public
 docs. Next staged privacy/notebook/whitespace checks and Draft PR, then stop for
 scientific review. No merge or actual-data model training authorized.
+
+## Checkpoint 034 — 2026-11-09 Private archive for all Exp3–Exp8 well labels
+
+Researcher uploaded `CeARS_All_Experiments_Exp3_to_Exp8_Well_Label_Master(1).xlsx` and requested preservation for later continuation, **not new fitting**. Source workbook (576 rows, 10 sheets, SHA-256 `68cf034687f167fac1c5b881c95a140e87b33cdf8b61ef75db839f1b4c556761`) saved unchanged to **private ChatGPT File Library** `/Scientific_Experiment_Selection/CeARS_All_Experiments_Exp3_to_Exp8_Well_Label_Master_original.xlsx`. Prior combined Exp3/5/8 file overlap 288/288 rows, 23 shared fields with 0 mismatches; existing Exp3/Exp5 pilot included label-map 123/123 with 0 mismatches in checked metadata. No independent chemical validation claim. Full workbook and per-well rows **not** put in public GitHub. `docs/EXPERIMENT_LABEL_MASTER_REGISTER.md` provides the safe locator and hash, and Notebook Entry 033 records the decision.
+
+Next step: researcher explicitly requests actual Exp3/Exp5 model fitting later; Codex must locally receive controlled source and match checksum, then follow fixed 70/35/18 and exclusions. **No training in this archive task; Exp8 locked.** Repo metadata is a locator only, not remote access to private ChatGPT Library. Documentation-only Draft PR pending scientific/repo review and merge consent.
