@@ -300,3 +300,18 @@ Antigravity is not yet installed or authorized for code-writing tasks.
 Next: researcher reviews docs PR and installs official agy CLI, then tries one
 read-only pilot. Phase B model training, preparation provenance and split approval
 remain pending.
+
+## Checkpoint 017 — 2026-11-08 Antigravity read-only pilot reviewed
+
+Google Antigravity CLI 1.5.3 was installed by the researcher on Ubuntu with their
+Google account. Shared multi-agent instructions were merged via PR #12.
+The researcher relayed the first read-only audit of Issue #13 from clean `main`
+at `a1ff18e` (agent-reported; no file modifications). ChatGPT checked the
+source references against published code and posted its assessment in Issue #13
+comment 6729448802, with the full rationale in Notebook Entry 016.
+Findings: QC review wells are candidates but not training-authorized; physical
+preparation groups are UNKNOWN and grouped-split leakage risks remain; Exp5 is
+historically exposed/reconstructed and Exp8 remains locked. No defects fixed,
+data uploaded, ML models trained, or new scientific approval given.
+Next: researcher-led Phase B eligibility and grouped-CV decision; Antigravity
+may continue as a bounded read-only reviewer, Codex remains main implementer.
