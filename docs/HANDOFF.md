@@ -288,3 +288,15 @@ against main, with no merge/training/label changes. Feature branch created from
 snapshot matched all 15 files before append-only authorization notes. Notebook
 007–011 preserved; Entry 012 records authorization. No extra files added to scope.
 Next: staged audit then authorized publication; observe/report PR link and CI.
+
+## Checkpoint 016 — 2026-11-08 multi-agent coordination preparation
+
+Researcher wants Antigravity available on Ubuntu to supplement Codex without
+increasing project complexity or risking dual-agent edits. Preparing documentation
+PR with shared root AGENTS.md rules, one short docs/AGENT_WORKFLOW.md,
+explicit Issue ownership, Git worktree isolation, short handoffs and append-only
+notebook Entry 015. No additional runtime, agent server or GPU requirement.
+Antigravity is not yet installed or authorized for code-writing tasks.
+Next: researcher reviews docs PR and installs official agy CLI, then tries one
+read-only pilot. Phase B model training, preparation provenance and split approval
+remain pending.
