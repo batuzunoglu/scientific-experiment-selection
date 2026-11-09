@@ -397,3 +397,22 @@ uncertainty, prior negative results, label/QC claims and method limits unchanged
 **What was done:** Authored the workflow guide and updated `AGENTS.md`, `docs/DECISIONS.md`, the notebook and handoff in a new GitHub branch. The user requested Ubuntu setup guidance; **Antigravity was not installed on the researcher's machine by ChatGPT** and no model execution/test results or physical experimental measurements are claimed.
 
 **Limitations and next step:** This is human-directed task coordination, not automatic agent-to-agent messaging. Start with a safe Antigravity CLI installation verified from Google's official docs, then run a small read-only pilot. PR must be reviewed before merge. Phase B scientific eligibility, grouping, holdout and model-training approval remain entirely separate and unresolved.
+
+## Entry 016 — 2026-11-08 | First Antigravity read-only Phase B risk-audit pilot
+
+**Question.** Can Antigravity use the same scientific repo instructions and provide a useful second-agent review without interfering with Codex's work or spending Codex's short-window allowance?
+
+**Delegation and evidence.** Following merged PR #12's `AGENTS.md` and `docs/AGENT_WORKFLOW.md`, Antigravity was assigned a read-only, explicitly scoped [Issue #13](https://github.com/batuzunoglu/scientific-experiment-selection/issues/13) audit on the Ubuntu checkout. The researcher supplied the agent's structured handoff: clean `main` at `a1ff18e`, `git status --short` clean, no modified files, and reading project decisions/notebook/reports plus `dataset_contract.py` and its tests. The assistant did not itself witness Antigravity's local session; these execution details are **agent-reported**. No ML model or additional lab test was run.
+
+**Findings independently cross-checked in published code.**
+1. `dataset_contract.py:44` allows a historical `qc='review'` well to remain a candidate, with explicit `qc_review` warning at line 56. Exp3 D6/D7 require a **separate future eligibility review**. Crucially, candidates are *not* approved training rows: line 96 sets `training_authorized=False`.
+2. `dataset_contract.py:89–91` sets `preparation_group='UNKNOWN'` and uses the `experiment:condition` technical-replicate **proxy**, explicitly marking preparation independence unverified. Random well-wise CV risks leakage/overconfidence if wells share their physical preparation; the available evidence **does not prove** the independent preparation structure.
+3. The code preserves `physical_label_verified=False`, Exp5's reconstructed/historically exposed warning and proposed Exp8 locked holdout (lines 54–55, 86–96). No chemical ground truth is established by these flags.
+
+**Review outcome and rationale.** The pilot is **useful and accepted as an independent read-only risk review**, not a new verified scientific experiment and not a defect-fix request. This demonstrates a practical, minimal handoff via an Issue and shared Markdown rules, without multi-agent orchestration or simultaneous writes. It does not establish comparative model quality, token cost, or performance improvement.
+
+**Open scientific gate.** Before Phase B model fitting, researcher and ChatGPT must agree how to treat Exp3 D6/D7, which preparation/replicate groups and leakage-safe CV are defensible, how to handle provisional labels and which concentration task evaluations are legitimate. Exp5 remains a historically explored transfer/development batch; Exp8 stays locked pending historical exposure audit. **No training approval or experiment design change is inferred from the audit.**
+
+**Actions actually taken.** Posted the reviewed findings and qualifications in [Issue #13 comment 6729448802](https://github.com/batuzunoglu/scientific-experiment-selection/issues/13#issuecomment-6729448802); this entry documents the rationale. No code, raw workbooks, private manifests, model artifacts or data splits were changed.
+
+**Next:** Resume Phase B *scientific protocol discussion* with the researcher; only after sign-off delegate a bounded implementation issue to a named coding agent.
