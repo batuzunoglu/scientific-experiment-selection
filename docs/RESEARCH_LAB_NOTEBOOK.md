@@ -537,3 +537,39 @@ uncertainty, prior negative results, label/QC claims and method limits unchanged
 
 **Boundaries.** No raw data or private manifests accessed; no models trained; work remains local on `feature/phase-b-logo-plan` without commit or push.
 **Next step.** Submit updated five-file review package for follow-up ChatGPT review.
+
+
+## Entry 023 — 2026-11-08 | Fix redundant sample metadata and readiness integrity guards
+
+**Question.** How to resolve the two remaining validation weaknesses identified in ChatGPT's Draft PR #20 review (review 5820798245 / Issue #19 comment 6730328542) while preserving the five-file scope, LOGO design, and prior notebook history?
+
+**Review feedback and identified gaps.**
+1. Redundant sample metadata and fractional concentration truncation (`logo_plan.py:311–336`):
+   - `sample.get('condition_claim') or sample.get('condition')` and `sample.get('pfas_claim') or sample.get('label_claim')` only validated the first truthy field when both were present, allowing contradictory pairs such as `{'condition_claim': 'TFA_5', 'condition': 'PFNA_20'}` or `{'pfas_claim': 'TFA', 'label_claim': 'PFNA'}` to pass.
+   - `int(conc_num)` in `validate_sample_metadata` truncated float values such as `concentration_ppm=5.9` to `5`.
+2. Evaluation readiness integrity and scope documentation (`logo_plan.py:393–435`):
+   - `validate_fold_evaluation_readiness` did not call `verify_fold_leakage(fold_record)`, did not validate per-sample metadata via `validate_sample_metadata`, did not check for duplicate or overlapping physical well IDs (`physical_well` / `well`) within or across validation and training partitions, and did not validate or enforce its `expected_training_groups` parameter.
+   - Documentation described the check as "dataset completeness" rather than condition-group coverage and metadata consistency.
+
+**Implementation and fixes.**
+1. Independent sample field validation and strict integer concentrations:
+   - Added `_validate_exact_concentration` to reject `bool`, `float`/fractional values (e.g. `5.9`, `5.0`), and malformed strings across `make_group_id` and `validate_sample_metadata`.
+   - Updated `validate_sample_metadata` to independently check every present field among `group_id`, `technical_replicate_group`, `experiment_id`, `batch_claim`, `condition_claim`, `condition`, `pfas_claim`, `label_claim`, `concentration_claim_ppm`, `concentration_ppm`, `physical_well`, and `well`.
+   - Added `_extract_sample_well` to validate `physical_well` and `well` independently and reject disagreements when both are present.
+2. Hardened `validate_fold_evaluation_readiness` and `split_samples_by_fold`:
+   - `validate_fold_evaluation_readiness` now verifies `fold_record` via `verify_fold_leakage`, validates `min_validation_samples` and `expected_training_groups` (`17`), validates every validation and training sample via `validate_sample_metadata`, rejects duplicate or overlapping physical well IDs within and across validation and training sets, and rejects mixed presence/absence of well identifiers across samples.
+   - `split_samples_by_fold` also rejects duplicate physical well IDs when present.
+   - Updated docstrings and `docs/PHASE_B_LOGO_PLAN.md` Section 5 to state that `validate_fold_evaluation_readiness` establishes condition-group coverage and metadata consistency, not full 70-well physical plate completeness or verified chemical ground truth.
+3. Focused negative synthetic tests in `tests/test_logo_plan.py`:
+   - Expanded `test_rejects_contradictory_sample_metadata_and_fractional_concentrations` to test simultaneous contradictory `condition_claim`/`condition`, `pfas_claim`/`label_claim`, `experiment_id`/`batch_claim`, `physical_well`/`well`, and fractional/float `concentration_ppm` (`5.9`, `5.0`) and `concentration_claim_ppm` (`'5.9'`).
+   - Added `test_readiness_rejects_corrupted_fold_samples_and_duplicate_wells` testing corrupted `fold_record`, corrupted sample metadata in `split_result`, duplicate physical wells in validation or training, overlapping physical wells between validation and training (`physical_well` vs `well`), inconsistent well key presence, and invalid `expected_training_groups`.
+
+**Exact execution and observed test results.**
+- `PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. python3 -m unittest discover -s tests -p test_logo_plan.py -v`: 14/14 tests passed in 0.019s (exit code 0).
+- `uv run python -m unittest discover -s tests -v`: 46/46 tests passed in 0.465s (exit code 0; 32 baseline + 14 LOGO plan/leakage/hardening tests).
+- `uv run python -m scientific_experiment_selection doctor`: exit code 0 (`scientific_runs: none`).
+- `python3 scripts/check_research_notebook.py`: passed (`Notebook gate: dated append-only research entry found`).
+- `git diff --check`: exit code 0.
+
+**Boundaries.** No raw data or private manifests accessed; no ML models trained; no merge performed.
+**Next step.** Push commit to `feature/phase-b-logo-plan` on Draft PR #20 and stop for final ChatGPT review.

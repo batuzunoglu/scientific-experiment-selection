@@ -19,33 +19,43 @@ _GROUP_ID_PATTERN = re.compile(
 )
 
 
+def _validate_exact_concentration(value: Any, field_name: str = 'concentration') -> int:
+    """Validate that a concentration value is an exact integer or integer string in {5, 10, 20}.
+
+    Strictly rejects bool, float/fractional values (e.g. 5.9, 5.0), and malformed strings.
+    """
+    if isinstance(value, bool):
+        raise ValueError(f"Boolean {field_name} not permitted (got {value!r}); use exact integer")
+    if isinstance(value, float):
+        raise ValueError(f"Float/fractional {field_name} not permitted (got {value!r}); use exact integer")
+    if isinstance(value, int):
+        conc_int = value
+    elif isinstance(value, str):
+        if not value.isascii() or not value.isdigit() or value != value.strip():
+            raise ValueError(f"Invalid integer {field_name} string: {value!r}")
+        conc_int = int(value)
+    else:
+        raise ValueError(f"Invalid {field_name} type: {type(value).__name__}")
+
+    if conc_int not in EXP3_CONCENTRATIONS:
+        raise ValueError(
+            f"Unsupported {field_name}: {conc_int}; expected one of {EXP3_CONCENTRATIONS}"
+        )
+    return conc_int
+
+
 def make_group_id(pfas: str, concentration: int | str, experiment_id: str = EXPERIMENT_ID) -> str:
     """Return canonical group identifier matching dataset_contract.py conventions.
 
     Concentration must be an exact integer or integer string in {5, 10, 20}.
-    Float or fractional values (e.g. 5.9) are strictly rejected.
+    Float, fractional, or boolean values (e.g. 5.9, 5.0, True) are strictly rejected.
     """
     if experiment_id != EXPERIMENT_ID:
         raise ValueError(f"Unsupported experiment ID: {experiment_id!r}; expected {EXPERIMENT_ID!r}")
     if pfas not in EXP3_PFAS_CLASSES:
         raise ValueError(f"Unsupported PFAS class: {pfas!r}; expected one of {EXP3_PFAS_CLASSES}")
 
-    if isinstance(concentration, float):
-        raise ValueError(f"Float concentration not permitted (got {concentration!r}); use exact integer")
-    elif isinstance(concentration, int):
-        conc_int = concentration
-    elif isinstance(concentration, str):
-        s = concentration.strip()
-        if not s.isdigit():
-            raise ValueError(f"Invalid integer concentration string: {concentration!r}")
-        conc_int = int(s)
-    else:
-        raise ValueError(f"Invalid concentration type: {type(concentration).__name__}")
-
-    if conc_int not in EXP3_CONCENTRATIONS:
-        raise ValueError(
-            f"Unsupported concentration: {conc_int}; expected one of {EXP3_CONCENTRATIONS}"
-        )
+    conc_int = _validate_exact_concentration(concentration, field_name='concentration')
     return f"{experiment_id}:{pfas}_{conc_int}"
 
 
@@ -87,11 +97,27 @@ def validate_group_record(group: dict[str, Any]) -> dict[str, Any]:
     for key, expected_val in authoritative.items():
         if key in group:
             actual_val = group[key]
-            if actual_val != expected_val:
+            if type(actual_val) is not type(expected_val) or actual_val != expected_val:
                 raise ValueError(
                     f"Contradictory metadata in group {gid!r} for key {key!r}: "
                     f"supplied {actual_val!r} != authoritative {expected_val!r}"
                 )
+
+    alias_checks = (
+        ('batch_claim', authoritative['experiment_id']),
+        ('condition_claim', authoritative['condition']),
+        ('label_claim', authoritative['pfas_claim']),
+        ('technical_replicate_group', authoritative['group_id']),
+    )
+    for alias_key, expected_val in alias_checks:
+        if alias_key in group:
+            actual_val = group[alias_key]
+            if type(actual_val) is not type(expected_val) or actual_val != expected_val:
+                raise ValueError(
+                    f"Contradictory metadata in group {gid!r} for key {alias_key!r}: "
+                    f"supplied {actual_val!r} != authoritative {expected_val!r}"
+                )
+
     return authoritative
 
 
@@ -203,6 +229,8 @@ def generate_logo_plan(
 
 def verify_fold_leakage(fold_record: dict[str, Any]) -> bool:
     """Verify zero group leakage, canonical complement, and metadata integrity within a single fold record."""
+    if not isinstance(fold_record, dict):
+        raise ValueError(f"fold_record must be a dict, got {type(fold_record).__name__}")
     val_id = fold_record.get('validation_group_id')
     if not isinstance(val_id, str):
         raise ValueError("validation_group_id must be a string")
@@ -214,10 +242,22 @@ def verify_fold_leakage(fold_record: dict[str, Any]) -> bool:
         raise ValueError(
             f"Contradictory held_out_pfas: {fold_record['held_out_pfas']!r} != {val_meta['pfas_claim']!r}"
         )
-    if 'held_out_concentration_ppm' in fold_record and fold_record['held_out_concentration_ppm'] != val_meta['concentration_ppm']:
-        raise ValueError(
-            f"Contradictory held_out_concentration_ppm: {fold_record['held_out_concentration_ppm']!r} != {val_meta['concentration_ppm']!r}"
-        )
+    if 'held_out_concentration_ppm' in fold_record:
+        hc = fold_record['held_out_concentration_ppm']
+        if type(hc) is not int or hc != val_meta['concentration_ppm']:
+            raise ValueError(
+                f"Contradictory held_out_concentration_ppm: {hc!r} != {val_meta['concentration_ppm']!r}"
+            )
+    if 'num_validation_groups' in fold_record:
+        nv = fold_record['num_validation_groups']
+        if type(nv) is not int or nv != 1:
+            raise ValueError(f"Invalid num_validation_groups: {nv!r}; expected 1")
+    if 'num_training_groups' in fold_record:
+        nt = fold_record['num_training_groups']
+        if type(nt) is not int or nt != EXPECTED_GROUPS_COUNT - 1:
+            raise ValueError(
+                f"Invalid num_training_groups: {nt!r}; expected {EXPECTED_GROUPS_COUNT - 1}"
+            )
     if 'validation_group' in fold_record:
         validate_group_record(fold_record['validation_group'])
         if fold_record['validation_group'].get('group_id') != val_id:
@@ -259,7 +299,7 @@ def verify_fold_leakage(fold_record: dict[str, Any]) -> bool:
     # Validate redundant training_groups metadata records if present
     if 'training_groups' in fold_record:
         tg_records = fold_record['training_groups']
-        if len(tg_records) != len(train_ids):
+        if not isinstance(tg_records, (tuple, list)) or len(tg_records) != len(train_ids):
             raise ValueError("training_groups length does not match training_group_ids")
         for i, tg in enumerate(tg_records):
             validate_group_record(tg)
@@ -286,12 +326,44 @@ def verify_plan_integrity(folds: Sequence[dict[str, Any]]) -> bool:
     return True
 
 
+def _extract_sample_well(sample: dict[str, Any]) -> str | None:
+    """Extract and validate optional physical well coordinate from a sample dict.
+
+    Validates both 'physical_well' and 'well' independently when present and requires
+    them to agree if both are supplied.
+    """
+    has_pw = 'physical_well' in sample
+    has_w = 'well' in sample
+    if not has_pw and not has_w:
+        return None
+
+    pw_val: str | None = None
+    w_val: str | None = None
+    if has_pw:
+        raw_pw = sample['physical_well']
+        if not isinstance(raw_pw, str) or not raw_pw.strip() or raw_pw != raw_pw.strip():
+            raise ValueError(f"Sample has invalid physical_well: {raw_pw!r}")
+        pw_val = raw_pw
+    if has_w:
+        raw_w = sample['well']
+        if not isinstance(raw_w, str) or not raw_w.strip() or raw_w != raw_w.strip():
+            raise ValueError(f"Sample has invalid well: {raw_w!r}")
+        w_val = raw_w
+
+    if pw_val is not None and w_val is not None and pw_val != w_val:
+        raise ValueError(
+            f"Sample physical_well {pw_val!r} contradicts well {w_val!r}"
+        )
+    return pw_val if pw_val is not None else w_val
+
+
 def validate_sample_metadata(sample: dict[str, Any], group_key: str = 'technical_replicate_group') -> str:
     """Validate sample metadata consistency against its group ID.
 
-    Fails closed if any optional metadata (experiment_id, condition, condition_claim,
-    pfas_claim, label_claim, concentration_ppm, concentration_claim_ppm) contradicts
-    the parsed authoritative group.
+    Independently validates every present redundant field (experiment_id, batch_claim,
+    group_id, technical_replicate_group, condition_claim, condition, pfas_claim,
+    label_claim, concentration_ppm, concentration_claim_ppm, physical_well, well)
+    and rejects fractional/float or boolean concentration values.
     """
     if not isinstance(sample, dict):
         raise ValueError(f"Sample must be a dict, got {type(sample).__name__}")
@@ -301,40 +373,56 @@ def validate_sample_metadata(sample: dict[str, Any], group_key: str = 'technical
 
     parsed = parse_group_id(gid)
 
-    # Consistency checks on optional keys
-    exp = sample.get('experiment_id')
-    if exp is not None and exp != parsed['experiment_id']:
-        raise ValueError(
-            f"Sample experiment_id {exp!r} contradicts {group_key} {gid!r} (expected {parsed['experiment_id']!r})"
-        )
+    # Validate well fields if present
+    _extract_sample_well(sample)
 
-    cond = sample.get('condition_claim') or sample.get('condition')
-    if cond is not None and cond != parsed['condition']:
-        raise ValueError(
-            f"Sample condition {cond!r} contradicts {group_key} {gid!r} (expected {parsed['condition']!r})"
-        )
+    # Independently check every present group/experiment/condition/analyte field
+    for g_alias in ('group_id', 'technical_replicate_group'):
+        if g_alias in sample:
+            val = sample[g_alias]
+            if not isinstance(val, str) or val != parsed['group_id']:
+                raise ValueError(
+                    f"Sample {g_alias} {val!r} contradicts {group_key} {gid!r} (expected {parsed['group_id']!r})"
+                )
 
-    pfas = sample.get('pfas_claim') or sample.get('label_claim')
-    if pfas is not None and pfas != parsed['pfas_claim']:
-        raise ValueError(
-            f"Sample PFAS claim {pfas!r} contradicts {group_key} {gid!r} (expected {parsed['pfas_claim']!r})"
-        )
+    for exp_key in ('experiment_id', 'batch_claim'):
+        if exp_key in sample:
+            exp = sample[exp_key]
+            if not isinstance(exp, str) or exp != parsed['experiment_id']:
+                raise ValueError(
+                    f"Sample {exp_key} {exp!r} contradicts {group_key} {gid!r} (expected {parsed['experiment_id']!r})"
+                )
 
-    conc = sample.get('concentration_claim_ppm')
-    if conc is not None and str(conc) != parsed['concentration_claim_ppm']:
-        raise ValueError(
-            f"Sample concentration_claim_ppm {conc!r} contradicts {group_key} {gid!r} (expected {parsed['concentration_claim_ppm']!r})"
-        )
+    for cond_key in ('condition_claim', 'condition'):
+        if cond_key in sample:
+            cond = sample[cond_key]
+            if not isinstance(cond, str) or cond != parsed['condition']:
+                raise ValueError(
+                    f"Sample {cond_key} {cond!r} contradicts {group_key} {gid!r} (expected {parsed['condition']!r})"
+                )
 
-    conc_num = sample.get('concentration_ppm')
-    if conc_num is not None:
-        try:
-            if int(conc_num) != parsed['concentration_ppm']:
-                raise ValueError()
-        except (ValueError, TypeError):
-            raise ValueError(
-                f"Sample concentration_ppm {conc_num!r} contradicts {group_key} {gid!r} (expected {parsed['concentration_ppm']!r})"
-            )
+    for pfas_key in ('pfas_claim', 'label_claim'):
+        if pfas_key in sample:
+            pfas = sample[pfas_key]
+            if not isinstance(pfas, str) or pfas != parsed['pfas_claim']:
+                raise ValueError(
+                    f"Sample {pfas_key} {pfas!r} contradicts {group_key} {gid!r} (expected {parsed['pfas_claim']!r})"
+                )
+
+    for conc_key in ('concentration_claim_ppm', 'concentration_ppm'):
+        if conc_key in sample:
+            raw_conc = sample[conc_key]
+            try:
+                conc_int = _validate_exact_concentration(raw_conc, field_name=conc_key)
+            except ValueError as exc:
+                raise ValueError(
+                    f"Sample {conc_key} {raw_conc!r} invalid for {group_key} {gid!r}: {exc}"
+                ) from exc
+            if conc_int != parsed['concentration_ppm']:
+                raise ValueError(
+                    f"Sample {conc_key} {raw_conc!r} contradicts {group_key} {gid!r} "
+                    f"(expected {parsed['concentration_ppm']} ppm)"
+                )
 
     return gid
 
@@ -347,16 +435,17 @@ def split_samples_by_fold(
 ) -> dict[str, list[dict[str, Any]]]:
     """Deterministically partition sample records into training and validation sets.
 
-    Note on dataset completeness:
+    Note on group coverage:
     By default, this function partitions whatever sample subset is passed. It does NOT
-    validate overall dataset completeness (e.g. that all conditions are present on the plate).
-    To reject empty validation partitions, set `allow_empty_validation=False`, or use
-    `validate_fold_evaluation_readiness`.
+    validate full condition-group coverage across the 18 groups unless checked via
+    `validate_fold_evaluation_readiness` (or `allow_empty_validation=False` for the
+    held-out group).
 
     Fail-closed validation:
-    - Every sample must have valid `group_key` consistent with optional sample metadata.
+    - Every sample must have valid `group_key` consistent with all present sample metadata.
     - Samples with unknown or unexpected group IDs raise ValueError.
-    - Contradictory sample metadata (e.g. experiment_id='Exp5' with group 'Exp3:TFA_5') raises ValueError.
+    - Contradictory sample metadata or fractional concentrations raise ValueError.
+    - Duplicate physical well IDs (when present) raise ValueError.
     - Replicates of the same solution stay strictly together on one side of the split.
     """
     verify_fold_leakage(fold_record)
@@ -365,9 +454,15 @@ def split_samples_by_fold(
 
     training_samples: list[dict[str, Any]] = []
     validation_samples: list[dict[str, Any]] = []
+    seen_wells: set[str] = set()
 
     for s_idx, sample in enumerate(samples):
         gid = validate_sample_metadata(sample, group_key=group_key)
+        well_id = _extract_sample_well(sample)
+        if well_id is not None:
+            if well_id in seen_wells:
+                raise ValueError(f"Duplicate physical well ID in samples: {well_id!r}")
+            seen_wells.add(well_id)
         if gid == val_gid:
             validation_samples.append(sample)
         elif gid in train_gids:
@@ -397,15 +492,39 @@ def validate_fold_evaluation_readiness(
     expected_training_groups: int = EXPECTED_GROUPS_COUNT - 1,
     group_key: str = 'technical_replicate_group',
 ) -> bool:
-    """Validate evaluation readiness for a split before any model fitting or evaluation.
+    """Validate condition-group coverage and fold/sample integrity before evaluation.
 
     Verifies:
+    - `fold_record` passes full `verify_fold_leakage` integrity and complement checks.
     - Validation set is non-empty and has at least `min_validation_samples`.
-    - Training set covers all 17 expected training groups (no missing training conditions).
-    - Zero overlap between validation and training samples.
+    - Training set covers all `expected_training_groups` (17 canonical training groups).
+    - Every validation and training sample passes `validate_sample_metadata` and belongs
+      to the declared validation or training group set with zero group overlap.
+    - Physical well identifiers (`physical_well` / `well`), when present, are consistent
+      and strictly unique across and within training and validation partitions.
+
+    Scope limitation: This check establishes condition-group coverage and metadata
+    consistency, NOT full 70-well physical plate completeness or verified chemistry.
     """
-    val_samples = split_result.get('validation', [])
-    train_samples = split_result.get('training', [])
+    if not isinstance(split_result, dict):
+        raise ValueError("split_result must be a dict with 'training' and 'validation' keys")
+    if set(split_result.keys()) != {'training', 'validation'}:
+        raise ValueError("split_result must contain exact keys {'training', 'validation'}")
+    if isinstance(min_validation_samples, bool) or not isinstance(min_validation_samples, int) or min_validation_samples < 1:
+        raise ValueError(f"min_validation_samples must be a positive integer, got {min_validation_samples!r}")
+    if isinstance(expected_training_groups, bool) or not isinstance(expected_training_groups, int):
+        raise ValueError(f"expected_training_groups must be an integer, got {expected_training_groups!r}")
+    if expected_training_groups != EXPECTED_GROUPS_COUNT - 1:
+        raise ValueError(
+            f"expected_training_groups must equal {EXPECTED_GROUPS_COUNT - 1}, got {expected_training_groups}"
+        )
+
+    verify_fold_leakage(fold_record)
+
+    val_samples = split_result['validation']
+    train_samples = split_result['training']
+    if not isinstance(val_samples, (list, tuple)) or not isinstance(train_samples, (list, tuple)):
+        raise ValueError("'validation' and 'training' entries in split_result must be sequences")
 
     if len(val_samples) < min_validation_samples:
         raise ValueError(
@@ -413,12 +532,45 @@ def validate_fold_evaluation_readiness(
         )
 
     val_gid = fold_record['validation_group_id']
-    for s in val_samples:
-        if s.get(group_key) != val_gid:
-            raise ValueError(f"Sample in validation set has group {s.get(group_key)!r} != {val_gid!r}")
-
-    train_gids = {s.get(group_key) for s in train_samples}
     expected_train_gids = set(fold_record['training_group_ids'])
+
+    val_wells: set[str] = set()
+    well_presence: list[bool] = []
+    for s in val_samples:
+        gid = validate_sample_metadata(s, group_key=group_key)
+        if gid != val_gid:
+            raise ValueError(f"Sample in validation set has group {gid!r} != {val_gid!r}")
+        well_id = _extract_sample_well(s)
+        well_presence.append(well_id is not None)
+        if well_id is not None:
+            if well_id in val_wells:
+                raise ValueError(f"Duplicate physical well ID in validation set: {well_id!r}")
+            val_wells.add(well_id)
+
+    train_gids: set[str] = set()
+    train_wells: set[str] = set()
+    for s in train_samples:
+        gid = validate_sample_metadata(s, group_key=group_key)
+        if gid == val_gid:
+            raise ValueError(f"Leakage: validation group {val_gid!r} sample found in training set")
+        if gid not in expected_train_gids:
+            raise ValueError(f"Sample in training set has unexpected group {gid!r}")
+        train_gids.add(gid)
+        well_id = _extract_sample_well(s)
+        well_presence.append(well_id is not None)
+        if well_id is not None:
+            if well_id in val_wells:
+                raise ValueError(
+                    f"Overlapping physical well ID between validation and training: {well_id!r}"
+                )
+            if well_id in train_wells:
+                raise ValueError(f"Duplicate physical well ID in training set: {well_id!r}")
+            train_wells.add(well_id)
+
+    if any(well_presence) and not all(well_presence):
+        raise ValueError(
+            "Inconsistent physical well metadata: some samples specify physical_well/well while others omit it"
+        )
 
     missing_train = expected_train_gids - train_gids
     if missing_train:
@@ -426,10 +578,9 @@ def validate_fold_evaluation_readiness(
             f"Training set incomplete: missing samples for {len(missing_train)} expected group(s): {sorted(missing_train)}"
         )
 
-    unexpected_train = train_gids - expected_train_gids
-    if unexpected_train:
+    if len(train_gids) != expected_training_groups:
         raise ValueError(
-            f"Training set has unexpected group(s): {sorted(unexpected_train)}"
+            f"Training set covers {len(train_gids)} groups; expected {expected_training_groups}"
         )
 
     return True

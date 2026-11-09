@@ -3,22 +3,24 @@
 No raw data, physical spectra, or ML model fitting.
 Tests fail-closed group validation, inseparability of same-solution replicates,
 preservation of the PFHxA_10 group under D6/D7 primary exclusion, and
-rejection of contradictory metadata, non-canonical training sets, and non-integer concentrations.
+rejection of contradictory metadata, non-canonical training sets, fractional concentrations,
+and readiness integrity violations.
 """
 from __future__ import annotations
 
 import copy
+from typing import Any
 import unittest
 from scientific_experiment_selection import logo_plan as lp
 
 
-def make_synthetic_exp3_wells(include_d6_d7: bool = True) -> list[dict[str, str]]:
+def make_synthetic_exp3_wells(include_d6_d7: bool = True) -> list[dict[str, Any]]:
     """Generate synthetic well records for Exp3's 18 conditions (4 wells each = 72 wells).
 
     If include_d6_d7 is False, physical wells D6 and D7 (part of PFHxA_10)
     are excluded, leaving 70 provisional primary candidate wells.
     """
-    rows: list[dict[str, str]] = []
+    rows: list[dict[str, Any]] = []
     well_assignments = [
         ('TFA', 5, ['A1', 'A2', 'A3', 'A4']),
         ('TFA', 10, ['A5', 'A6', 'A7', 'A8']),
@@ -99,13 +101,17 @@ class LogoPlanTests(unittest.TestCase):
             lp.make_group_id('TFA', 5, experiment_id='Exp5')
 
     def test_rejects_float_or_fractional_concentration(self):
-        """Item 3 review fix: do not truncate fractional concentrations."""
+        """Item 3 review fix: do not truncate fractional or accept boolean concentrations."""
         with self.assertRaises(ValueError):
             lp.make_group_id('TFA', 5.9)
         with self.assertRaises(ValueError):
             lp.make_group_id('TFA', 5.0)  # float prohibited to prevent silent truncation
         with self.assertRaises(ValueError):
             lp.make_group_id('TFA', '5.9')
+        with self.assertRaises(ValueError):
+            lp.make_group_id('TFA', ' 5 ')  # whitespace string rejected
+        with self.assertRaises(ValueError):
+            lp.make_group_id('TFA', True)  # bool is subclass of int; must be rejected
         with self.assertRaises(ValueError):
             lp.make_group_id('TFA', 'five')
 
@@ -190,12 +196,19 @@ class LogoPlanTests(unittest.TestCase):
             lp.generate_logo_plan(groups=bad_groups_conc)
         self.assertIn("Contradictory metadata", str(ctx.exception))
 
+        # Float concentration_ppm on group record ('5.0' float instead of int 5)
+        bad_groups_float = copy.deepcopy(groups)
+        bad_groups_float[0]['concentration_ppm'] = 5.0
+        with self.assertRaises(ValueError) as ctx:
+            lp.generate_logo_plan(groups=bad_groups_float)
+        self.assertIn("Contradictory metadata", str(ctx.exception))
+
     def test_rejects_altered_invalid_training_group_sets_in_verifier(self):
         """Item 2 review fix: training set must equal exact canonical complement."""
         plan = lp.generate_logo_plan()
         fold0 = copy.deepcopy(plan[0])
 
-        # Probe 1: Replace a training group ID with an foreign experiment group
+        # Probe 1: Replace a training group ID with a foreign experiment group
         bad_train_ids = list(fold0['training_group_ids'])
         bad_train_ids[0] = 'Exp5:PFOA_10'
         bad_fold = copy.deepcopy(fold0)
@@ -226,8 +239,8 @@ class LogoPlanTests(unittest.TestCase):
             lp.verify_fold_leakage(bad_fold_tg)
         self.assertIn("Contradictory metadata", str(ctx.exception))
 
-    def test_rejects_contradictory_sample_metadata(self):
-        """Item 3 review fix: sample metadata must be consistent with its group ID."""
+    def test_rejects_contradictory_sample_metadata_and_fractional_concentrations(self):
+        """PR #20 review Gap 1: validate every present redundant field and reject fractional concentrations."""
         plan = lp.generate_logo_plan()
         fold0 = plan[0]
 
@@ -270,6 +283,79 @@ class LogoPlanTests(unittest.TestCase):
         with self.assertRaises(ValueError) as ctx:
             lp.split_samples_by_fold(fold0, bad_sample4)
         self.assertIn("contradicts", str(ctx.exception))
+
+        # Redundant condition_claim valid ('TFA_5'), but condition contradicts ('PFNA_20')
+        bad_redundant_cond = [{
+            'physical_well': 'A1',
+            'technical_replicate_group': 'Exp3:TFA_5',
+            'condition_claim': 'TFA_5',
+            'condition': 'PFNA_20',
+        }]
+        with self.assertRaises(ValueError) as ctx:
+            lp.split_samples_by_fold(fold0, bad_redundant_cond)
+        self.assertIn("condition 'PFNA_20' contradicts", str(ctx.exception))
+
+        # Redundant pfas_claim valid ('TFA'), but label_claim contradicts ('PFNA')
+        bad_redundant_pfas = [{
+            'physical_well': 'A1',
+            'technical_replicate_group': 'Exp3:TFA_5',
+            'pfas_claim': 'TFA',
+            'label_claim': 'PFNA',
+        }]
+        with self.assertRaises(ValueError) as ctx:
+            lp.split_samples_by_fold(fold0, bad_redundant_pfas)
+        self.assertIn("label_claim 'PFNA' contradicts", str(ctx.exception))
+
+        # Redundant experiment_id valid ('Exp3'), but batch_claim contradicts ('Exp5')
+        bad_redundant_exp = [{
+            'physical_well': 'A1',
+            'technical_replicate_group': 'Exp3:TFA_5',
+            'experiment_id': 'Exp3',
+            'batch_claim': 'Exp5',
+        }]
+        with self.assertRaises(ValueError) as ctx:
+            lp.split_samples_by_fold(fold0, bad_redundant_exp)
+        self.assertIn("batch_claim 'Exp5' contradicts", str(ctx.exception))
+
+        # Redundant physical_well ('A1') contradicts well ('A2')
+        bad_redundant_well = [{
+            'physical_well': 'A1',
+            'well': 'A2',
+            'technical_replicate_group': 'Exp3:TFA_5',
+        }]
+        with self.assertRaises(ValueError) as ctx:
+            lp.split_samples_by_fold(fold0, bad_redundant_well)
+        self.assertIn("physical_well 'A1' contradicts well 'A2'", str(ctx.exception))
+
+        # Fractional concentration_ppm (5.9 must not truncate to 5)
+        bad_frac_conc = [{
+            'physical_well': 'A1',
+            'technical_replicate_group': 'Exp3:TFA_5',
+            'concentration_ppm': 5.9,
+        }]
+        with self.assertRaises(ValueError) as ctx:
+            lp.split_samples_by_fold(fold0, bad_frac_conc)
+        self.assertIn("Float/fractional concentration_ppm not permitted", str(ctx.exception))
+
+        # Float concentration_ppm (5.0 rejected)
+        bad_float_conc = [{
+            'physical_well': 'A1',
+            'technical_replicate_group': 'Exp3:TFA_5',
+            'concentration_ppm': 5.0,
+        }]
+        with self.assertRaises(ValueError) as ctx:
+            lp.split_samples_by_fold(fold0, bad_float_conc)
+        self.assertIn("Float/fractional concentration_ppm not permitted", str(ctx.exception))
+
+        # Fractional concentration_claim_ppm string ('5.9')
+        bad_frac_claim = [{
+            'physical_well': 'A1',
+            'technical_replicate_group': 'Exp3:TFA_5',
+            'concentration_claim_ppm': '5.9',
+        }]
+        with self.assertRaises(ValueError) as ctx:
+            lp.split_samples_by_fold(fold0, bad_frac_claim)
+        self.assertIn("Invalid integer concentration_claim_ppm string", str(ctx.exception))
 
     def test_synthetic_well_partition_and_technical_replicate_inseparability(self):
         """All technical replicate wells of the same prepared solution must stay strictly together."""
@@ -361,7 +447,7 @@ class LogoPlanTests(unittest.TestCase):
             self.assertNotIn(fold['validation_group_id'], {w['technical_replicate_group'] for w in train_wells})
 
     def test_empty_validation_partition_and_readiness_validation(self):
-        """Item 3 review fix: dataset completeness & evaluation readiness validation."""
+        """Item 3 & PR #20 Gap 2 fix: condition-group coverage & evaluation readiness integrity."""
         synthetic_wells_70 = make_synthetic_exp3_wells(include_d6_d7=False)
         plan = lp.generate_logo_plan()
         fold0 = plan[0]  # Exp3:TFA_5
@@ -394,6 +480,63 @@ class LogoPlanTests(unittest.TestCase):
             lp.validate_fold_evaluation_readiness(split_missing_train, fold0)
         self.assertIn("Training set incomplete: missing samples for 1 expected group(s)", str(ctx.exception))
 
+    def test_readiness_rejects_corrupted_fold_samples_and_duplicate_wells(self):
+        """PR #20 review Gap 2: readiness verifies fold integrity, sample claims, well uniqueness, and expected_training_groups."""
+        synthetic_wells_70 = make_synthetic_exp3_wells(include_d6_d7=False)
+        plan = lp.generate_logo_plan()
+        fold0 = copy.deepcopy(plan[0])
+        split_full = lp.split_samples_by_fold(fold0, synthetic_wells_70)
+
+        # 1. Corrupted fold_record passed to validate_fold_evaluation_readiness
+        bad_fold = copy.deepcopy(fold0)
+        bad_fold['held_out_pfas'] = 'PFNA'
+        with self.assertRaises(ValueError) as ctx:
+            lp.validate_fold_evaluation_readiness(split_full, bad_fold)
+        self.assertIn("Contradictory held_out_pfas", str(ctx.exception))
+
+        # 2. Corrupted sample metadata inside split_result['validation']
+        bad_split_meta = copy.deepcopy(split_full)
+        bad_split_meta['validation'][0]['condition'] = 'PFNA_20'
+        with self.assertRaises(ValueError) as ctx:
+            lp.validate_fold_evaluation_readiness(bad_split_meta, fold0)
+        self.assertIn("contradicts", str(ctx.exception))
+
+        # 3. Duplicate physical well ID within validation
+        bad_split_dup_val = copy.deepcopy(split_full)
+        bad_split_dup_val['validation'][1]['physical_well'] = bad_split_dup_val['validation'][0]['physical_well']
+        with self.assertRaises(ValueError) as ctx:
+            lp.validate_fold_evaluation_readiness(bad_split_dup_val, fold0)
+        self.assertIn("Duplicate physical well ID in validation set", str(ctx.exception))
+
+        # 4. Duplicate physical well ID within training
+        bad_split_dup_train = copy.deepcopy(split_full)
+        bad_split_dup_train['training'][1]['physical_well'] = bad_split_dup_train['training'][0]['physical_well']
+        with self.assertRaises(ValueError) as ctx:
+            lp.validate_fold_evaluation_readiness(bad_split_dup_train, fold0)
+        self.assertIn("Duplicate physical well ID in training set", str(ctx.exception))
+
+        # 5. Overlapping physical well ID between validation and training (even across 'physical_well' and 'well')
+        bad_split_overlap = copy.deepcopy(split_full)
+        del bad_split_overlap['training'][0]['physical_well']
+        bad_split_overlap['training'][0]['well'] = bad_split_overlap['validation'][0]['physical_well']
+        with self.assertRaises(ValueError) as ctx:
+            lp.validate_fold_evaluation_readiness(bad_split_overlap, fold0)
+        self.assertIn("Overlapping physical well ID between validation and training", str(ctx.exception))
+
+        # 6. Mixed presence/absence of physical well IDs across samples
+        bad_split_mixed_wells = copy.deepcopy(split_full)
+        del bad_split_mixed_wells['training'][0]['physical_well']
+        with self.assertRaises(ValueError) as ctx:
+            lp.validate_fold_evaluation_readiness(bad_split_mixed_wells, fold0)
+        self.assertIn("Inconsistent physical well metadata", str(ctx.exception))
+
+        # 7. Invalid expected_training_groups argument
+        with self.assertRaises(ValueError) as ctx:
+            lp.validate_fold_evaluation_readiness(split_full, fold0, expected_training_groups=16)
+        self.assertIn("expected_training_groups must equal 17", str(ctx.exception))
+        with self.assertRaises(ValueError):
+            lp.validate_fold_evaluation_readiness(split_full, fold0, expected_training_groups=True)
+
     def test_split_samples_fail_closed_on_bad_inputs(self):
         plan = lp.generate_logo_plan()
         fold0 = plan[0]
@@ -412,6 +555,15 @@ class LogoPlanTests(unittest.TestCase):
         bad_sample3 = [{'physical_well': 'A1', 'technical_replicate_group': 'Exp5:TFA_5'}]
         with self.assertRaises(ValueError):
             lp.split_samples_by_fold(fold0, bad_sample3)
+
+        # Duplicate physical well ID in samples passed to split_samples_by_fold
+        dup_well_samples = [
+            {'physical_well': 'A1', 'technical_replicate_group': 'Exp3:TFA_5'},
+            {'physical_well': 'A1', 'technical_replicate_group': 'Exp3:TFA_5'},
+        ]
+        with self.assertRaises(ValueError) as ctx:
+            lp.split_samples_by_fold(fold0, dup_well_samples)
+        self.assertIn("Duplicate physical well ID", str(ctx.exception))
 
         # Non-dict sample
         with self.assertRaises(ValueError):
