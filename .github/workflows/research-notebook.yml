@@ -16,6 +16,8 @@ jobs:
         with:
           fetch-depth: 0
       - name: Require dated research notebook entry
+        env:
+          GITHUB_BASE_SHA: ${{ github.event.pull_request.base.sha }}
         run: python3 scripts/check_research_notebook.py
       - name: Run synthetic and existing unit tests
         run: python3 -m unittest discover -s tests -v

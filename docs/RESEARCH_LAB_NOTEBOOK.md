@@ -700,3 +700,40 @@ with `sys.executable` and bytecode disabled, after copying only the three public
 script and test directories. Only synthetic fixtures are used. No model/Exp8/raw
 access, no decisions modified. Original Entry 026 retained. Reaudit the same five-file
 publication scope and push correction to the existing Draft; stop for review.
+
+
+## Entry 028 — 2026-11-08 | Fix research-notebook CI race when ready_for_review overlaps PR merge
+
+**Owner, authority, and question.** Owner: Antigravity; reviewers: ChatGPT + researcher ([Issue #24 comment 6731003297](https://github.com/batuzunoglu/scientific-experiment-selection/issues/24#issuecomment-6731003297)). Started from clean `main` at `424ea813a9e96acd9085236054a903ffdb00a697` on dedicated branch `fix/notebook-gate-merge-race`. Question: how can `scripts/check_research_notebook.py` eliminate false-negative CI failures when a `ready_for_review` workflow run overlaps a squash or normal merge of the same PR, while preserving strict append-only enforcement and failing closed on invalid or ambiguous baselines?
+
+**Observed CI failures and root cause.** In GitHub Actions run `42550850591` (PR #22, head `52d1303`) and run `42552272582` (PR #25, head `4036d03`), earlier CI runs on the identical PR head SHAs passed both the notebook gate and unit tests, but the `ready_for_review` workflow triggered moments before PR merge failed at `Require dated research notebook entry` with `ERROR: No new notebook content was appended.` During `actions/checkout@v4`, `HEAD` was checked out at the PR's synthetic merge commit (`refs/pull/<N>/merge`, merging PR head into pre-merge `main`), whereas `origin/main` in the fetched repository had already advanced to the post-merge `main` commit containing the PR's new notebook entries. Because `scripts/check_research_notebook.py` computed changed paths using `git diff origin/main...HEAD` (three-dot merge-base semantics, which saw the PR's research changes relative to pre-merge `main`) but loaded `old` via `git show origin/main:docs/RESEARCH_LAB_NOTEBOOK.md` (branch-tip semantics, which read the post-merge notebook), `old` and `new` were identical (`added == ""`), causing a false negative.
+
+**Evaluation of alternative baseline strategies.**
+1. *Mixing `origin/main...HEAD` with `origin/main:<path>` (previous code):* Vulnerable to any advancement of `origin/main` between PR merge-ref creation and checkout.
+2. *Naive `git merge-base origin/main HEAD` for both diff and file retrieval:* Works when `origin/main` advances via a **squash merge** $S$ (parent $B$), because $S$ and the PR synthetic merge commit $M_{\text{pr}}$ (parents $B, F$) share only $B$. However, it **fails after a normal (`--no-ff`) merge commit** $M_{\text{main}}$ (parents $B, F$), because both $B$ and the feature tip $F$ are common ancestors of $M_{\text{main}}$ and $M_{\text{pr}}$, so `git merge-base` returns $F$ (the feature branch tip) rather than the pre-merge base $B$. Comparing $M_{\text{pr}}$ against $F$ would either yield an empty diff (silently bypassing the gate) or compare the notebook against itself.
+3. *Immutable event base SHA (`GITHUB_BASE_SHA`) + `refs/pull/<N>/merge` first-parent (`HEAD^1`) verification with `merge-base` fallback (selected):*
+   - Pass `GITHUB_BASE_SHA: ${{ github.event.pull_request.base.sha }}` in `.github/workflows/research-notebook.yml` so CI supplies the immutable pre-merge base SHA from the PR event payload; fall back to `origin/<GITHUB_BASE_REF or main>` when unset.
+   - In `resolve_base_commit()`, verify the target ref resolves to a valid commit object (`^{commit}`). Inspect `HEAD`'s parents (`git rev-list --parents -n 1 HEAD`). When `HEAD` is a two-parent PR synthetic merge commit `(P1, P2)` where `P1` (`HEAD^1`) is on the target base history (`is_ancestor(P1, target_ref)`) and `P2` (`HEAD^2`) is the PR head (`not is_ancestor(P2, P1)`), use `P1` directly as `base_commit`. Because commit parents are immutable in the Git object graph, `P1` remains the exact pre-merge `main` commit regardless of whether `origin/main` subsequently advances via squash merge or normal merge.
+   - For single-parent branch checkouts (or feature branches that merged `main` into themselves), use `git merge-base <target_ref> HEAD`.
+   - Use the single resolved `base_commit` for both `git diff --name-only --diff-filter=ACMR <base_commit> HEAD` and `git show <base_commit>:docs/RESEARCH_LAB_NOTEBOOK.md`.
+   - Fail closed (exit code 2) if the target ref is missing/invalid or if `base_commit == head_sha`, preventing silent bypass when comparing an already-merged branch head against post-merge `origin/main` without a distinct pre-merge base.
+
+**Implementation and synthetic Git-history regression tests.**
+- Updated `.github/workflows/research-notebook.yml`, `scripts/check_research_notebook.py`, and `tests/test_research_notebook_gate.py`.
+- Preserved the 5 existing unit tests and added 8 synthetic Git-history tests in `tests/test_research_notebook_gate.py` (13 total in module):
+  1. Unmerged PR with genuine dated append passes (both branch checkout and `refs/pull/1/merge`).
+  2. `refs/pull/1/merge` checkout after `origin/main` advances from a **squash merge** passes (both with and without `GITHUB_BASE_SHA`).
+  3. `refs/pull/1/merge` checkout after `origin/main` advances from a **normal (`--no-ff`) merge commit** passes (verifying naive `merge-base` would have returned `feature_sha`, while `resolve_base_commit` returns `base_sha`).
+  4. Research code change without a notebook append fails (exit code 1).
+  5. Rewriting/deleting historical notebook content fails (exit code 1).
+  6. Undated/malformed appended heading fails (exit code 1).
+  7. Plain non-research documentation change (`README.md`, `docs/HANDOFF.md`) passes without requiring a notebook entry (exit code 0).
+  8. Missing/invalid `GITHUB_BASE_SHA` or identical `base_commit == HEAD` fails closed (exit code 2).
+
+**Exact commands and observed results.**
+- `PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. python3 -m unittest discover -s tests -p test_research_notebook_gate.py -v`: 13/13 passed in 0.217s (exit 0).
+- `PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m unittest discover -s tests -v`: 65/65 passed in 0.751s (exit 0).
+- `PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m scientific_experiment_selection doctor`: exit 0 (`scientific_runs: none`).
+- `git diff --check`: exit 0.
+
+**Limitations and boundaries.** CI quality-gate engineering only. No scientific code, dataset contracts, eligibility rules, labels, or decisions modified; no raw XLSX, `data/private/**`, or Exp5/Exp8 files accessed; no ML models trained. Next: open Draft PR against `main` and stop for ChatGPT review (do not mark ready-for-review or merge).
