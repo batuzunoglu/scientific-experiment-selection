@@ -38,3 +38,40 @@ class SavedDiagnosticsTests(unittest.TestCase):
         with patch.object(cls,'fit',side_effect=AssertionError('fit forbidden')),patch.object(cls,'predict',side_effect=AssertionError('predict forbidden')):
             loaded=d.TrustedPilotUnpickler(io.BytesIO(payload)).load()
         self.assertIs(type(loaded),cls);self.assertEqual(loaded.arm,'B')
+
+    def test_symlinked_source_and_root_rejected_before_reading(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp)
+            private=root/'private'
+            private.mkdir()
+            exp8=root/'Exp8'
+            exp8.mkdir()
+            run_name='issue34-pilot-2026-11-09'
+            run_link=private/run_name
+            run_link.symlink_to(exp8,target_is_directory=True)
+
+            # The symlink must be rejected before inspect() reads summary.json.
+            with patch.object(d,'PRIVATE_ROOT',private):
+                with patch.object(Path,'read_text',side_effect=AssertionError('symlink target must not be read')):
+                    with self.assertRaises(ValueError):
+                        d.inspect(run_link,root/'diagnostics',trusted_pickles=True)
+
+            run_link.unlink()
+            run=private/run_name
+            run.mkdir()
+            with patch.object(d,'PRIVATE_ROOT',private):
+                self.assertEqual(d._validated_source_directory(run),run)
+
+                # A symlinked intermediate parent must not be accepted either.
+                alias=root/'private-alias'
+                alias.symlink_to(private,target_is_directory=True)
+                with self.assertRaises(ValueError):
+                    d._validated_source_directory(alias/run_name)
+
+            # Reject a configured private root that itself resolves through a symlink.
+            linked_root=root/'private-root-link'
+            linked_root.symlink_to(private,target_is_directory=True)
+            with patch.object(d,'PRIVATE_ROOT',linked_root):
+                with self.assertRaises(ValueError):
+                    d._validated_source_directory(linked_root/run_name)
+
