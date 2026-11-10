@@ -1322,3 +1322,19 @@ Final full suite: **136 tests in 20.800s, OK**; clean stdlib: **136 in 1.539s,
 OK (skipped=18)**. `git diff --check` now exits 0. Original public JSON/private
 inputs remain unchanged. Publication remains limited to the 19-file reporting
 allowlist, with final staged checks and Draft CI required before handoff.
+
+## Entry 038 — 2026-11-10 — Current NES direction and README status correction
+
+**Question.** How should the project-facing README and prior Issue #36 reflect the latest researcher-directed change after merged PR #37, without pretending a new algorithm or independent validation exists?
+
+**Existing evidence reviewed.** The main branch at `97631dc8cf001a4a4b8a5624616a74fee8f85132` includes merged PRs #33/#35/#37. Current `selection.py` has Random, nominal-coverage and a rejecting UncertaintySelector stub. `measured_pilot.py` permits only frozen Random/coverage. Public `MEASURED_PILOT_RESULTS.md` and `MEASURED_PILOT_FIGURE_NOTES.md` report 16 trajectories, 208 fit checkpoints, 624 metric values, and B/D zero sensitivity. Exp5 has one positive evaluation condition; prior exposure and provisional labels remain limitations.
+
+**Researcher direction / decision.** Continue with Logistic Regression as primary model family; defer the proposed Compact8 1-NN comparison. Preserve historical unfavorable results. Explain Random/coverage, budgets, leakage and possible adaptive algorithms before making another modeling decision. Correct outdated README's 'zero empirical results' claim. **Not approved:** fixing Raw/Full A as sole representation; starting uncertainty/EIG/RL/surrogate implementation; real-data refitting, new physical experiments, Exp5 test-driven tuning, or Exp8 access.
+
+**Alternatives considered.** (1) Execute old Issue #36's LOGO 1-NN comparison (declined/deferred for the immediate phase); (2) directly implement adaptive acquisition (premature until inputs, information costs and evaluation protocol are approved); (3) document current capability and hold method choices for discussion (selected).
+
+**Actions / exact scope.** Documentation-only README replacement and append-only decision/notebook/handoff updates on a separate branch for review. Issue #36 receives a current-priority update with original historical task text preserved. No new model calculation or dataset read. The previous aggregate results and private run artifacts remain unchanged.
+
+**Observed results, tests and limits.** No Python training, plotting, test suite or CI execution claimed in this documentation task. Existing historical reports and code inspected read-only through the GitHub connector. Markdown/append-only consistency and PR checks to be reviewed separately after publication. New adaptive acquisition remains a proposed research milestone, not a demonstrated result.
+
+**Next scientific decision.** Decide and record the primary representation and whether to begin with a screening-informed/conditional-surrogate experiment-selection benchmark, along with its acquisition information, costs and clean evaluation boundary. Discuss and approve before implementation.
