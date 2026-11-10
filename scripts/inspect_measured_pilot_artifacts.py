@@ -6,6 +6,7 @@ or reconstruct missing predictions/features. Not invoked by public plotting/CI.
 import argparse
 import hashlib
 import json
+import os
 from pathlib import Path
 import pickle
 
@@ -53,12 +54,33 @@ def condition_accuracies(run):
     return values
 
 
+def _validated_source_directory(source,private_root=PRIVATE_ROOT):
+    """Accept only the exact private run directory, with no symlinked path components.
+
+    The private root is trusted configuration; both it and the supplied source
+    must resolve to their literal paths. Requiring the run to be its direct child
+    also prevents traversal through an intermediate symlink.
+    """
+    source_path=Path(os.path.abspath(source))
+    root_path=Path(private_root).absolute()
+    try:
+        resolved_root=root_path.resolve(strict=True)
+        resolved_source=source_path.resolve(strict=True)
+    except OSError as exc:
+        raise ValueError('Only the existing private Exp3/Exp5 run is supported') from exc
+    if root_path!=resolved_root:
+        raise ValueError('Private root must not traverse symbolic links')
+    if source_path!=resolved_source:
+        raise ValueError('Source path must not traverse symbolic links')
+    expected=root_path/'issue34-pilot-2026-11-09'
+    if source_path!=expected or not source_path.is_dir():
+        raise ValueError('Only the authorized private Exp3/Exp5 run is supported')
+    return source_path
+
+
 def inspect(source,output,*,trusted_pickles=False):
     if trusted_pickles is not True:raise ValueError('Explicit trusted-artifact inspection required')
-    source=Path(source).absolute()
-    if not source.is_relative_to(PRIVATE_ROOT.absolute()) or 'Exp8' in str(source):
-        raise ValueError('Only the authorized private Exp3/Exp5 run is supported')
-    if source.name!='issue34-pilot-2026-11-09':raise ValueError('Unexpected run source')
+    source=_validated_source_directory(source)
     summary_path=source/'summary.json'
     summary=json.loads(summary_path.read_text())
     if summary['status']!='completed-pending-scientific-review':raise ValueError('Incomplete saved run')
