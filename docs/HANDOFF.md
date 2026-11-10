@@ -723,3 +723,9 @@ regression assertion and no numeric changes. Regenerated figures/tables/manifest
 remain byte-reproducible. Final full suite **136 passed** (20.800s); stdlib **136 /
 18 expected skips passed** (1.539s); unstaged whitespace check passes. Await final
 staged audit, commit and Draft CI; scientific scope/results remain frozen.
+
+## Checkpoint 039 — 2026-11-10 README/current-decision documentation update
+
+Owner: ChatGPT. Reviewer/next owner: researcher. Documentation branch `docs/readme-nes-current-direction-2026-11-10` based on main `97631dc8cf001a4a4b8a5624616a74fee8f85132`. README now distinguishes retrospective measured evidence from the unimplemented adaptive selector; D-021 and Notebook Entry 038 record researcher direction to retain Logistic Regression and defer Issue #36's Compact8 1-NN comparison. Original measured results, spectra, label flags, model code, selector code, splits and earlier notebook entries unchanged. Exp8 still locked; Exp5 historical exposure/one positive evaluator condition explicitly noted.
+
+No new fitting, data access, model-selection algorithm, synthetic benchmark run or wet-lab execution in this documentation task. No new CI or test outcome claimed. README's old 'zero empirical results' statement corrected. A Raw/Full **not** frozen as sole primary; next adaptive policy/information regime awaiting discussion and approval. Issue #36 gets a historical-preserving priority notice. Draft PR for scientific/documentation review; do not merge before researcher review.
