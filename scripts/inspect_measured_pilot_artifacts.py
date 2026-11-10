@@ -54,7 +54,7 @@ def condition_accuracies(run):
     return values
 
 
-def _validated_source_directory(source,private_root=PRIVATE_ROOT):
+def _validated_source_directory(source,private_root=None):
     """Accept only the exact private run directory, with no symlinked path components.
 
     The private root is trusted configuration; both it and the supplied source
@@ -62,6 +62,7 @@ def _validated_source_directory(source,private_root=PRIVATE_ROOT):
     also prevents traversal through an intermediate symlink.
     """
     source_path=Path(os.path.abspath(source))
+    if private_root is None:private_root=PRIVATE_ROOT
     root_path=Path(private_root).absolute()
     try:
         resolved_root=root_path.resolve(strict=True)
