@@ -1,0 +1,29 @@
+{
+  "source": "docs/results/exp3-exp5-nes-2026-11-09-aggregate.json",
+  "source_sha256": "3d0ebbb13632854b14ee4e97dabdcef305f06dca4ebd1246b621456ff55e767e",
+  "trajectories": 16,
+  "checkpoints": 208,
+  "metric_values": 624,
+  "sd_ddof": 1,
+  "n_random_seeds": 3,
+  "interpolation": "none; markers at observed checkpoints only",
+  "png_dpi": 300,
+  "figure_inches": [
+    10,
+    7.8
+  ],
+  "python": "3.12.14",
+  "matplotlib": "3.10.7",
+  "numpy": "2.2.6",
+  "files": {
+    "measured_pilot_plot_data.csv": "9ad18d61f099474fef21ba9de007bdc70e6f37e845166e6a4857c3195627d37d",
+    "measured_pilot_summary.csv": "ccd3a2cdf32506f5acebdac396d497f31c4908439e80f3a1f84014dca7bfb055",
+    "measured_pilot_summary.md": "95c450ebe09e731ecf0a8bb9d7067b9e6d92e59b4cb9bb5d68ea7c5ea1081f52",
+    "figure_1_balanced_accuracy.png": "a8f2e7fb2ab76bbbd73b875acb41bb33dcabdc79b6df358e4e18d13618bfacdc",
+    "figure_1_balanced_accuracy.pdf": "b1e30549ebba7007c047a30d65e69033f2ecae02de411b4e8be29e768881af89",
+    "figure_2_tfa_sensitivity.png": "44c542ef70a238d83e4ffcd765e66060ec78f10f5bdd1acc21f24d5d5d4681eb",
+    "figure_2_tfa_sensitivity.pdf": "07356001370e89586d8a81e8e0041eea7755246f71226a607e781eebd8e10810",
+    "figure_3_specificity.png": "6c4015f1fc395479f8cad5618af041e54659a8df1e9b1c3f412f23b75eadf488",
+    "figure_3_specificity.pdf": "cfeff105ee9fcb88e7663ea65e9d11f4086733e65e765ebe14b7b1c17782f508"
+  }
+}

@@ -1153,3 +1153,172 @@ CI results will be reported on the PR after observation. No measured refitting.
 **Critical interpretation limits.** Fixed evaluator has **one TFA-positive prepared condition** (three related technical wells) and five non-TFA conditions; one positive-well decision changes BA by about `1/6`. Historical Exp5 has already been explored; the evaluator is not pristine. Labels are researcher-endorsed provisional analyses, not independently confirmed physical preparation. Costs are proxy whole-condition units. The possible reasons for B/D failure or A/C degradation are **hypotheses** requiring separately authorized group-level diagnostics; they are not yet verified causes. The frozen results, including unfavorable runs, must be preserved without tuning to this evaluator.
 
 **Version-control integration and future boundary.** PR #33's archive note **Entry 033** must remain before PR #35's Entries 034–035; the corresponding HANDOFF checkpoints are renumbered to prevent duplicate headings. The PR #35 branch is reconciled by preserving original content and joining the current `main` documentation branch. This Entry 036 captures independent scientific assessment before the authorized merge; neither scripts nor private artifacts or training inputs are changed by this entry. After final CI and merged-commit checks, **pause here for researcher review**. Potential future work such as Exp3 preparation-level leave-one-group-out assessment or training-only Compact8 diagnosis requires a fresh explicit decision; **Exp8 remains locked**.
+
+## Entry 037 — 2026-11-10 | Publication figures and reproducibility archive of the measured pilot
+
+**Question/owner/authority.** Owner Codex; scientific reviewers researcher + ChatGPT.
+The researcher explicitly requested reporting/archival figures of the existing
+measured Exp3–Exp5 pilot, with no new training, scientific-method changes or Exp8
+access. GitHub confirms PR #33 and PR #35 merged into main; dedicated branch
+`analysis/measured-pilot-paper-figures` starts at latest main
+`cf0084fcc0b6ba4113edaab7e5c157d4db19a5e6`. Read the project/agent instructions,
+charter, decisions, notebook/handoff, published results and actual implementation.
+Latest prior notebook Entry 036 and all earlier entries are preserved. This reporting
+instruction supersedes the pause only within this task, not for a next research phase.
+
+**Source/evidence.** Sole main-figure data source:
+`docs/results/exp3-exp5-nes-2026-11-09-aggregate.json`; SHA-256:
+`3d0ebbb13632854b14ee4e97dabdcef305f06dca4ebd1246b621456ff55e767e`.
+Before plotting, verified four arms, Random seeds 7/11/19, one deterministic DoE,
+all budgets 0–12, **16 trajectories / 208 checkpoints / 624 score values**. Main
+plotting imports no learner or private-source module. The CSV retains every source
+JSON metric value through Decimal parsing/writing, with no added rounding. The
+source JSON itself already has six-decimal reporting precision; no additional
+measurement precision is inferred or recovered. Existing result files are unchanged.
+
+**Reporting alternatives/why.** Use every observed checkpoint as a marker rather
+than smoothed or interpolated curves. Different shapes, sizes and colorblind-friendly
+colors expose coincident seeds; constant panels are annotated so B/D zero sensitivity
+cannot disappear on the axis. Random mean and **sample SD (ddof=1, n=3)** are shown
+as checkpoint-wise error bars, not a confidence interval or superiority test. No
+smoothing, jitter, favorable budget/seed selection or band interpolation. Full
+source CSV plus endpoint summary CSV/Markdown make the graphics reproducible. Delta
+is paired final minus initial within each seed; descriptive arithmetic uses 50-digit
+Decimal precision. Main PDFs are vector with embedded TrueType fonts; PNGs are
+300 dpi, 3000×2340 pixels, all using the same four-panel A/B/C/D layout.
+
+**Exact scripts/commands and outputs.** New main script:
+`scripts/plot_measured_pilot_results.py`. Optional plotting dependencies are pinned
+separately in `requirements/figures.txt`; existing ML pins are unchanged.
+
+```bash
+uv pip install --python .venv/bin/python -r requirements/figures.txt
+PYTHONDONTWRITEBYTECODE=1 MPLCONFIGDIR=/tmp/measured-pilot-mpl .venv/bin/python scripts/plot_measured_pilot_results.py
+PYTHONDONTWRITEBYTECODE=1 MPLCONFIGDIR=/tmp/measured-pilot-mpl .venv/bin/python -m unittest discover -s tests -v
+PYTHONDONTWRITEBYTECODE=1 /tmp/issue34-stdlib-env/bin/python -m unittest discover -s tests -v
+git diff --check
+PYTHONDONTWRITEBYTECODE=1 .venv/bin/python scripts/check_research_notebook.py
+```
+
+The plotting command exited 0 with the validated 16/208/624 counts and source hash.
+Files in `docs/figures/measured_pilot/`:
+`figure_1_balanced_accuracy.png`, `figure_1_balanced_accuracy.pdf`,
+`figure_2_tfa_sensitivity.png`, `figure_2_tfa_sensitivity.pdf`,
+`figure_3_specificity.png`, `figure_3_specificity.pdf`, and `manifest.json`.
+Numerical archive: `docs/results/measured_pilot_plot_data.csv`,
+`docs/results/measured_pilot_summary.csv`, `docs/results/measured_pilot_summary.md`.
+The manifest records public input/output hashes, software versions and plotting
+conventions, without private provenance. MEASURED_PILOT_FIGURE_NOTES.md verifies
+the model/formulas against source and gives captions, observations and limitations.
+
+**Verified configuration/preprocessing.** Binary TFA=1 vs other single PFAS=0;
+70 Exp3 training / 18 conditions, 35 Exp5 acquisition / 12 conditions, 18 Exp5 fixed
+evaluator / six conditions, three existing exclusions. L2 LR C=1, class_weight=None,
+lbfgs, max_iter=5000, tol=1e-4, fit_intercept=True, random_state=0, warm_start=False.
+Fresh StandardScaler and LR were fitted at every historical checkpoint with the
+same recomputed condition-equal weights N/(G*n_group), training-only scaler fitting,
+and native thread limit one. No fit is repeated for these figures. Spectral
+representations are A Raw/Full, B Raw/Compact8, C Area/Full, D Area/Compact8; Area is
+the positive 380–580 nm trapezoid applied to the full 350:2:700 grid. Compact8's exact
+ordered amplitudes/ratio, discrete centroid/spread, absolute derivative area,
+derivative at 450 and unsmoothed 440–480 slope formulas are recorded in the notes.
+SG derivative is window15/poly2/deriv1/delta2 with interpolated edges. Feature
+standardization is across training examples, **not** spectral baseline correction.
+Source confirms no Ce–ARS blank subtraction or 650–700 nm offset correction.
+
+**Observed retrospective results.** A and C differ and fluctuate by acquisition
+order; BA changes from 0.933333→0.833333 (A) and 0.900000→0.600000 (C). B and D have
+BA0.5, TFA sensitivity0 and specificity1 throughout every recorded trajectory.
+A/C sensitivity declines to 0.666667/0.333333 from 1.0; specificity changes to
+1.0/0.866667 from 0.866667/0.8. There is no consistent monotonic gain with
+acquisition and no Random/DoE superiority claim. These are existing measured-spectra
+model calculations, separate from synthetic test outcomes and not new wet-lab data.
+
+**Saved supplementary diagnostics.** Existing local artifacts contain grouped
+holdout predictions and saved model coefficients at 208 checkpoints. The optional
+`scripts/inspect_measured_pilot_artifacts.py` read only those known files and generated
+two **private-only** supplementary figures (condition-level correctness and existing
+coefficient norms, PNG/PDF). It calls no fit, predict, transform or spectral routine.
+Source pickles used a CLI `__main__` class name; a synthetic regression test reproduced
+the loading failure and a narrow class-name compatibility mapping restores existing
+state without rewriting artifacts. No new coefficients or predictions were computed.
+No saved Compact8 training/holdout matrices were present; matrix diagnostics remain
+unavailable, with no substitute feature computation from raw scenario records.
+Original private input bytes remain unchanged; all sensitive diagnostic outputs
+stay in ignored private storage and are excluded from GitHub.
+
+Optional command (variables configured privately, never logged):
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 MPLCONFIGDIR=/tmp/measured-pilot-mpl .venv/bin/python -m scripts.inspect_measured_pilot_artifacts --source "$PRIVATE_RUN" --output "$PRIVATE_DIAGNOSTICS" --inspect-trusted-pickles
+```
+
+**Software/visual verification.** Initial missing-module tests preceded each new
+implementation. Nine new reporting/diagnostic tests cover strict public schema,
+16/208/624 retention, every budget, exact CSV round-trip, sample SD, generated PNG/PDF
+files, axis/marker conventions, reporting's blocked learner imports, private output
+restrictions and CLI-pickle compatibility without fit/predict. PDF inspection found
+that save-time font settings had fallen outside the style context; a failing font
+regression test preceded the fix, now requiring embedded TrueType and no raster
+image objects. All three final PNGs and all three rendered PDFs were visually
+inspected; zero-valued markers and all labels are visible. Final full-suite,
+repeat-generation, privacy, append-only and CI observations follow after execution.
+
+**Limits/next.** One positive fixed evaluator condition TFA_10, three related
+technical wells, historical Exp5 exposure, provisional physical labels and proxy
+whole-condition costs remain. Three Random seeds describe order variability, not
+independent preparation/batch evidence. No chemistry or unseen-batch generalization
+claim; saved coefficient norms cannot establish a causal Compact8 failure mechanism.
+Reporting scripts performed zero model fit/refit/predict calls and accessed no Exp8.
+The full existing test suite exercises synthetic fits only. No preprocessing,
+labels, model settings or historical results changed; no alternate classifier or
+new research phase. Open Draft PR and stop for ChatGPT scientific/code review,
+without merge. Full publication captions are archived below as well as in the notes.
+
+**Archived figure captions.**
+
+Figure 1 — Balanced Accuracy Learning Curves. Retrospective measured Exp3→Exp5 condition-aware Balanced Accuracy
+versus acquired experimental conditions for (a) A Raw/Full, (b) B Raw/Compact8,
+(c) C Area/Full and (d) D Area/Compact8. Each marker is an observed checkpoint from
+the frozen pilot: three Random acquisition seeds, their descriptive mean ± sample
+SD (n=3, ddof=1), and deterministic nominal-coverage DoE. One proxy cost unit
+acquires a complete condition; every run retains budgets 0–12. No interpolation,
+smoothing or favorable-run selection is applied. Error bars are not confidence
+intervals. The same fixed, historically exposed Exp5 evaluator and provisional
+labels are used throughout; these results do not establish policy superiority.
+
+Figure 2 — TFA Sensitivity Learning Curves. TFA sensitivity on the fixed Exp5 evaluator across the same complete
+acquisition trajectories, panel order, markers, proxy costs and descriptive Random
+mean ± sample SD as Figure 1. No new model calculations are performed for this
+figure; it displays the recorded checkpoint sensitivities. Compact8 zero-sensitivity
+panels retain the zero-valued markers and an explicit coincidence annotation.
+The evaluator contains one positive prepared condition with three technical wells,
+so these values provide limited independent positive-condition evidence.
+
+Figure 3 — Specificity Learning Curves. Non-TFA specificity on the same five fixed negative Exp5 condition
+groups across all 16 acquisition trajectories, with the same panels and plotting
+conventions as Figures 1–2. Within-condition technical-well correctness is averaged
+first, followed by the mean across negative conditions. Markers retain every
+budget; black error bars describe variation among three Random seeds and are not
+confidence intervals. DoE is deterministic nominal coverage, not active learning.
+
+**Final local outcomes.** Full optional-ML/plotting suite: **136 tests in 20.525s,
+OK, exit 0** (127 prior + nine reporting/diagnostic tests). Clean standard-library
+suite: **136 tests in 1.559s, OK (skipped=18), exit 0** (16 optional ML tests and
+two optional Matplotlib tests). A second full figure/table generation into temporary
+public-only directories was byte-identical, including all PNGs/PDFs and manifest.
+CSV equality tests checked all624 scores. Source JSON SHA and original private-run
+file hashes are unchanged; notebook and HANDOFF retain the complete byte-prefix
+from main. Poppler-rendered PDFs and PNGs passed visual review; `pdffonts` confirms
+embedded CID TrueType, and tests reject Type3/raster-image PDF objects. Whitespace
+and final staged privacy/notebook checks precede commit; CI outcomes will be posted
+on the Draft after observation. No new measured model fit or Exp8 access.
+
+**Post-staging format check.** Git whitespace validation exposed the CSV writer's
+default CRLF terminators. A failing line-ending regression assertion preceded
+switching both CSV writers to explicit LF; no numeric value changed. Regenerated
+public figures/tables and their checksums, then repeated generation byte-identically.
+Final full suite: **136 tests in 20.800s, OK**; clean stdlib: **136 in 1.539s,
+OK (skipped=18)**. `git diff --check` now exits 0. Original public JSON/private
+inputs remain unchanged. Publication remains limited to the 19-file reporting
+allowlist, with final staged checks and Draft CI required before handoff.
