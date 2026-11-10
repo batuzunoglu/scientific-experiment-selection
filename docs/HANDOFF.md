@@ -678,3 +678,48 @@ PR #33 archives the private Exp3–Exp8 label master reference and Notebook Entr
 Key outcomes: Raw/Full A baseline/final BA `0.933333/0.833333`; Area/Full C `0.900000/0.600000`; Compact8 B and D `0.500000` throughout with zero TFA sensitivity. New acquisitions did not reliably increase fixed Exp5 performance. Random and nominal-coverage DoE are non-model-adaptive, no superiority claim. Results are retrospective, with only one independent positive evaluator condition, prior Exp5 exposure, provisional labels and proxy costs; no re-tuning from the fixed evaluator.
 
 **Current task ends at merge and preservation.** Researcher wants to inspect the existing results before any next steps. Do not start new feature work, model reruns, Exp8 access, active learning, interpretation as chemical truth, or publishing private inputs absent a new researcher instruction. Private original remains outside public GitHub; generated public aggregate remains versioned. PR #35 merge/CI must be verified after integration.
+
+## Checkpoint 038 — 2026-11-10 Measured-pilot publication figures and archive
+
+Owner Codex; next reviewer researcher + ChatGPT. PR #33 and PR #35 verified merged;
+branch `analysis/measured-pilot-paper-figures` from main
+`cf0084fcc0b6ba4113edaab7e5c157d4db19a5e6`. Entry 037 appends to the notebook after
+036, and this checkpoint follows 037; all previous text is preserved.
+
+Reporting only: three four-panel Matplotlib figures (BA, TFA sensitivity,
+specificity), each 300 dpi PNG and vector PDF. All 16 trajectories, all budgets0–12,
+208 checkpoints and 624 metric values retained. Three Random seeds separately,
+checkpoint-wise mean/sample SD (ddof1, descriptive not CI), deterministic DoE;
+no smoothing/interpolation, best-seed selection or policy superiority claim.
+Main input is only the existing public aggregate JSON, unchanged with SHA-256
+`3d0ebbb13632854b14ee4e97dabdcef305f06dca4ebd1246b621456ff55e767e`.
+Exact CSV values and endpoint summary/deltas, optional plotting pins, figure
+manifest and source-verified model/Compact8 formulas/captions are archived publicly.
+New reporting CI renders public aggregates and checks reproducible tables only.
+
+Existing private grouped evaluator predictions and saved coefficients were available
+at all208 checkpoints; two supplementary diagnostic figures were prepared privately.
+A CLI class-name pickle compatibility mapping was tested; no model state rewritten
+and no fit/predict/transform performed. Saved Compact8 training/holdout matrices
+were absent, so no matrix diagnostics or substitute feature computation. Original
+private files remain unchanged; sensitive diagnostics never staged.
+
+BA A/C 0.933333→0.833333 / 0.900000→0.600000; B/D zero TFA sensitivity throughout.
+No consistent monotonic acquisition improvement. Exp5 historically exposed, one
+positive evaluator condition, provisional labels, technical replicates and proxy
+costs prevent chemistry/generalization/confidence claims. No actual measured
+training/refitting, source/label/preprocessing change, alternate classifier or
+Exp8 access; existing test-suite fitting is synthetic only. Exact commands and
+publication captions in MEASURED_PILOT_FIGURE_NOTES.md / Entry037. Complete local
+and CI checks, open Draft PR, then stop for review; no merge or next research phase.
+Final local verification: full pinned ML + plotting suite **136 passed** (20.525s);
+clean stdlib **136 run / 18 optional skips passed** (1.559s). All figures/tables,
+including manifest, repeat byte-identically. CSV matches all624 scores; public JSON
+and private original input hashes unchanged; prior notebook/HANDOFF bytes preserved.
+Final PNG/PDF visual review passed, vector PDF TrueType embedding confirmed. Await
+staged privacy/notebook checks and Draft CI; no merge or further research execution.
+Post-staging CSV format correction: explicit LF replaces default CSV CRLF, with a
+regression assertion and no numeric changes. Regenerated figures/tables/manifest
+remain byte-reproducible. Final full suite **136 passed** (20.800s); stdlib **136 /
+18 expected skips passed** (1.539s); unstaged whitespace check passes. Await final
+staged audit, commit and Draft CI; scientific scope/results remain frozen.
